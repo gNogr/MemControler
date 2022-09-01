@@ -1,0 +1,66 @@
+module command_truth_table (command, addr, cke, cs, ras, cas, we);
+	input command, addrin;
+	output reg cke, cs, ras, cas, we, addrout;
+
+	always @(command or addrin)
+	begin //begin the procedural statements
+		cke[0] = 1;
+		
+		case (command)//variables that affect the procedure  
+		4'b0000: //DESL
+		begin
+		cs = 1;
+		end
+		4'b0001: //NOP
+		begin
+		cs = 0;
+		ras = 1;
+		cas = 1;
+		we = 1;
+		end 
+		4'b0010: //MRS
+		begin
+		
+		end
+		4'b0011: //ACT
+		begin
+		end
+		4'b0100: //READ
+		begin
+		end
+		4'b0101: //READA
+		begin
+		end
+		4'b0110: //WRIT
+		begin
+		end
+		4'b0111: //WRITA
+		begin
+		end
+		4'b1000: //PRE
+		begin
+		end
+		4'b1001: //PALL
+		begin
+		end 
+		4'b1010: //BST
+		begin
+		end
+		4'b1011: //REF
+		begin
+		end
+		4'b1100: //BEST
+		begin
+		end
+		4'b1101: //UNUSED
+		begin
+		end
+		4'b1110: //UNUSED
+		begin
+		end
+		4'b1111: //UNUSED
+		begin
+		end
+		endcase
+	end
+endmodule

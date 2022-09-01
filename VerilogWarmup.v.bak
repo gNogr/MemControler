@@ -1,0 +1,18 @@
+module VerilogWarmup (SW, LEDR);
+input [17:0] SW; // toggle switches
+output [17:0] LEDR; // red LEDs
+output [7:0] LEDG; // red LEDs
+wire S;
+wire [7:0]X;
+wire [7:0]Y;
+wire [7:0]M;
+
+assign S = SW[17];
+assign X = SW[7:0];
+assign Y = SW[15:8];
+
+assign m=(~s & x) | (s & y);
+
+assign LEDR = SW;
+assign LEDG = M;
+endmodule
