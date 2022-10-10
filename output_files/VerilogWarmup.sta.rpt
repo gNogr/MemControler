@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for VerilogWarmup
-Mon Aug 08 21:17:23 2022
+Mon Oct 10 10:38:45 2022
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -16,23 +16,42 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   8. Slow Model Recovery Summary
   9. Slow Model Removal Summary
  10. Slow Model Minimum Pulse Width Summary
- 11. Propagation Delay
- 12. Minimum Propagation Delay
- 13. Fast Model Setup Summary
- 14. Fast Model Hold Summary
- 15. Fast Model Recovery Summary
- 16. Fast Model Removal Summary
- 17. Fast Model Minimum Pulse Width Summary
+ 11. Slow Model Setup: 'SW[17]'
+ 12. Slow Model Hold: 'SW[17]'
+ 13. Slow Model Minimum Pulse Width: 'SW[17]'
+ 14. Setup Times
+ 15. Hold Times
+ 16. Clock to Output Times
+ 17. Minimum Clock to Output Times
  18. Propagation Delay
  19. Minimum Propagation Delay
- 20. Multicorner Timing Analysis Summary
- 21. Progagation Delay
- 22. Minimum Progagation Delay
- 23. Clock Transfers
- 24. Report TCCS
- 25. Report RSKM
- 26. Unconstrained Paths
- 27. TimeQuest Timing Analyzer Messages
+ 20. Fast Model Setup Summary
+ 21. Fast Model Hold Summary
+ 22. Fast Model Recovery Summary
+ 23. Fast Model Removal Summary
+ 24. Fast Model Minimum Pulse Width Summary
+ 25. Fast Model Setup: 'SW[17]'
+ 26. Fast Model Hold: 'SW[17]'
+ 27. Fast Model Minimum Pulse Width: 'SW[17]'
+ 28. Setup Times
+ 29. Hold Times
+ 30. Clock to Output Times
+ 31. Minimum Clock to Output Times
+ 32. Propagation Delay
+ 33. Minimum Propagation Delay
+ 34. Multicorner Timing Analysis Summary
+ 35. Setup Times
+ 36. Hold Times
+ 37. Clock to Output Times
+ 38. Minimum Clock to Output Times
+ 39. Progagation Delay
+ 40. Minimum Progagation Delay
+ 41. Setup Transfers
+ 42. Hold Transfers
+ 43. Report TCCS
+ 44. Report RSKM
+ 45. Unconstrained Paths
+ 46. TimeQuest Timing Analyzer Messages
 
 
 
@@ -79,28 +98,41 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-----------
-; Clocks ;
-----------
-No clocks to report.
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                             ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+------------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets    ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+------------+
+; SW[17]     ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { SW[17] } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+------------+
 
 
----------------------------
-; Slow Model Fmax Summary ;
----------------------------
-No paths to report.
++--------------------------------------------------+
+; Slow Model Fmax Summary                          ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 287.44 MHz ; 287.44 MHz      ; SW[17]     ;      ;
++------------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
-----------------------------
-; Slow Model Setup Summary ;
-----------------------------
-No paths to report.
++---------------------------------+
+; Slow Model Setup Summary        ;
++--------+--------+---------------+
+; Clock  ; Slack  ; End Point TNS ;
++--------+--------+---------------+
+; SW[17] ; -2.479 ; -33.537       ;
++--------+--------+---------------+
 
 
----------------------------
-; Slow Model Hold Summary ;
----------------------------
-No paths to report.
++--------------------------------+
+; Slow Model Hold Summary        ;
++--------+-------+---------------+
+; Clock  ; Slack ; End Point TNS ;
++--------+-------+---------------+
+; SW[17] ; 0.391 ; 0.000         ;
++--------+-------+---------------+
 
 
 -------------------------------
@@ -115,10 +147,400 @@ No paths to report.
 No paths to report.
 
 
-------------------------------------------
++----------------------------------------+
 ; Slow Model Minimum Pulse Width Summary ;
-------------------------------------------
-No paths to report.
++--------+--------+----------------------+
+; Clock  ; Slack  ; End Point TNS        ;
++--------+--------+----------------------+
+; SW[17] ; -1.222 ; -19.222              ;
++--------+--------+----------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Setup: 'SW[17]'                                                                                                                                   ;
++--------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                             ; To Node                               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
+; -2.479 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 3.515      ;
+; -2.474 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 3.510      ;
+; -2.444 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.004      ; 3.484      ;
+; -2.409 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.004      ; 3.449      ;
+; -2.370 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 3.402      ;
+; -2.365 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 3.397      ;
+; -2.349 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.005      ; 3.390      ;
+; -2.344 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.005      ; 3.385      ;
+; -2.343 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.005      ; 3.384      ;
+; -2.338 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.005      ; 3.379      ;
+; -2.335 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 3.371      ;
+; -2.320 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.005      ; 3.361      ;
+; -2.315 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.005      ; 3.356      ;
+; -2.314 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.009      ; 3.359      ;
+; -2.308 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.009      ; 3.353      ;
+; -2.300 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 3.336      ;
+; -2.297 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 3.333      ;
+; -2.285 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.009      ; 3.330      ;
+; -2.279 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.009      ; 3.324      ;
+; -2.273 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.009      ; 3.318      ;
+; -2.263 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 3.299      ;
+; -2.250 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.009      ; 3.295      ;
+; -2.237 ; mem_command_issuer:m|counter[11]      ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.004      ; 3.277      ;
+; -2.188 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 3.220      ;
+; -2.167 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.005      ; 3.208      ;
+; -2.161 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.005      ; 3.202      ;
+; -2.154 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 3.186      ;
+; -2.138 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.005      ; 3.179      ;
+; -2.134 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; -0.005     ; 3.165      ;
+; -2.134 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.004      ; 3.174      ;
+; -2.133 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.005      ; 3.174      ;
+; -2.128 ; mem_command_issuer:m|counter[11]      ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 3.164      ;
+; -2.127 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.005      ; 3.168      ;
+; -2.107 ; mem_command_issuer:m|counter[11]      ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.009      ; 3.152      ;
+; -2.104 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.005      ; 3.145      ;
+; -2.101 ; mem_command_issuer:m|counter[11]      ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.009      ; 3.146      ;
+; -2.078 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|cur_state[3]     ; SW[17]       ; SW[17]      ; 1.000        ; 0.004      ; 3.118      ;
+; -2.078 ; mem_command_issuer:m|counter[11]      ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.009      ; 3.123      ;
+; -2.043 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|cur_state[3]     ; SW[17]       ; SW[17]      ; 1.000        ; 0.004      ; 3.083      ;
+; -2.027 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.009     ; 3.054      ;
+; -2.025 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 3.061      ;
+; -2.004 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.009      ; 3.049      ;
+; -2.000 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 3.036      ;
+; -1.998 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.009      ; 3.043      ;
+; -1.992 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 3.028      ;
+; -1.975 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.009      ; 3.020      ;
+; -1.969 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.009     ; 2.996      ;
+; -1.967 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.009     ; 2.994      ;
+; -1.953 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; -0.005     ; 2.984      ;
+; -1.942 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.978      ;
+; -1.934 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.970      ;
+; -1.932 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.968      ;
+; -1.909 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.009     ; 2.936      ;
+; -1.905 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.004      ; 2.945      ;
+; -1.899 ; mem_command_issuer:m|counter[2]       ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.009     ; 2.926      ;
+; -1.874 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.910      ;
+; -1.872 ; mem_command_issuer:m|counter[2]       ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.908      ;
+; -1.871 ; mem_command_issuer:m|counter[11]      ; mem_command_issuer:m|cur_state[3]     ; SW[17]       ; SW[17]      ; 1.000        ; 0.004      ; 2.911      ;
+; -1.864 ; mem_command_issuer:m|counter[2]       ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.900      ;
+; -1.839 ; mem_command_issuer:m|counter[2]       ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.009     ; 2.866      ;
+; -1.827 ; mem_command_issuer:m|counter[3]       ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.009     ; 2.854      ;
+; -1.804 ; mem_command_issuer:m|counter[2]       ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.840      ;
+; -1.800 ; mem_command_issuer:m|counter[3]       ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.836      ;
+; -1.796 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 1.000        ; -0.009     ; 2.823      ;
+; -1.796 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.832      ;
+; -1.792 ; mem_command_issuer:m|counter[3]       ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.828      ;
+; -1.788 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 2.820      ;
+; -1.787 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 2.819      ;
+; -1.786 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.822      ;
+; -1.786 ; mem_command_issuer:m|counter[4]       ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.009     ; 2.813      ;
+; -1.786 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 2.818      ;
+; -1.785 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 2.817      ;
+; -1.783 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 2.815      ;
+; -1.782 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 2.814      ;
+; -1.781 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 2.813      ;
+; -1.780 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 2.812      ;
+; -1.775 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.009      ; 2.820      ;
+; -1.769 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.009      ; 2.814      ;
+; -1.768 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|cur_state[3]     ; SW[17]       ; SW[17]      ; 1.000        ; 0.004      ; 2.808      ;
+; -1.767 ; mem_command_issuer:m|counter[3]       ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.009     ; 2.794      ;
+; -1.759 ; mem_command_issuer:m|counter[4]       ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.795      ;
+; -1.757 ; mem_command_issuer:m|counter[6]       ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.793      ;
+; -1.753 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.789      ;
+; -1.752 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.788      ;
+; -1.751 ; mem_command_issuer:m|counter[4]       ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.787      ;
+; -1.751 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.787      ;
+; -1.750 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.786      ;
+; -1.746 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.009      ; 2.791      ;
+; -1.738 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 1.000        ; -0.009     ; 2.765      ;
+; -1.732 ; mem_command_issuer:m|counter[3]       ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.768      ;
+; -1.728 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.764      ;
+; -1.726 ; mem_command_issuer:m|counter[4]       ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.009     ; 2.753      ;
+; -1.719 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 1.000        ; -0.009     ; 2.746      ;
+; -1.718 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.754      ;
+; -1.717 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.753      ;
+; -1.716 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.752      ;
+; -1.715 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 2.751      ;
+; -1.677 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 2.709      ;
+; -1.668 ; mem_command_issuer:m|counter[2]       ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 1.000        ; -0.009     ; 2.695      ;
+; -1.661 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 1.000        ; -0.009     ; 2.688      ;
++--------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Hold: 'SW[17]'                                                                                                                                   ;
++-------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                             ; To Node                               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.391 ; mem_command_issuer:m|counter[3]       ; mem_command_issuer:m|counter[3]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; mem_command_issuer:m|counter[7]       ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; mem_command_issuer:m|counter[11]      ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|cur_state[3]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|counter[0]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|counter[1]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; mem_command_issuer:m|counter[2]       ; mem_command_issuer:m|counter[2]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.657      ;
+; 0.788 ; mem_command_issuer:m|counter[7]       ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.054      ;
+; 0.861 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|cur_state[2]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.127      ;
+; 0.888 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.154      ;
+; 0.944 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.210      ;
+; 1.136 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.402      ;
+; 1.154 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|cur_state[3]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.420      ;
+; 1.227 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|cur_state[2]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.493      ;
+; 1.230 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.496      ;
+; 1.271 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.537      ;
+; 1.290 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.556      ;
+; 1.313 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|cur_state[2]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.579      ;
+; 1.340 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|cur_state[3]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.606      ;
+; 1.344 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|cur_state[3]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.610      ;
+; 1.376 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|cur_state[2]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.642      ;
+; 1.383 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.649      ;
+; 1.384 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.650      ;
+; 1.389 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 1.659      ;
+; 1.390 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 1.660      ;
+; 1.397 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|cur_state[2]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.663      ;
+; 1.401 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.667      ;
+; 1.582 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 1.844      ;
+; 1.582 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 1.844      ;
+; 1.584 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 1.846      ;
+; 1.585 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 1.847      ;
+; 1.594 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 1.856      ;
+; 1.614 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[3]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.005      ; 1.885      ;
+; 1.614 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[2]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.005      ; 1.885      ;
+; 1.615 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[1]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.005      ; 1.886      ;
+; 1.617 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[0]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.005      ; 1.888      ;
+; 1.619 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 1.889      ;
+; 1.622 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.888      ;
+; 1.648 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 1.918      ;
+; 1.663 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 1.925      ;
+; 1.663 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 1.925      ;
+; 1.665 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 1.927      ;
+; 1.666 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 1.928      ;
+; 1.675 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 1.937      ;
+; 1.688 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 1.950      ;
+; 1.703 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[3]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.005      ; 1.974      ;
+; 1.703 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[2]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.005      ; 1.974      ;
+; 1.704 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[1]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.005      ; 1.975      ;
+; 1.706 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[0]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.005      ; 1.977      ;
+; 1.722 ; mem_command_issuer:m|counter[11]      ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 1.992      ;
+; 1.751 ; mem_command_issuer:m|counter[11]      ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 2.021      ;
+; 1.801 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[0]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.005      ; 2.072      ;
+; 1.804 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[3]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.005      ; 2.075      ;
+; 1.804 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[2]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.005      ; 2.075      ;
+; 1.807 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 2.073      ;
+; 1.808 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|cur_state[3]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 2.074      ;
+; 1.821 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|cur_state[2]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 2.091      ;
+; 1.822 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[3]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.009      ; 2.097      ;
+; 1.822 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[2]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.009      ; 2.097      ;
+; 1.823 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[1]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.009      ; 2.098      ;
+; 1.825 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[0]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.009      ; 2.100      ;
+; 1.840 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[1]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.005      ; 2.111      ;
+; 1.846 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 2.108      ;
+; 1.846 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 2.108      ;
+; 1.848 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 2.110      ;
+; 1.849 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 2.111      ;
+; 1.851 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 2.113      ;
+; 1.851 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 2.113      ;
+; 1.852 ; mem_command_issuer:m|counter[6]       ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 0.000        ; -0.009     ; 2.109      ;
+; 1.853 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 2.115      ;
+; 1.854 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|counter[1]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 2.120      ;
+; 1.854 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 2.116      ;
+; 1.856 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 0.000        ; -0.005     ; 2.117      ;
+; 1.858 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 2.120      ;
+; 1.862 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 2.124      ;
+; 1.863 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 2.125      ;
+; 1.863 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 2.125      ;
+; 1.864 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 2.126      ;
+; 1.865 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 2.127      ;
+; 1.873 ; mem_command_issuer:m|counter[6]       ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.009     ; 2.130      ;
+; 1.879 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 0.000        ; -0.005     ; 2.140      ;
+; 1.892 ; mem_command_issuer:m|counter[3]       ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 0.000        ; -0.005     ; 2.153      ;
+; 1.894 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 2.164      ;
+; 1.901 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|counter[2]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 2.167      ;
+; 1.923 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 2.193      ;
+; 1.929 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 2.199      ;
+; 1.936 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 2.202      ;
+; 1.937 ; mem_command_issuer:m|counter[5]       ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.009     ; 2.194      ;
+; 1.940 ; mem_command_issuer:m|counter[6]       ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.009     ; 2.197      ;
+; 1.945 ; mem_command_issuer:m|counter[7]       ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 2.211      ;
+; 1.958 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 2.228      ;
+; 1.959 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|counter[2]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 2.225      ;
+; 1.969 ; mem_command_issuer:m|counter[2]       ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 0.000        ; -0.005     ; 2.230      ;
+; 1.981 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 2.247      ;
+; 1.982 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 2.244      ;
+; 1.982 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 2.248      ;
+; 1.983 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 2.249      ;
++-------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Minimum Pulse Width: 'SW[17]'                                                                                ;
++--------+--------------+----------------+------------------+--------+------------+---------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock  ; Clock Edge ; Target                                ;
++--------+--------------+----------------+------------------+--------+------------+---------------------------------------+
+; -1.222 ; 1.000        ; 2.222          ; Port Rate        ; SW[17] ; Rise       ; SW[17]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|Equal0~0_OTERM29 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|Equal0~0_OTERM29 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|Equal0~1_OTERM27 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|Equal0~1_OTERM27 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[0]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[0]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[10]      ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[10]      ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[11]      ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[11]      ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[1]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[1]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[2]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[2]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[3]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[3]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[4]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[4]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[5]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[5]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[6]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[6]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[7]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[7]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[8]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[8]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[9]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[9]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|cur_state[0]     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|cur_state[0]     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|cur_state[1]     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|cur_state[1]     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|cur_state[2]     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|cur_state[2]     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|cur_state[3]     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|cur_state[3]     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; SW[17]|combout                        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; SW[17]|combout                        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|Equal0~0_NEW_REG28|clk              ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|Equal0~0_NEW_REG28|clk              ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|Equal0~1_NEW_REG26|clk              ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|Equal0~1_NEW_REG26|clk              ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[0]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[0]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[10]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[10]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[11]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[11]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[1]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[1]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[2]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[2]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[3]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[3]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[4]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[4]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[5]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[5]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[6]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[6]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[7]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[7]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[8]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[8]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[9]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[9]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|cur_state[0]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|cur_state[0]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|cur_state[1]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|cur_state[1]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|cur_state[2]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|cur_state[2]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|cur_state[3]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|cur_state[3]|clk                    ;
++--------+--------------+----------------+------------------+--------+------------+---------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Setup Times                                                           ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; SW[*]     ; SW[17]     ; 2.409 ; 2.409 ; Rise       ; SW[17]          ;
+;  SW[0]    ; SW[17]     ; 2.409 ; 2.409 ; Rise       ; SW[17]          ;
+;  SW[1]    ; SW[17]     ; 0.839 ; 0.839 ; Rise       ; SW[17]          ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Hold Times                                                              ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; SW[*]     ; SW[17]     ; -0.607 ; -0.607 ; Rise       ; SW[17]          ;
+;  SW[0]    ; SW[17]     ; -1.276 ; -1.276 ; Rise       ; SW[17]          ;
+;  SW[1]    ; SW[17]     ; -0.607 ; -0.607 ; Rise       ; SW[17]          ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Clock to Output Times                                                   ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; LEDG[*]   ; SW[17]     ; 12.948 ; 12.948 ; Rise       ; SW[17]          ;
+;  LEDG[0]  ; SW[17]     ; 12.948 ; 12.948 ; Rise       ; SW[17]          ;
+;  LEDG[1]  ; SW[17]     ; 12.807 ; 12.807 ; Rise       ; SW[17]          ;
+;  LEDG[2]  ; SW[17]     ; 12.898 ; 12.898 ; Rise       ; SW[17]          ;
+;  LEDG[3]  ; SW[17]     ; 12.813 ; 12.813 ; Rise       ; SW[17]          ;
+;  LEDG[4]  ; SW[17]     ; 11.996 ; 11.996 ; Rise       ; SW[17]          ;
+; LEDR[*]   ; SW[17]     ; 14.258 ; 14.258 ; Rise       ; SW[17]          ;
+;  LEDR[0]  ; SW[17]     ; 14.258 ; 14.258 ; Rise       ; SW[17]          ;
+;  LEDR[1]  ; SW[17]     ; 14.241 ; 14.241 ; Rise       ; SW[17]          ;
+;  LEDR[2]  ; SW[17]     ; 14.256 ; 14.256 ; Rise       ; SW[17]          ;
+;  LEDR[3]  ; SW[17]     ; 13.710 ; 13.710 ; Rise       ; SW[17]          ;
+;  LEDR[4]  ; SW[17]     ; 13.221 ; 13.221 ; Rise       ; SW[17]          ;
+;  LEDR[5]  ; SW[17]     ; 12.829 ; 12.829 ; Rise       ; SW[17]          ;
+;  LEDR[6]  ; SW[17]     ; 12.787 ; 12.787 ; Rise       ; SW[17]          ;
+;  LEDR[7]  ; SW[17]     ; 13.500 ; 13.500 ; Rise       ; SW[17]          ;
+;  LEDR[8]  ; SW[17]     ; 11.663 ; 11.663 ; Rise       ; SW[17]          ;
+;  LEDR[9]  ; SW[17]     ; 12.102 ; 12.102 ; Rise       ; SW[17]          ;
+;  LEDR[10] ; SW[17]     ; 12.149 ; 12.149 ; Rise       ; SW[17]          ;
+;  LEDR[11] ; SW[17]     ; 12.018 ; 12.018 ; Rise       ; SW[17]          ;
+;  LEDR[12] ; SW[17]     ; 12.153 ; 12.153 ; Rise       ; SW[17]          ;
+;  LEDR[13] ; SW[17]     ; 12.178 ; 12.178 ; Rise       ; SW[17]          ;
+;  LEDR[14] ; SW[17]     ; 9.027  ; 9.027  ; Rise       ; SW[17]          ;
+;  LEDR[15] ; SW[17]     ; 8.963  ; 8.963  ; Rise       ; SW[17]          ;
+;  LEDR[16] ; SW[17]     ; 8.923  ; 8.923  ; Rise       ; SW[17]          ;
+;  LEDR[17] ; SW[17]     ; 9.020  ; 9.020  ; Rise       ; SW[17]          ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                           ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; LEDG[*]   ; SW[17]     ; 10.694 ; 10.694 ; Rise       ; SW[17]          ;
+;  LEDG[0]  ; SW[17]     ; 11.400 ; 11.400 ; Rise       ; SW[17]          ;
+;  LEDG[1]  ; SW[17]     ; 11.274 ; 11.274 ; Rise       ; SW[17]          ;
+;  LEDG[2]  ; SW[17]     ; 11.362 ; 11.362 ; Rise       ; SW[17]          ;
+;  LEDG[3]  ; SW[17]     ; 11.317 ; 11.317 ; Rise       ; SW[17]          ;
+;  LEDG[4]  ; SW[17]     ; 10.694 ; 10.694 ; Rise       ; SW[17]          ;
+; LEDR[*]   ; SW[17]     ; 8.813  ; 8.813  ; Rise       ; SW[17]          ;
+;  LEDR[0]  ; SW[17]     ; 12.732 ; 12.732 ; Rise       ; SW[17]          ;
+;  LEDR[1]  ; SW[17]     ; 12.715 ; 12.715 ; Rise       ; SW[17]          ;
+;  LEDR[2]  ; SW[17]     ; 12.730 ; 12.730 ; Rise       ; SW[17]          ;
+;  LEDR[3]  ; SW[17]     ; 12.184 ; 12.184 ; Rise       ; SW[17]          ;
+;  LEDR[4]  ; SW[17]     ; 11.695 ; 11.695 ; Rise       ; SW[17]          ;
+;  LEDR[5]  ; SW[17]     ; 11.303 ; 11.303 ; Rise       ; SW[17]          ;
+;  LEDR[6]  ; SW[17]     ; 11.261 ; 11.261 ; Rise       ; SW[17]          ;
+;  LEDR[7]  ; SW[17]     ; 11.974 ; 11.974 ; Rise       ; SW[17]          ;
+;  LEDR[8]  ; SW[17]     ; 10.301 ; 10.301 ; Rise       ; SW[17]          ;
+;  LEDR[9]  ; SW[17]     ; 10.484 ; 10.484 ; Rise       ; SW[17]          ;
+;  LEDR[10] ; SW[17]     ; 10.461 ; 10.461 ; Rise       ; SW[17]          ;
+;  LEDR[11] ; SW[17]     ; 10.479 ; 10.479 ; Rise       ; SW[17]          ;
+;  LEDR[12] ; SW[17]     ; 10.605 ; 10.605 ; Rise       ; SW[17]          ;
+;  LEDR[13] ; SW[17]     ; 10.630 ; 10.630 ; Rise       ; SW[17]          ;
+;  LEDR[14] ; SW[17]     ; 8.836  ; 8.836  ; Rise       ; SW[17]          ;
+;  LEDR[15] ; SW[17]     ; 8.817  ; 8.817  ; Rise       ; SW[17]          ;
+;  LEDR[16] ; SW[17]     ; 8.813  ; 8.813  ; Rise       ; SW[17]          ;
+;  LEDR[17] ; SW[17]     ; 8.861  ; 8.861  ; Rise       ; SW[17]          ;
++-----------+------------+--------+--------+------------+-----------------+
 
 
 +--------------------------------------------------------------+
@@ -126,27 +548,62 @@ No paths to report.
 +------------+-------------+--------+--------+--------+--------+
 ; Input Port ; Output Port ; RR     ; RF     ; FR     ; FF     ;
 +------------+-------------+--------+--------+--------+--------+
-; SW[0]      ; LEDG[0]     ; 8.141  ;        ;        ; 8.141  ;
-; SW[0]      ; LEDR[0]     ; 6.487  ;        ;        ; 6.487  ;
-; SW[1]      ; LEDR[1]     ; 5.673  ;        ;        ; 5.673  ;
-; SW[2]      ; LEDR[2]     ; 5.135  ;        ;        ; 5.135  ;
-; SW[3]      ; LEDR[3]     ; 5.783  ;        ;        ; 5.783  ;
-; SW[4]      ; LEDR[4]     ; 5.280  ;        ;        ; 5.280  ;
-; SW[5]      ; LEDR[5]     ; 5.702  ;        ;        ; 5.702  ;
-; SW[6]      ; LEDR[6]     ; 5.338  ;        ;        ; 5.338  ;
-; SW[7]      ; LEDR[7]     ; 6.279  ;        ;        ; 6.279  ;
-; SW[8]      ; LEDG[0]     ; 8.292  ;        ;        ; 8.292  ;
-; SW[8]      ; LEDR[8]     ; 6.480  ;        ;        ; 6.480  ;
-; SW[9]      ; LEDR[9]     ; 6.210  ;        ;        ; 6.210  ;
-; SW[10]     ; LEDR[10]    ; 5.680  ;        ;        ; 5.680  ;
-; SW[11]     ; LEDR[11]    ; 5.638  ;        ;        ; 5.638  ;
-; SW[12]     ; LEDR[12]    ; 5.696  ;        ;        ; 5.696  ;
-; SW[13]     ; LEDR[13]    ; 9.598  ;        ;        ; 9.598  ;
-; SW[14]     ; LEDR[14]    ; 9.645  ;        ;        ; 9.645  ;
-; SW[15]     ; LEDR[15]    ; 9.404  ;        ;        ; 9.404  ;
-; SW[16]     ; LEDR[16]    ; 9.593  ;        ;        ; 9.593  ;
-; SW[17]     ; LEDG[0]     ; 11.717 ; 11.717 ; 11.717 ; 11.717 ;
-; SW[17]     ; LEDR[17]    ; 9.817  ;        ;        ; 9.817  ;
+; SW[0]      ; LEDG[0]     ; 12.045 ; 12.045 ; 12.045 ; 12.045 ;
+; SW[0]      ; LEDG[1]     ; 11.908 ; 11.908 ; 11.908 ; 11.908 ;
+; SW[0]      ; LEDG[2]     ; 11.997 ; 11.997 ; 11.997 ; 11.997 ;
+; SW[0]      ; LEDG[3]     ;        ; 11.960 ; 11.960 ;        ;
+; SW[0]      ; LEDG[4]     ; 11.327 ;        ;        ; 11.327 ;
+; SW[0]      ; LEDR[0]     ; 13.365 ;        ;        ; 13.365 ;
+; SW[0]      ; LEDR[1]     ; 13.348 ;        ;        ; 13.348 ;
+; SW[0]      ; LEDR[2]     ; 13.363 ;        ;        ; 13.363 ;
+; SW[0]      ; LEDR[3]     ; 12.817 ;        ;        ; 12.817 ;
+; SW[0]      ; LEDR[4]     ; 12.328 ;        ;        ; 12.328 ;
+; SW[0]      ; LEDR[5]     ; 11.936 ;        ;        ; 11.936 ;
+; SW[0]      ; LEDR[6]     ; 11.894 ;        ;        ; 11.894 ;
+; SW[0]      ; LEDR[7]     ; 12.607 ;        ;        ; 12.607 ;
+; SW[0]      ; LEDR[8]     ; 10.791 ;        ;        ; 10.791 ;
+; SW[0]      ; LEDR[9]     ; 11.247 ;        ;        ; 11.247 ;
+; SW[0]      ; LEDR[10]    ; 11.103 ; 11.245 ; 11.245 ; 11.103 ;
+; SW[0]      ; LEDR[11]    ; 11.121 ;        ;        ; 11.121 ;
+; SW[0]      ; LEDR[12]    ; 11.250 ; 11.250 ; 11.250 ; 11.250 ;
+; SW[0]      ; LEDR[13]    ; 11.275 ; 11.275 ; 11.275 ; 11.275 ;
+; SW[1]      ; LEDG[0]     ; 10.780 ; 10.780 ; 10.780 ; 10.780 ;
+; SW[1]      ; LEDG[1]     ; 10.643 ; 10.643 ; 10.643 ; 10.643 ;
+; SW[1]      ; LEDG[2]     ; 10.732 ; 10.732 ; 10.732 ; 10.732 ;
+; SW[1]      ; LEDG[3]     ;        ; 10.695 ; 10.695 ;        ;
+; SW[1]      ; LEDG[4]     ; 10.062 ;        ;        ; 10.062 ;
+; SW[1]      ; LEDR[0]     ; 12.100 ;        ;        ; 12.100 ;
+; SW[1]      ; LEDR[1]     ; 12.083 ;        ;        ; 12.083 ;
+; SW[1]      ; LEDR[2]     ; 12.098 ;        ;        ; 12.098 ;
+; SW[1]      ; LEDR[3]     ; 11.552 ;        ;        ; 11.552 ;
+; SW[1]      ; LEDR[4]     ; 11.063 ;        ;        ; 11.063 ;
+; SW[1]      ; LEDR[5]     ; 10.671 ;        ;        ; 10.671 ;
+; SW[1]      ; LEDR[6]     ; 10.629 ;        ;        ; 10.629 ;
+; SW[1]      ; LEDR[7]     ; 11.342 ;        ;        ; 11.342 ;
+; SW[1]      ; LEDR[8]     ; 9.526  ;        ;        ; 9.526  ;
+; SW[1]      ; LEDR[9]     ; 9.982  ;        ;        ; 9.982  ;
+; SW[1]      ; LEDR[10]    ; 9.838  ; 9.980  ; 9.980  ; 9.838  ;
+; SW[1]      ; LEDR[11]    ; 9.856  ;        ;        ; 9.856  ;
+; SW[1]      ; LEDR[12]    ; 9.985  ; 9.985  ; 9.985  ; 9.985  ;
+; SW[1]      ; LEDR[13]    ; 10.010 ; 10.010 ; 10.010 ; 10.010 ;
+; SW[2]      ; LEDR[14]    ; 7.869  ; 7.869  ; 7.869  ; 7.869  ;
+; SW[2]      ; LEDR[15]    ; 7.834  ; 7.834  ; 7.834  ; 7.834  ;
+; SW[2]      ; LEDR[16]    ; 7.830  ; 7.830  ; 7.830  ; 7.830  ;
+; SW[2]      ; LEDR[17]    ; 7.869  ; 7.869  ; 7.869  ; 7.869  ;
+; SW[3]      ; LEDR[0]     ; 7.007  ;        ;        ; 7.007  ;
+; SW[4]      ; LEDR[1]     ; 6.995  ;        ;        ; 6.995  ;
+; SW[5]      ; LEDR[2]     ; 6.992  ;        ;        ; 6.992  ;
+; SW[6]      ; LEDR[3]     ; 6.445  ;        ;        ; 6.445  ;
+; SW[7]      ; LEDR[4]     ; 8.035  ;        ;        ; 8.035  ;
+; SW[8]      ; LEDR[5]     ; 7.549  ;        ;        ; 7.549  ;
+; SW[9]      ; LEDR[6]     ; 7.667  ;        ;        ; 7.667  ;
+; SW[10]     ; LEDR[7]     ; 8.193  ;        ;        ; 8.193  ;
+; SW[11]     ; LEDR[8]     ; 7.571  ;        ;        ; 7.571  ;
+; SW[12]     ; LEDR[9]     ; 7.035  ;        ;        ; 7.035  ;
+; SW[13]     ; LEDR[10]    ; 10.575 ;        ;        ; 10.575 ;
+; SW[14]     ; LEDR[11]    ; 10.793 ;        ;        ; 10.793 ;
+; SW[15]     ; LEDR[12]    ; 10.841 ;        ;        ; 10.841 ;
+; SW[16]     ; LEDR[13]    ; 10.768 ;        ;        ; 10.768 ;
 +------------+-------------+--------+--------+--------+--------+
 
 
@@ -155,40 +612,81 @@ No paths to report.
 +------------+-------------+--------+--------+--------+--------+
 ; Input Port ; Output Port ; RR     ; RF     ; FR     ; FF     ;
 +------------+-------------+--------+--------+--------+--------+
-; SW[0]      ; LEDG[0]     ; 8.141  ;        ;        ; 8.141  ;
-; SW[0]      ; LEDR[0]     ; 6.487  ;        ;        ; 6.487  ;
-; SW[1]      ; LEDR[1]     ; 5.673  ;        ;        ; 5.673  ;
-; SW[2]      ; LEDR[2]     ; 5.135  ;        ;        ; 5.135  ;
-; SW[3]      ; LEDR[3]     ; 5.783  ;        ;        ; 5.783  ;
-; SW[4]      ; LEDR[4]     ; 5.280  ;        ;        ; 5.280  ;
-; SW[5]      ; LEDR[5]     ; 5.702  ;        ;        ; 5.702  ;
-; SW[6]      ; LEDR[6]     ; 5.338  ;        ;        ; 5.338  ;
-; SW[7]      ; LEDR[7]     ; 6.279  ;        ;        ; 6.279  ;
-; SW[8]      ; LEDG[0]     ; 8.292  ;        ;        ; 8.292  ;
-; SW[8]      ; LEDR[8]     ; 6.480  ;        ;        ; 6.480  ;
-; SW[9]      ; LEDR[9]     ; 6.210  ;        ;        ; 6.210  ;
-; SW[10]     ; LEDR[10]    ; 5.680  ;        ;        ; 5.680  ;
-; SW[11]     ; LEDR[11]    ; 5.638  ;        ;        ; 5.638  ;
-; SW[12]     ; LEDR[12]    ; 5.696  ;        ;        ; 5.696  ;
-; SW[13]     ; LEDR[13]    ; 9.598  ;        ;        ; 9.598  ;
-; SW[14]     ; LEDR[14]    ; 9.645  ;        ;        ; 9.645  ;
-; SW[15]     ; LEDR[15]    ; 9.404  ;        ;        ; 9.404  ;
-; SW[16]     ; LEDR[16]    ; 9.593  ;        ;        ; 9.593  ;
-; SW[17]     ; LEDG[0]     ; 11.717 ; 11.717 ; 11.717 ; 11.717 ;
-; SW[17]     ; LEDR[17]    ; 9.817  ;        ;        ; 9.817  ;
+; SW[0]      ; LEDG[0]     ; 12.045 ; 12.045 ; 12.045 ; 12.045 ;
+; SW[0]      ; LEDG[1]     ; 11.908 ; 11.908 ; 11.908 ; 11.908 ;
+; SW[0]      ; LEDG[2]     ; 11.997 ; 11.997 ; 11.997 ; 11.997 ;
+; SW[0]      ; LEDG[3]     ;        ; 11.960 ; 11.960 ;        ;
+; SW[0]      ; LEDG[4]     ; 11.327 ;        ;        ; 11.327 ;
+; SW[0]      ; LEDR[0]     ; 13.365 ;        ;        ; 13.365 ;
+; SW[0]      ; LEDR[1]     ; 13.348 ;        ;        ; 13.348 ;
+; SW[0]      ; LEDR[2]     ; 13.363 ;        ;        ; 13.363 ;
+; SW[0]      ; LEDR[3]     ; 12.817 ;        ;        ; 12.817 ;
+; SW[0]      ; LEDR[4]     ; 12.328 ;        ;        ; 12.328 ;
+; SW[0]      ; LEDR[5]     ; 11.936 ;        ;        ; 11.936 ;
+; SW[0]      ; LEDR[6]     ; 11.894 ;        ;        ; 11.894 ;
+; SW[0]      ; LEDR[7]     ; 12.607 ;        ;        ; 12.607 ;
+; SW[0]      ; LEDR[8]     ; 10.791 ;        ;        ; 10.791 ;
+; SW[0]      ; LEDR[9]     ; 11.126 ;        ;        ; 11.126 ;
+; SW[0]      ; LEDR[10]    ; 11.103 ; 11.245 ; 11.245 ; 11.103 ;
+; SW[0]      ; LEDR[11]    ; 11.121 ;        ;        ; 11.121 ;
+; SW[0]      ; LEDR[12]    ; 11.250 ; 11.250 ; 11.250 ; 11.250 ;
+; SW[0]      ; LEDR[13]    ; 11.275 ; 11.275 ; 11.275 ; 11.275 ;
+; SW[1]      ; LEDG[0]     ; 10.780 ; 10.780 ; 10.780 ; 10.780 ;
+; SW[1]      ; LEDG[1]     ; 10.643 ; 10.643 ; 10.643 ; 10.643 ;
+; SW[1]      ; LEDG[2]     ; 10.732 ; 10.732 ; 10.732 ; 10.732 ;
+; SW[1]      ; LEDG[3]     ;        ; 10.695 ; 10.695 ;        ;
+; SW[1]      ; LEDG[4]     ; 10.062 ;        ;        ; 10.062 ;
+; SW[1]      ; LEDR[0]     ; 12.100 ;        ;        ; 12.100 ;
+; SW[1]      ; LEDR[1]     ; 12.083 ;        ;        ; 12.083 ;
+; SW[1]      ; LEDR[2]     ; 12.098 ;        ;        ; 12.098 ;
+; SW[1]      ; LEDR[3]     ; 11.552 ;        ;        ; 11.552 ;
+; SW[1]      ; LEDR[4]     ; 11.063 ;        ;        ; 11.063 ;
+; SW[1]      ; LEDR[5]     ; 10.671 ;        ;        ; 10.671 ;
+; SW[1]      ; LEDR[6]     ; 10.629 ;        ;        ; 10.629 ;
+; SW[1]      ; LEDR[7]     ; 11.342 ;        ;        ; 11.342 ;
+; SW[1]      ; LEDR[8]     ; 9.526  ;        ;        ; 9.526  ;
+; SW[1]      ; LEDR[9]     ; 9.861  ;        ;        ; 9.861  ;
+; SW[1]      ; LEDR[10]    ; 9.838  ; 9.980  ; 9.980  ; 9.838  ;
+; SW[1]      ; LEDR[11]    ; 9.856  ;        ;        ; 9.856  ;
+; SW[1]      ; LEDR[12]    ; 9.985  ; 9.985  ; 9.985  ; 9.985  ;
+; SW[1]      ; LEDR[13]    ; 10.010 ; 10.010 ; 10.010 ; 10.010 ;
+; SW[2]      ; LEDR[14]    ; 7.869  ; 7.869  ; 7.869  ; 7.869  ;
+; SW[2]      ; LEDR[15]    ; 7.834  ; 7.834  ; 7.834  ; 7.834  ;
+; SW[2]      ; LEDR[16]    ; 7.830  ; 7.830  ; 7.830  ; 7.830  ;
+; SW[2]      ; LEDR[17]    ; 7.869  ; 7.869  ; 7.869  ; 7.869  ;
+; SW[3]      ; LEDR[0]     ; 7.007  ;        ;        ; 7.007  ;
+; SW[4]      ; LEDR[1]     ; 6.995  ;        ;        ; 6.995  ;
+; SW[5]      ; LEDR[2]     ; 6.992  ;        ;        ; 6.992  ;
+; SW[6]      ; LEDR[3]     ; 6.445  ;        ;        ; 6.445  ;
+; SW[7]      ; LEDR[4]     ; 8.035  ;        ;        ; 8.035  ;
+; SW[8]      ; LEDR[5]     ; 7.549  ;        ;        ; 7.549  ;
+; SW[9]      ; LEDR[6]     ; 7.667  ;        ;        ; 7.667  ;
+; SW[10]     ; LEDR[7]     ; 8.193  ;        ;        ; 8.193  ;
+; SW[11]     ; LEDR[8]     ; 7.571  ;        ;        ; 7.571  ;
+; SW[12]     ; LEDR[9]     ; 7.035  ;        ;        ; 7.035  ;
+; SW[13]     ; LEDR[10]    ; 10.575 ;        ;        ; 10.575 ;
+; SW[14]     ; LEDR[11]    ; 10.793 ;        ;        ; 10.793 ;
+; SW[15]     ; LEDR[12]    ; 10.841 ;        ;        ; 10.841 ;
+; SW[16]     ; LEDR[13]    ; 10.768 ;        ;        ; 10.768 ;
 +------------+-------------+--------+--------+--------+--------+
 
 
-----------------------------
-; Fast Model Setup Summary ;
-----------------------------
-No paths to report.
++---------------------------------+
+; Fast Model Setup Summary        ;
++--------+--------+---------------+
+; Clock  ; Slack  ; End Point TNS ;
++--------+--------+---------------+
+; SW[17] ; -0.541 ; -5.100        ;
++--------+--------+---------------+
 
 
----------------------------
-; Fast Model Hold Summary ;
----------------------------
-No paths to report.
++--------------------------------+
+; Fast Model Hold Summary        ;
++--------+-------+---------------+
+; Clock  ; Slack ; End Point TNS ;
++--------+-------+---------------+
+; SW[17] ; 0.215 ; 0.000         ;
++--------+-------+---------------+
 
 
 -------------------------------
@@ -203,10 +701,400 @@ No paths to report.
 No paths to report.
 
 
-------------------------------------------
++----------------------------------------+
 ; Fast Model Minimum Pulse Width Summary ;
-------------------------------------------
-No paths to report.
++--------+--------+----------------------+
+; Clock  ; Slack  ; End Point TNS        ;
++--------+--------+----------------------+
+; SW[17] ; -1.222 ; -19.222              ;
++--------+--------+----------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Setup: 'SW[17]'                                                                                                                                   ;
++--------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                             ; To Node                               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
+; -0.541 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.573      ;
+; -0.540 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.572      ;
+; -0.508 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.004      ; 1.544      ;
+; -0.506 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.536      ;
+; -0.505 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.535      ;
+; -0.503 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.533      ;
+; -0.502 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.532      ;
+; -0.500 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.530      ;
+; -0.499 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.529      ;
+; -0.496 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.004      ; 1.532      ;
+; -0.483 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 1.511      ;
+; -0.482 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 1.510      ;
+; -0.473 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.002      ; 1.507      ;
+; -0.470 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.002      ; 1.504      ;
+; -0.467 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.002      ; 1.501      ;
+; -0.461 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.002      ; 1.495      ;
+; -0.460 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.492      ;
+; -0.458 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.002      ; 1.492      ;
+; -0.456 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.488      ;
+; -0.455 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.002      ; 1.489      ;
+; -0.450 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.482      ;
+; -0.438 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.470      ;
+; -0.431 ; mem_command_issuer:m|counter[11]      ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.004      ; 1.467      ;
+; -0.425 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.455      ;
+; -0.422 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.452      ;
+; -0.421 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.451      ;
+; -0.419 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.449      ;
+; -0.418 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.448      ;
+; -0.415 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.445      ;
+; -0.402 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 1.430      ;
+; -0.398 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 1.426      ;
+; -0.396 ; mem_command_issuer:m|counter[11]      ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.002      ; 1.430      ;
+; -0.393 ; mem_command_issuer:m|counter[11]      ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.002      ; 1.427      ;
+; -0.390 ; mem_command_issuer:m|counter[11]      ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.002      ; 1.424      ;
+; -0.380 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.004      ; 1.416      ;
+; -0.373 ; mem_command_issuer:m|counter[11]      ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.405      ;
+; -0.350 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.002      ; 1.384      ;
+; -0.347 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.379      ;
+; -0.345 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.002      ; 1.379      ;
+; -0.342 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.002      ; 1.376      ;
+; -0.341 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|cur_state[3]     ; SW[17]       ; SW[17]      ; 1.000        ; 0.004      ; 1.377      ;
+; -0.339 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.369      ;
+; -0.339 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.002      ; 1.373      ;
+; -0.334 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.366      ;
+; -0.329 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|cur_state[3]     ; SW[17]       ; SW[17]      ; 1.000        ; 0.004      ; 1.365      ;
+; -0.322 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.354      ;
+; -0.320 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.352      ;
+; -0.317 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.347      ;
+; -0.312 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.342      ;
+; -0.307 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.339      ;
+; -0.302 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.334      ;
+; -0.290 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.320      ;
+; -0.285 ; mem_command_issuer:m|counter[2]       ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.317      ;
+; -0.282 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.004      ; 1.318      ;
+; -0.277 ; mem_command_issuer:m|counter[2]       ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.307      ;
+; -0.275 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.307      ;
+; -0.272 ; mem_command_issuer:m|counter[2]       ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.304      ;
+; -0.271 ; mem_command_issuer:m|counter[6]       ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.303      ;
+; -0.270 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.300      ;
+; -0.264 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.296      ;
+; -0.264 ; mem_command_issuer:m|counter[11]      ; mem_command_issuer:m|cur_state[3]     ; SW[17]       ; SW[17]      ; 1.000        ; 0.004      ; 1.300      ;
+; -0.263 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 1.000        ; 0.002      ; 1.297      ;
+; -0.261 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 1.289      ;
+; -0.261 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 1.289      ;
+; -0.260 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 1.288      ;
+; -0.260 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 1.288      ;
+; -0.260 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 1.288      ;
+; -0.259 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 1.287      ;
+; -0.258 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 1.286      ;
+; -0.257 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 1.285      ;
+; -0.255 ; mem_command_issuer:m|counter[2]       ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.285      ;
+; -0.250 ; mem_command_issuer:m|counter[3]       ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.282      ;
+; -0.247 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.002      ; 1.281      ;
+; -0.244 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.002      ; 1.278      ;
+; -0.243 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.273      ;
+; -0.242 ; mem_command_issuer:m|counter[3]       ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.272      ;
+; -0.241 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.002      ; 1.275      ;
+; -0.240 ; mem_command_issuer:m|counter[2]       ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.272      ;
+; -0.237 ; mem_command_issuer:m|counter[3]       ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.269      ;
+; -0.232 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.262      ;
+; -0.229 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.259      ;
+; -0.228 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.260      ;
+; -0.228 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.260      ;
+; -0.227 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.259      ;
+; -0.226 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.256      ;
+; -0.225 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.257      ;
+; -0.224 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.256      ;
+; -0.223 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.253      ;
+; -0.223 ; mem_command_issuer:m|counter[4]       ; mem_command_issuer:m|counter[6]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.255      ;
+; -0.220 ; mem_command_issuer:m|counter[3]       ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.250      ;
+; -0.216 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.248      ;
+; -0.216 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.248      ;
+; -0.215 ; mem_command_issuer:m|counter[4]       ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.245      ;
+; -0.215 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.247      ;
+; -0.213 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|cur_state[3]     ; SW[17]       ; SW[17]      ; 1.000        ; 0.004      ; 1.249      ;
+; -0.213 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.245      ;
+; -0.210 ; mem_command_issuer:m|counter[4]       ; mem_command_issuer:m|counter[5]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.242      ;
+; -0.208 ; mem_command_issuer:m|counter[2]       ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 1.000        ; -0.002     ; 1.238      ;
+; -0.206 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 1.000        ; -0.004     ; 1.234      ;
+; -0.205 ; mem_command_issuer:m|counter[3]       ; mem_command_issuer:m|counter[4]       ; SW[17]       ; SW[17]      ; 1.000        ; 0.000      ; 1.237      ;
++--------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Hold: 'SW[17]'                                                                                                                                   ;
++-------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                             ; To Node                               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.215 ; mem_command_issuer:m|counter[3]       ; mem_command_issuer:m|counter[3]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; mem_command_issuer:m|counter[7]       ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; mem_command_issuer:m|counter[11]      ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|cur_state[3]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|counter[0]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|counter[1]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; mem_command_issuer:m|counter[2]       ; mem_command_issuer:m|counter[2]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.367      ;
+; 0.382 ; mem_command_issuer:m|counter[7]       ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.534      ;
+; 0.400 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.552      ;
+; 0.409 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|cur_state[2]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.561      ;
+; 0.419 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.571      ;
+; 0.499 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.651      ;
+; 0.517 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|cur_state[3]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.669      ;
+; 0.536 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.688      ;
+; 0.537 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|cur_state[2]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.689      ;
+; 0.577 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.729      ;
+; 0.581 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|cur_state[2]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.733      ;
+; 0.588 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.740      ;
+; 0.601 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|cur_state[3]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.753      ;
+; 0.604 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|cur_state[2]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.756      ;
+; 0.606 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 0.762      ;
+; 0.610 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 0.766      ;
+; 0.612 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.764      ;
+; 0.612 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.764      ;
+; 0.613 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|cur_state[3]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.765      ;
+; 0.616 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|cur_state[2]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.768      ;
+; 0.624 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.776      ;
+; 0.702 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.850      ;
+; 0.704 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 0.860      ;
+; 0.705 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 0.861      ;
+; 0.710 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.862      ;
+; 0.715 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[3]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.002     ; 0.865      ;
+; 0.715 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[1]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.002     ; 0.865      ;
+; 0.715 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[2]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.002     ; 0.865      ;
+; 0.718 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[0]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.002     ; 0.868      ;
+; 0.723 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.871      ;
+; 0.723 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.871      ;
+; 0.724 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.872      ;
+; 0.726 ; mem_command_issuer:m|cur_state[3]     ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.874      ;
+; 0.750 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.898      ;
+; 0.750 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.898      ;
+; 0.751 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.899      ;
+; 0.753 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.901      ;
+; 0.755 ; mem_command_issuer:m|counter[11]      ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 0.911      ;
+; 0.756 ; mem_command_issuer:m|counter[11]      ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 0.912      ;
+; 0.757 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.905      ;
+; 0.764 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.912      ;
+; 0.777 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[3]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.002     ; 0.927      ;
+; 0.777 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[1]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.002     ; 0.927      ;
+; 0.777 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[2]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.002     ; 0.927      ;
+; 0.780 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[0]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.002     ; 0.930      ;
+; 0.782 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|counter[1]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.934      ;
+; 0.782 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.934      ;
+; 0.788 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|cur_state[3]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.940      ;
+; 0.795 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|cur_state[2]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 0.951      ;
+; 0.795 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[3]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.002      ; 0.949      ;
+; 0.795 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[1]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.002      ; 0.949      ;
+; 0.795 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[2]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.002      ; 0.949      ;
+; 0.798 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[0]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.002     ; 0.948      ;
+; 0.798 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[0]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.002      ; 0.952      ;
+; 0.803 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|counter[2]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.955      ;
+; 0.803 ; mem_command_issuer:m|counter[6]       ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.002     ; 0.953      ;
+; 0.804 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[2]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.002     ; 0.954      ;
+; 0.805 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[3]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.002     ; 0.955      ;
+; 0.813 ; mem_command_issuer:m|counter[6]       ; mem_command_issuer:m|Equal0~1_OTERM27 ; SW[17]       ; SW[17]      ; 0.000        ; -0.002     ; 0.963      ;
+; 0.814 ; mem_command_issuer:m|cur_state[0]     ; mem_command_issuer:m|counter[1]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.002     ; 0.964      ;
+; 0.817 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.969      ;
+; 0.820 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 0.976      ;
+; 0.821 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 0.977      ;
+; 0.824 ; mem_command_issuer:m|counter[1]       ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 0.000        ; 0.002      ; 0.978      ;
+; 0.825 ; mem_command_issuer:m|counter[7]       ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.977      ;
+; 0.827 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 0.000        ; 0.002      ; 0.981      ;
+; 0.830 ; mem_command_issuer:m|counter[0]       ; mem_command_issuer:m|counter[2]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.982      ;
+; 0.832 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|cur_state[1]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 0.988      ;
+; 0.832 ; mem_command_issuer:m|counter[3]       ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 0.000        ; 0.002      ; 0.986      ;
+; 0.833 ; mem_command_issuer:m|counter[8]       ; mem_command_issuer:m|cur_state[0]     ; SW[17]       ; SW[17]      ; 0.000        ; 0.004      ; 0.989      ;
+; 0.835 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.983      ;
+; 0.835 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.983      ;
+; 0.836 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.984      ;
+; 0.836 ; mem_command_issuer:m|counter[6]       ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.002     ; 0.986      ;
+; 0.838 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.986      ;
+; 0.841 ; mem_command_issuer:m|counter[5]       ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.002     ; 0.991      ;
+; 0.842 ; mem_command_issuer:m|cur_state[2]     ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.990      ;
+; 0.845 ; mem_command_issuer:m|counter[10]      ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 0.997      ;
+; 0.845 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.993      ;
+; 0.845 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.993      ;
+; 0.846 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.994      ;
+; 0.848 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 0.996      ;
+; 0.851 ; mem_command_issuer:m|counter[2]       ; mem_command_issuer:m|Equal0~0_OTERM29 ; SW[17]       ; SW[17]      ; 0.000        ; 0.002      ; 1.005      ;
+; 0.852 ; mem_command_issuer:m|cur_state[1]     ; mem_command_issuer:m|counter[9]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 1.000      ;
+; 0.855 ; mem_command_issuer:m|counter[9]       ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.007      ;
+; 0.861 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 1.009      ;
+; 0.863 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[11]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 1.011      ;
+; 0.864 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 1.012      ;
+; 0.864 ; mem_command_issuer:m|Equal0~0_OTERM29 ; mem_command_issuer:m|counter[10]      ; SW[17]       ; SW[17]      ; 0.000        ; -0.004     ; 1.012      ;
+; 0.874 ; mem_command_issuer:m|counter[5]       ; mem_command_issuer:m|counter[8]       ; SW[17]       ; SW[17]      ; 0.000        ; -0.002     ; 1.024      ;
+; 0.879 ; mem_command_issuer:m|Equal0~1_OTERM27 ; mem_command_issuer:m|counter[7]       ; SW[17]       ; SW[17]      ; 0.000        ; 0.000      ; 1.031      ;
++-------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Minimum Pulse Width: 'SW[17]'                                                                                ;
++--------+--------------+----------------+------------------+--------+------------+---------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock  ; Clock Edge ; Target                                ;
++--------+--------------+----------------+------------------+--------+------------+---------------------------------------+
+; -1.222 ; 1.000        ; 2.222          ; Port Rate        ; SW[17] ; Rise       ; SW[17]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|Equal0~0_OTERM29 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|Equal0~0_OTERM29 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|Equal0~1_OTERM27 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|Equal0~1_OTERM27 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[0]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[0]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[10]      ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[10]      ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[11]      ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[11]      ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[1]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[1]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[2]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[2]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[3]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[3]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[4]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[4]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[5]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[5]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[6]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[6]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[7]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[7]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[8]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[8]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|counter[9]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|counter[9]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|cur_state[0]     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|cur_state[0]     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|cur_state[1]     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|cur_state[1]     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|cur_state[2]     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|cur_state[2]     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; SW[17] ; Rise       ; mem_command_issuer:m|cur_state[3]     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; SW[17] ; Rise       ; mem_command_issuer:m|cur_state[3]     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; SW[17]|combout                        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; SW[17]|combout                        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|Equal0~0_NEW_REG28|clk              ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|Equal0~0_NEW_REG28|clk              ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|Equal0~1_NEW_REG26|clk              ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|Equal0~1_NEW_REG26|clk              ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[0]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[0]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[10]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[10]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[11]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[11]|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[1]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[1]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[2]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[2]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[3]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[3]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[4]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[4]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[5]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[5]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[6]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[6]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[7]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[7]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[8]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[8]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|counter[9]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|counter[9]|clk                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|cur_state[0]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|cur_state[0]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|cur_state[1]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|cur_state[1]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|cur_state[2]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|cur_state[2]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SW[17] ; Rise       ; m|cur_state[3]|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SW[17] ; Rise       ; m|cur_state[3]|clk                    ;
++--------+--------------+----------------+------------------+--------+------------+---------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Setup Times                                                           ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; SW[*]     ; SW[17]     ; 1.060 ; 1.060 ; Rise       ; SW[17]          ;
+;  SW[0]    ; SW[17]     ; 1.060 ; 1.060 ; Rise       ; SW[17]          ;
+;  SW[1]    ; SW[17]     ; 0.314 ; 0.314 ; Rise       ; SW[17]          ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Hold Times                                                              ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; SW[*]     ; SW[17]     ; -0.193 ; -0.193 ; Rise       ; SW[17]          ;
+;  SW[0]    ; SW[17]     ; -0.495 ; -0.495 ; Rise       ; SW[17]          ;
+;  SW[1]    ; SW[17]     ; -0.193 ; -0.193 ; Rise       ; SW[17]          ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Clock to Output Times                                                 ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; LEDG[*]   ; SW[17]     ; 6.437 ; 6.437 ; Rise       ; SW[17]          ;
+;  LEDG[0]  ; SW[17]     ; 6.437 ; 6.437 ; Rise       ; SW[17]          ;
+;  LEDG[1]  ; SW[17]     ; 6.376 ; 6.376 ; Rise       ; SW[17]          ;
+;  LEDG[2]  ; SW[17]     ; 6.394 ; 6.394 ; Rise       ; SW[17]          ;
+;  LEDG[3]  ; SW[17]     ; 6.377 ; 6.377 ; Rise       ; SW[17]          ;
+;  LEDG[4]  ; SW[17]     ; 6.107 ; 6.107 ; Rise       ; SW[17]          ;
+; LEDR[*]   ; SW[17]     ; 7.010 ; 7.010 ; Rise       ; SW[17]          ;
+;  LEDR[0]  ; SW[17]     ; 7.010 ; 7.010 ; Rise       ; SW[17]          ;
+;  LEDR[1]  ; SW[17]     ; 6.996 ; 6.996 ; Rise       ; SW[17]          ;
+;  LEDR[2]  ; SW[17]     ; 6.993 ; 6.993 ; Rise       ; SW[17]          ;
+;  LEDR[3]  ; SW[17]     ; 6.767 ; 6.767 ; Rise       ; SW[17]          ;
+;  LEDR[4]  ; SW[17]     ; 6.559 ; 6.559 ; Rise       ; SW[17]          ;
+;  LEDR[5]  ; SW[17]     ; 6.402 ; 6.402 ; Rise       ; SW[17]          ;
+;  LEDR[6]  ; SW[17]     ; 6.371 ; 6.371 ; Rise       ; SW[17]          ;
+;  LEDR[7]  ; SW[17]     ; 6.667 ; 6.667 ; Rise       ; SW[17]          ;
+;  LEDR[8]  ; SW[17]     ; 5.840 ; 5.840 ; Rise       ; SW[17]          ;
+;  LEDR[9]  ; SW[17]     ; 6.038 ; 6.038 ; Rise       ; SW[17]          ;
+;  LEDR[10] ; SW[17]     ; 6.033 ; 6.033 ; Rise       ; SW[17]          ;
+;  LEDR[11] ; SW[17]     ; 5.985 ; 5.985 ; Rise       ; SW[17]          ;
+;  LEDR[12] ; SW[17]     ; 6.037 ; 6.037 ; Rise       ; SW[17]          ;
+;  LEDR[13] ; SW[17]     ; 6.055 ; 6.055 ; Rise       ; SW[17]          ;
+;  LEDR[14] ; SW[17]     ; 4.673 ; 4.673 ; Rise       ; SW[17]          ;
+;  LEDR[15] ; SW[17]     ; 4.640 ; 4.640 ; Rise       ; SW[17]          ;
+;  LEDR[16] ; SW[17]     ; 4.633 ; 4.633 ; Rise       ; SW[17]          ;
+;  LEDR[17] ; SW[17]     ; 4.676 ; 4.676 ; Rise       ; SW[17]          ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Clock to Output Times                                         ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; LEDG[*]   ; SW[17]     ; 5.497 ; 5.497 ; Rise       ; SW[17]          ;
+;  LEDG[0]  ; SW[17]     ; 5.763 ; 5.763 ; Rise       ; SW[17]          ;
+;  LEDG[1]  ; SW[17]     ; 5.720 ; 5.720 ; Rise       ; SW[17]          ;
+;  LEDG[2]  ; SW[17]     ; 5.736 ; 5.736 ; Rise       ; SW[17]          ;
+;  LEDG[3]  ; SW[17]     ; 5.706 ; 5.706 ; Rise       ; SW[17]          ;
+;  LEDG[4]  ; SW[17]     ; 5.497 ; 5.497 ; Rise       ; SW[17]          ;
+; LEDR[*]   ; SW[17]     ; 4.562 ; 4.562 ; Rise       ; SW[17]          ;
+;  LEDR[0]  ; SW[17]     ; 6.354 ; 6.354 ; Rise       ; SW[17]          ;
+;  LEDR[1]  ; SW[17]     ; 6.340 ; 6.340 ; Rise       ; SW[17]          ;
+;  LEDR[2]  ; SW[17]     ; 6.337 ; 6.337 ; Rise       ; SW[17]          ;
+;  LEDR[3]  ; SW[17]     ; 6.111 ; 6.111 ; Rise       ; SW[17]          ;
+;  LEDR[4]  ; SW[17]     ; 5.903 ; 5.903 ; Rise       ; SW[17]          ;
+;  LEDR[5]  ; SW[17]     ; 5.746 ; 5.746 ; Rise       ; SW[17]          ;
+;  LEDR[6]  ; SW[17]     ; 5.715 ; 5.715 ; Rise       ; SW[17]          ;
+;  LEDR[7]  ; SW[17]     ; 6.011 ; 6.011 ; Rise       ; SW[17]          ;
+;  LEDR[8]  ; SW[17]     ; 5.278 ; 5.278 ; Rise       ; SW[17]          ;
+;  LEDR[9]  ; SW[17]     ; 5.317 ; 5.317 ; Rise       ; SW[17]          ;
+;  LEDR[10] ; SW[17]     ; 5.293 ; 5.293 ; Rise       ; SW[17]          ;
+;  LEDR[11] ; SW[17]     ; 5.315 ; 5.315 ; Rise       ; SW[17]          ;
+;  LEDR[12] ; SW[17]     ; 5.368 ; 5.368 ; Rise       ; SW[17]          ;
+;  LEDR[13] ; SW[17]     ; 5.386 ; 5.386 ; Rise       ; SW[17]          ;
+;  LEDR[14] ; SW[17]     ; 4.577 ; 4.577 ; Rise       ; SW[17]          ;
+;  LEDR[15] ; SW[17]     ; 4.562 ; 4.562 ; Rise       ; SW[17]          ;
+;  LEDR[16] ; SW[17]     ; 4.601 ; 4.601 ; Rise       ; SW[17]          ;
+;  LEDR[17] ; SW[17]     ; 4.591 ; 4.591 ; Rise       ; SW[17]          ;
++-----------+------------+-------+-------+------------+-----------------+
 
 
 +----------------------------------------------------------+
@@ -214,27 +1102,62 @@ No paths to report.
 +------------+-------------+-------+-------+-------+-------+
 ; Input Port ; Output Port ; RR    ; RF    ; FR    ; FF    ;
 +------------+-------------+-------+-------+-------+-------+
-; SW[0]      ; LEDG[0]     ; 4.196 ;       ;       ; 4.196 ;
-; SW[0]      ; LEDR[0]     ; 3.512 ;       ;       ; 3.512 ;
-; SW[1]      ; LEDR[1]     ; 3.023 ;       ;       ; 3.023 ;
-; SW[2]      ; LEDR[2]     ; 2.794 ;       ;       ; 2.794 ;
-; SW[3]      ; LEDR[3]     ; 3.090 ;       ;       ; 3.090 ;
-; SW[4]      ; LEDR[4]     ; 2.842 ;       ;       ; 2.842 ;
-; SW[5]      ; LEDR[5]     ; 3.060 ;       ;       ; 3.060 ;
-; SW[6]      ; LEDR[6]     ; 2.870 ;       ;       ; 2.870 ;
-; SW[7]      ; LEDR[7]     ; 3.431 ;       ;       ; 3.431 ;
-; SW[8]      ; LEDG[0]     ; 4.403 ;       ;       ; 4.403 ;
-; SW[8]      ; LEDR[8]     ; 3.550 ;       ;       ; 3.550 ;
-; SW[9]      ; LEDR[9]     ; 3.381 ;       ;       ; 3.381 ;
-; SW[10]     ; LEDR[10]    ; 3.097 ;       ;       ; 3.097 ;
-; SW[11]     ; LEDR[11]    ; 3.065 ;       ;       ; 3.065 ;
-; SW[12]     ; LEDR[12]    ; 3.108 ;       ;       ; 3.108 ;
-; SW[13]     ; LEDR[13]    ; 5.493 ;       ;       ; 5.493 ;
-; SW[14]     ; LEDR[14]    ; 5.530 ;       ;       ; 5.530 ;
-; SW[15]     ; LEDR[15]    ; 5.443 ;       ;       ; 5.443 ;
-; SW[16]     ; LEDR[16]    ; 5.505 ;       ;       ; 5.505 ;
-; SW[17]     ; LEDG[0]     ; 6.474 ; 6.474 ; 6.474 ; 6.474 ;
-; SW[17]     ; LEDR[17]    ; 5.599 ;       ;       ; 5.599 ;
+; SW[0]      ; LEDG[0]     ; 6.070 ; 6.070 ; 6.070 ; 6.070 ;
+; SW[0]      ; LEDG[1]     ; 6.013 ; 6.013 ; 6.013 ; 6.013 ;
+; SW[0]      ; LEDG[2]     ; 6.028 ; 6.028 ; 6.028 ; 6.028 ;
+; SW[0]      ; LEDG[3]     ;       ; 6.009 ; 6.009 ;       ;
+; SW[0]      ; LEDG[4]     ; 5.791 ;       ;       ; 5.791 ;
+; SW[0]      ; LEDR[0]     ; 6.651 ;       ;       ; 6.651 ;
+; SW[0]      ; LEDR[1]     ; 6.637 ;       ;       ; 6.637 ;
+; SW[0]      ; LEDR[2]     ; 6.634 ;       ;       ; 6.634 ;
+; SW[0]      ; LEDR[3]     ; 6.408 ;       ;       ; 6.408 ;
+; SW[0]      ; LEDR[4]     ; 6.200 ;       ;       ; 6.200 ;
+; SW[0]      ; LEDR[5]     ; 6.043 ;       ;       ; 6.043 ;
+; SW[0]      ; LEDR[6]     ; 6.012 ;       ;       ; 6.012 ;
+; SW[0]      ; LEDR[7]     ; 6.308 ;       ;       ; 6.308 ;
+; SW[0]      ; LEDR[8]     ; 5.496 ;       ;       ; 5.496 ;
+; SW[0]      ; LEDR[9]     ; 5.696 ;       ;       ; 5.696 ;
+; SW[0]      ; LEDR[10]    ; 5.621 ; 5.664 ; 5.664 ; 5.621 ;
+; SW[0]      ; LEDR[11]    ; 5.643 ;       ;       ; 5.643 ;
+; SW[0]      ; LEDR[12]    ; 5.672 ; 5.672 ; 5.672 ; 5.672 ;
+; SW[0]      ; LEDR[13]    ; 5.690 ; 5.690 ; 5.690 ; 5.690 ;
+; SW[1]      ; LEDG[0]     ; 5.464 ; 5.464 ; 5.464 ; 5.464 ;
+; SW[1]      ; LEDG[1]     ; 5.407 ; 5.407 ; 5.407 ; 5.407 ;
+; SW[1]      ; LEDG[2]     ; 5.422 ; 5.422 ; 5.422 ; 5.422 ;
+; SW[1]      ; LEDG[3]     ;       ; 5.403 ; 5.403 ;       ;
+; SW[1]      ; LEDG[4]     ; 5.185 ;       ;       ; 5.185 ;
+; SW[1]      ; LEDR[0]     ; 6.045 ;       ;       ; 6.045 ;
+; SW[1]      ; LEDR[1]     ; 6.031 ;       ;       ; 6.031 ;
+; SW[1]      ; LEDR[2]     ; 6.028 ;       ;       ; 6.028 ;
+; SW[1]      ; LEDR[3]     ; 5.802 ;       ;       ; 5.802 ;
+; SW[1]      ; LEDR[4]     ; 5.594 ;       ;       ; 5.594 ;
+; SW[1]      ; LEDR[5]     ; 5.437 ;       ;       ; 5.437 ;
+; SW[1]      ; LEDR[6]     ; 5.406 ;       ;       ; 5.406 ;
+; SW[1]      ; LEDR[7]     ; 5.702 ;       ;       ; 5.702 ;
+; SW[1]      ; LEDR[8]     ; 4.890 ;       ;       ; 4.890 ;
+; SW[1]      ; LEDR[9]     ; 5.090 ;       ;       ; 5.090 ;
+; SW[1]      ; LEDR[10]    ; 5.015 ; 5.058 ; 5.058 ; 5.015 ;
+; SW[1]      ; LEDR[11]    ; 5.037 ;       ;       ; 5.037 ;
+; SW[1]      ; LEDR[12]    ; 5.066 ; 5.066 ; 5.066 ; 5.066 ;
+; SW[1]      ; LEDR[13]    ; 5.084 ; 5.084 ; 5.084 ; 5.084 ;
+; SW[2]      ; LEDR[14]    ; 4.091 ; 4.091 ; 4.091 ; 4.091 ;
+; SW[2]      ; LEDR[15]    ; 4.068 ; 4.068 ; 4.068 ; 4.068 ;
+; SW[2]      ; LEDR[16]    ; 4.091 ; 4.091 ; 4.091 ; 4.091 ;
+; SW[2]      ; LEDR[17]    ; 4.089 ; 4.089 ; 4.089 ; 4.089 ;
+; SW[3]      ; LEDR[0]     ; 3.559 ;       ;       ; 3.559 ;
+; SW[4]      ; LEDR[1]     ; 3.550 ;       ;       ; 3.550 ;
+; SW[5]      ; LEDR[2]     ; 3.534 ;       ;       ; 3.534 ;
+; SW[6]      ; LEDR[3]     ; 3.306 ;       ;       ; 3.306 ;
+; SW[7]      ; LEDR[4]     ; 4.280 ;       ;       ; 4.280 ;
+; SW[8]      ; LEDR[5]     ; 4.070 ;       ;       ; 4.070 ;
+; SW[9]      ; LEDR[6]     ; 4.162 ;       ;       ; 4.162 ;
+; SW[10]     ; LEDR[7]     ; 4.252 ;       ;       ; 4.252 ;
+; SW[11]     ; LEDR[8]     ; 3.939 ;       ;       ; 3.939 ;
+; SW[12]     ; LEDR[9]     ; 3.685 ;       ;       ; 3.685 ;
+; SW[13]     ; LEDR[10]    ; 5.897 ;       ;       ; 5.897 ;
+; SW[14]     ; LEDR[11]    ; 6.051 ;       ;       ; 6.051 ;
+; SW[15]     ; LEDR[12]    ; 6.061 ;       ;       ; 6.061 ;
+; SW[16]     ; LEDR[13]    ; 6.024 ;       ;       ; 6.024 ;
 +------------+-------------+-------+-------+-------+-------+
 
 
@@ -243,38 +1166,163 @@ No paths to report.
 +------------+-------------+-------+-------+-------+-------+
 ; Input Port ; Output Port ; RR    ; RF    ; FR    ; FF    ;
 +------------+-------------+-------+-------+-------+-------+
-; SW[0]      ; LEDG[0]     ; 4.196 ;       ;       ; 4.196 ;
-; SW[0]      ; LEDR[0]     ; 3.512 ;       ;       ; 3.512 ;
-; SW[1]      ; LEDR[1]     ; 3.023 ;       ;       ; 3.023 ;
-; SW[2]      ; LEDR[2]     ; 2.794 ;       ;       ; 2.794 ;
-; SW[3]      ; LEDR[3]     ; 3.090 ;       ;       ; 3.090 ;
-; SW[4]      ; LEDR[4]     ; 2.842 ;       ;       ; 2.842 ;
-; SW[5]      ; LEDR[5]     ; 3.060 ;       ;       ; 3.060 ;
-; SW[6]      ; LEDR[6]     ; 2.870 ;       ;       ; 2.870 ;
-; SW[7]      ; LEDR[7]     ; 3.431 ;       ;       ; 3.431 ;
-; SW[8]      ; LEDG[0]     ; 4.403 ;       ;       ; 4.403 ;
-; SW[8]      ; LEDR[8]     ; 3.550 ;       ;       ; 3.550 ;
-; SW[9]      ; LEDR[9]     ; 3.381 ;       ;       ; 3.381 ;
-; SW[10]     ; LEDR[10]    ; 3.097 ;       ;       ; 3.097 ;
-; SW[11]     ; LEDR[11]    ; 3.065 ;       ;       ; 3.065 ;
-; SW[12]     ; LEDR[12]    ; 3.108 ;       ;       ; 3.108 ;
-; SW[13]     ; LEDR[13]    ; 5.493 ;       ;       ; 5.493 ;
-; SW[14]     ; LEDR[14]    ; 5.530 ;       ;       ; 5.530 ;
-; SW[15]     ; LEDR[15]    ; 5.443 ;       ;       ; 5.443 ;
-; SW[16]     ; LEDR[16]    ; 5.505 ;       ;       ; 5.505 ;
-; SW[17]     ; LEDG[0]     ; 6.474 ; 6.474 ; 6.474 ; 6.474 ;
-; SW[17]     ; LEDR[17]    ; 5.599 ;       ;       ; 5.599 ;
+; SW[0]      ; LEDG[0]     ; 6.070 ; 6.070 ; 6.070 ; 6.070 ;
+; SW[0]      ; LEDG[1]     ; 6.013 ; 6.013 ; 6.013 ; 6.013 ;
+; SW[0]      ; LEDG[2]     ; 6.028 ; 6.028 ; 6.028 ; 6.028 ;
+; SW[0]      ; LEDG[3]     ;       ; 6.009 ; 6.009 ;       ;
+; SW[0]      ; LEDG[4]     ; 5.791 ;       ;       ; 5.791 ;
+; SW[0]      ; LEDR[0]     ; 6.651 ;       ;       ; 6.651 ;
+; SW[0]      ; LEDR[1]     ; 6.637 ;       ;       ; 6.637 ;
+; SW[0]      ; LEDR[2]     ; 6.634 ;       ;       ; 6.634 ;
+; SW[0]      ; LEDR[3]     ; 6.408 ;       ;       ; 6.408 ;
+; SW[0]      ; LEDR[4]     ; 6.200 ;       ;       ; 6.200 ;
+; SW[0]      ; LEDR[5]     ; 6.043 ;       ;       ; 6.043 ;
+; SW[0]      ; LEDR[6]     ; 6.012 ;       ;       ; 6.012 ;
+; SW[0]      ; LEDR[7]     ; 6.308 ;       ;       ; 6.308 ;
+; SW[0]      ; LEDR[8]     ; 5.496 ;       ;       ; 5.496 ;
+; SW[0]      ; LEDR[9]     ; 5.645 ;       ;       ; 5.645 ;
+; SW[0]      ; LEDR[10]    ; 5.621 ; 5.664 ; 5.664 ; 5.621 ;
+; SW[0]      ; LEDR[11]    ; 5.643 ;       ;       ; 5.643 ;
+; SW[0]      ; LEDR[12]    ; 5.672 ; 5.672 ; 5.672 ; 5.672 ;
+; SW[0]      ; LEDR[13]    ; 5.690 ; 5.690 ; 5.690 ; 5.690 ;
+; SW[1]      ; LEDG[0]     ; 5.464 ; 5.464 ; 5.464 ; 5.464 ;
+; SW[1]      ; LEDG[1]     ; 5.407 ; 5.407 ; 5.407 ; 5.407 ;
+; SW[1]      ; LEDG[2]     ; 5.422 ; 5.422 ; 5.422 ; 5.422 ;
+; SW[1]      ; LEDG[3]     ;       ; 5.403 ; 5.403 ;       ;
+; SW[1]      ; LEDG[4]     ; 5.185 ;       ;       ; 5.185 ;
+; SW[1]      ; LEDR[0]     ; 6.045 ;       ;       ; 6.045 ;
+; SW[1]      ; LEDR[1]     ; 6.031 ;       ;       ; 6.031 ;
+; SW[1]      ; LEDR[2]     ; 6.028 ;       ;       ; 6.028 ;
+; SW[1]      ; LEDR[3]     ; 5.802 ;       ;       ; 5.802 ;
+; SW[1]      ; LEDR[4]     ; 5.594 ;       ;       ; 5.594 ;
+; SW[1]      ; LEDR[5]     ; 5.437 ;       ;       ; 5.437 ;
+; SW[1]      ; LEDR[6]     ; 5.406 ;       ;       ; 5.406 ;
+; SW[1]      ; LEDR[7]     ; 5.702 ;       ;       ; 5.702 ;
+; SW[1]      ; LEDR[8]     ; 4.890 ;       ;       ; 4.890 ;
+; SW[1]      ; LEDR[9]     ; 5.039 ;       ;       ; 5.039 ;
+; SW[1]      ; LEDR[10]    ; 5.015 ; 5.058 ; 5.058 ; 5.015 ;
+; SW[1]      ; LEDR[11]    ; 5.037 ;       ;       ; 5.037 ;
+; SW[1]      ; LEDR[12]    ; 5.066 ; 5.066 ; 5.066 ; 5.066 ;
+; SW[1]      ; LEDR[13]    ; 5.084 ; 5.084 ; 5.084 ; 5.084 ;
+; SW[2]      ; LEDR[14]    ; 4.091 ; 4.091 ; 4.091 ; 4.091 ;
+; SW[2]      ; LEDR[15]    ; 4.068 ; 4.068 ; 4.068 ; 4.068 ;
+; SW[2]      ; LEDR[16]    ; 4.091 ; 4.091 ; 4.091 ; 4.091 ;
+; SW[2]      ; LEDR[17]    ; 4.089 ; 4.089 ; 4.089 ; 4.089 ;
+; SW[3]      ; LEDR[0]     ; 3.559 ;       ;       ; 3.559 ;
+; SW[4]      ; LEDR[1]     ; 3.550 ;       ;       ; 3.550 ;
+; SW[5]      ; LEDR[2]     ; 3.534 ;       ;       ; 3.534 ;
+; SW[6]      ; LEDR[3]     ; 3.306 ;       ;       ; 3.306 ;
+; SW[7]      ; LEDR[4]     ; 4.280 ;       ;       ; 4.280 ;
+; SW[8]      ; LEDR[5]     ; 4.070 ;       ;       ; 4.070 ;
+; SW[9]      ; LEDR[6]     ; 4.162 ;       ;       ; 4.162 ;
+; SW[10]     ; LEDR[7]     ; 4.252 ;       ;       ; 4.252 ;
+; SW[11]     ; LEDR[8]     ; 3.939 ;       ;       ; 3.939 ;
+; SW[12]     ; LEDR[9]     ; 3.685 ;       ;       ; 3.685 ;
+; SW[13]     ; LEDR[10]    ; 5.897 ;       ;       ; 5.897 ;
+; SW[14]     ; LEDR[11]    ; 6.051 ;       ;       ; 6.051 ;
+; SW[15]     ; LEDR[12]    ; 6.061 ;       ;       ; 6.061 ;
+; SW[16]     ; LEDR[13]    ; 6.024 ;       ;       ; 6.024 ;
 +------------+-------------+-------+-------+-------+-------+
 
 
-+----------------------------------------------------------------------------+
-; Multicorner Timing Analysis Summary                                        ;
-+------------------+-------+------+----------+---------+---------------------+
-; Clock            ; Setup ; Hold ; Recovery ; Removal ; Minimum Pulse Width ;
-+------------------+-------+------+----------+---------+---------------------+
-; Worst-case Slack ; N/A   ; N/A  ; N/A      ; N/A     ; N/A                 ;
-; Design-wide TNS  ; 0.0   ; 0.0  ; 0.0      ; 0.0     ; 0.0                 ;
-+------------------+-------+------+----------+---------+---------------------+
++-------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                           ;
++------------------+---------+-------+----------+---------+---------------------+
+; Clock            ; Setup   ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+---------+-------+----------+---------+---------------------+
+; Worst-case Slack ; -2.479  ; 0.215 ; N/A      ; N/A     ; -1.222              ;
+;  SW[17]          ; -2.479  ; 0.215 ; N/A      ; N/A     ; -1.222              ;
+; Design-wide TNS  ; -33.537 ; 0.0   ; 0.0      ; 0.0     ; -19.222             ;
+;  SW[17]          ; -33.537 ; 0.000 ; N/A      ; N/A     ; -19.222             ;
++------------------+---------+-------+----------+---------+---------------------+
+
+
++-----------------------------------------------------------------------+
+; Setup Times                                                           ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; SW[*]     ; SW[17]     ; 2.409 ; 2.409 ; Rise       ; SW[17]          ;
+;  SW[0]    ; SW[17]     ; 2.409 ; 2.409 ; Rise       ; SW[17]          ;
+;  SW[1]    ; SW[17]     ; 0.839 ; 0.839 ; Rise       ; SW[17]          ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Hold Times                                                              ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; SW[*]     ; SW[17]     ; -0.193 ; -0.193 ; Rise       ; SW[17]          ;
+;  SW[0]    ; SW[17]     ; -0.495 ; -0.495 ; Rise       ; SW[17]          ;
+;  SW[1]    ; SW[17]     ; -0.193 ; -0.193 ; Rise       ; SW[17]          ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Clock to Output Times                                                   ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; LEDG[*]   ; SW[17]     ; 12.948 ; 12.948 ; Rise       ; SW[17]          ;
+;  LEDG[0]  ; SW[17]     ; 12.948 ; 12.948 ; Rise       ; SW[17]          ;
+;  LEDG[1]  ; SW[17]     ; 12.807 ; 12.807 ; Rise       ; SW[17]          ;
+;  LEDG[2]  ; SW[17]     ; 12.898 ; 12.898 ; Rise       ; SW[17]          ;
+;  LEDG[3]  ; SW[17]     ; 12.813 ; 12.813 ; Rise       ; SW[17]          ;
+;  LEDG[4]  ; SW[17]     ; 11.996 ; 11.996 ; Rise       ; SW[17]          ;
+; LEDR[*]   ; SW[17]     ; 14.258 ; 14.258 ; Rise       ; SW[17]          ;
+;  LEDR[0]  ; SW[17]     ; 14.258 ; 14.258 ; Rise       ; SW[17]          ;
+;  LEDR[1]  ; SW[17]     ; 14.241 ; 14.241 ; Rise       ; SW[17]          ;
+;  LEDR[2]  ; SW[17]     ; 14.256 ; 14.256 ; Rise       ; SW[17]          ;
+;  LEDR[3]  ; SW[17]     ; 13.710 ; 13.710 ; Rise       ; SW[17]          ;
+;  LEDR[4]  ; SW[17]     ; 13.221 ; 13.221 ; Rise       ; SW[17]          ;
+;  LEDR[5]  ; SW[17]     ; 12.829 ; 12.829 ; Rise       ; SW[17]          ;
+;  LEDR[6]  ; SW[17]     ; 12.787 ; 12.787 ; Rise       ; SW[17]          ;
+;  LEDR[7]  ; SW[17]     ; 13.500 ; 13.500 ; Rise       ; SW[17]          ;
+;  LEDR[8]  ; SW[17]     ; 11.663 ; 11.663 ; Rise       ; SW[17]          ;
+;  LEDR[9]  ; SW[17]     ; 12.102 ; 12.102 ; Rise       ; SW[17]          ;
+;  LEDR[10] ; SW[17]     ; 12.149 ; 12.149 ; Rise       ; SW[17]          ;
+;  LEDR[11] ; SW[17]     ; 12.018 ; 12.018 ; Rise       ; SW[17]          ;
+;  LEDR[12] ; SW[17]     ; 12.153 ; 12.153 ; Rise       ; SW[17]          ;
+;  LEDR[13] ; SW[17]     ; 12.178 ; 12.178 ; Rise       ; SW[17]          ;
+;  LEDR[14] ; SW[17]     ; 9.027  ; 9.027  ; Rise       ; SW[17]          ;
+;  LEDR[15] ; SW[17]     ; 8.963  ; 8.963  ; Rise       ; SW[17]          ;
+;  LEDR[16] ; SW[17]     ; 8.923  ; 8.923  ; Rise       ; SW[17]          ;
+;  LEDR[17] ; SW[17]     ; 9.020  ; 9.020  ; Rise       ; SW[17]          ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Clock to Output Times                                         ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; LEDG[*]   ; SW[17]     ; 5.497 ; 5.497 ; Rise       ; SW[17]          ;
+;  LEDG[0]  ; SW[17]     ; 5.763 ; 5.763 ; Rise       ; SW[17]          ;
+;  LEDG[1]  ; SW[17]     ; 5.720 ; 5.720 ; Rise       ; SW[17]          ;
+;  LEDG[2]  ; SW[17]     ; 5.736 ; 5.736 ; Rise       ; SW[17]          ;
+;  LEDG[3]  ; SW[17]     ; 5.706 ; 5.706 ; Rise       ; SW[17]          ;
+;  LEDG[4]  ; SW[17]     ; 5.497 ; 5.497 ; Rise       ; SW[17]          ;
+; LEDR[*]   ; SW[17]     ; 4.562 ; 4.562 ; Rise       ; SW[17]          ;
+;  LEDR[0]  ; SW[17]     ; 6.354 ; 6.354 ; Rise       ; SW[17]          ;
+;  LEDR[1]  ; SW[17]     ; 6.340 ; 6.340 ; Rise       ; SW[17]          ;
+;  LEDR[2]  ; SW[17]     ; 6.337 ; 6.337 ; Rise       ; SW[17]          ;
+;  LEDR[3]  ; SW[17]     ; 6.111 ; 6.111 ; Rise       ; SW[17]          ;
+;  LEDR[4]  ; SW[17]     ; 5.903 ; 5.903 ; Rise       ; SW[17]          ;
+;  LEDR[5]  ; SW[17]     ; 5.746 ; 5.746 ; Rise       ; SW[17]          ;
+;  LEDR[6]  ; SW[17]     ; 5.715 ; 5.715 ; Rise       ; SW[17]          ;
+;  LEDR[7]  ; SW[17]     ; 6.011 ; 6.011 ; Rise       ; SW[17]          ;
+;  LEDR[8]  ; SW[17]     ; 5.278 ; 5.278 ; Rise       ; SW[17]          ;
+;  LEDR[9]  ; SW[17]     ; 5.317 ; 5.317 ; Rise       ; SW[17]          ;
+;  LEDR[10] ; SW[17]     ; 5.293 ; 5.293 ; Rise       ; SW[17]          ;
+;  LEDR[11] ; SW[17]     ; 5.315 ; 5.315 ; Rise       ; SW[17]          ;
+;  LEDR[12] ; SW[17]     ; 5.368 ; 5.368 ; Rise       ; SW[17]          ;
+;  LEDR[13] ; SW[17]     ; 5.386 ; 5.386 ; Rise       ; SW[17]          ;
+;  LEDR[14] ; SW[17]     ; 4.577 ; 4.577 ; Rise       ; SW[17]          ;
+;  LEDR[15] ; SW[17]     ; 4.562 ; 4.562 ; Rise       ; SW[17]          ;
+;  LEDR[16] ; SW[17]     ; 4.601 ; 4.601 ; Rise       ; SW[17]          ;
+;  LEDR[17] ; SW[17]     ; 4.591 ; 4.591 ; Rise       ; SW[17]          ;
++-----------+------------+-------+-------+------------+-----------------+
 
 
 +--------------------------------------------------------------+
@@ -282,27 +1330,62 @@ No paths to report.
 +------------+-------------+--------+--------+--------+--------+
 ; Input Port ; Output Port ; RR     ; RF     ; FR     ; FF     ;
 +------------+-------------+--------+--------+--------+--------+
-; SW[0]      ; LEDG[0]     ; 8.141  ;        ;        ; 8.141  ;
-; SW[0]      ; LEDR[0]     ; 6.487  ;        ;        ; 6.487  ;
-; SW[1]      ; LEDR[1]     ; 5.673  ;        ;        ; 5.673  ;
-; SW[2]      ; LEDR[2]     ; 5.135  ;        ;        ; 5.135  ;
-; SW[3]      ; LEDR[3]     ; 5.783  ;        ;        ; 5.783  ;
-; SW[4]      ; LEDR[4]     ; 5.280  ;        ;        ; 5.280  ;
-; SW[5]      ; LEDR[5]     ; 5.702  ;        ;        ; 5.702  ;
-; SW[6]      ; LEDR[6]     ; 5.338  ;        ;        ; 5.338  ;
-; SW[7]      ; LEDR[7]     ; 6.279  ;        ;        ; 6.279  ;
-; SW[8]      ; LEDG[0]     ; 8.292  ;        ;        ; 8.292  ;
-; SW[8]      ; LEDR[8]     ; 6.480  ;        ;        ; 6.480  ;
-; SW[9]      ; LEDR[9]     ; 6.210  ;        ;        ; 6.210  ;
-; SW[10]     ; LEDR[10]    ; 5.680  ;        ;        ; 5.680  ;
-; SW[11]     ; LEDR[11]    ; 5.638  ;        ;        ; 5.638  ;
-; SW[12]     ; LEDR[12]    ; 5.696  ;        ;        ; 5.696  ;
-; SW[13]     ; LEDR[13]    ; 9.598  ;        ;        ; 9.598  ;
-; SW[14]     ; LEDR[14]    ; 9.645  ;        ;        ; 9.645  ;
-; SW[15]     ; LEDR[15]    ; 9.404  ;        ;        ; 9.404  ;
-; SW[16]     ; LEDR[16]    ; 9.593  ;        ;        ; 9.593  ;
-; SW[17]     ; LEDG[0]     ; 11.717 ; 11.717 ; 11.717 ; 11.717 ;
-; SW[17]     ; LEDR[17]    ; 9.817  ;        ;        ; 9.817  ;
+; SW[0]      ; LEDG[0]     ; 12.045 ; 12.045 ; 12.045 ; 12.045 ;
+; SW[0]      ; LEDG[1]     ; 11.908 ; 11.908 ; 11.908 ; 11.908 ;
+; SW[0]      ; LEDG[2]     ; 11.997 ; 11.997 ; 11.997 ; 11.997 ;
+; SW[0]      ; LEDG[3]     ;        ; 11.960 ; 11.960 ;        ;
+; SW[0]      ; LEDG[4]     ; 11.327 ;        ;        ; 11.327 ;
+; SW[0]      ; LEDR[0]     ; 13.365 ;        ;        ; 13.365 ;
+; SW[0]      ; LEDR[1]     ; 13.348 ;        ;        ; 13.348 ;
+; SW[0]      ; LEDR[2]     ; 13.363 ;        ;        ; 13.363 ;
+; SW[0]      ; LEDR[3]     ; 12.817 ;        ;        ; 12.817 ;
+; SW[0]      ; LEDR[4]     ; 12.328 ;        ;        ; 12.328 ;
+; SW[0]      ; LEDR[5]     ; 11.936 ;        ;        ; 11.936 ;
+; SW[0]      ; LEDR[6]     ; 11.894 ;        ;        ; 11.894 ;
+; SW[0]      ; LEDR[7]     ; 12.607 ;        ;        ; 12.607 ;
+; SW[0]      ; LEDR[8]     ; 10.791 ;        ;        ; 10.791 ;
+; SW[0]      ; LEDR[9]     ; 11.247 ;        ;        ; 11.247 ;
+; SW[0]      ; LEDR[10]    ; 11.103 ; 11.245 ; 11.245 ; 11.103 ;
+; SW[0]      ; LEDR[11]    ; 11.121 ;        ;        ; 11.121 ;
+; SW[0]      ; LEDR[12]    ; 11.250 ; 11.250 ; 11.250 ; 11.250 ;
+; SW[0]      ; LEDR[13]    ; 11.275 ; 11.275 ; 11.275 ; 11.275 ;
+; SW[1]      ; LEDG[0]     ; 10.780 ; 10.780 ; 10.780 ; 10.780 ;
+; SW[1]      ; LEDG[1]     ; 10.643 ; 10.643 ; 10.643 ; 10.643 ;
+; SW[1]      ; LEDG[2]     ; 10.732 ; 10.732 ; 10.732 ; 10.732 ;
+; SW[1]      ; LEDG[3]     ;        ; 10.695 ; 10.695 ;        ;
+; SW[1]      ; LEDG[4]     ; 10.062 ;        ;        ; 10.062 ;
+; SW[1]      ; LEDR[0]     ; 12.100 ;        ;        ; 12.100 ;
+; SW[1]      ; LEDR[1]     ; 12.083 ;        ;        ; 12.083 ;
+; SW[1]      ; LEDR[2]     ; 12.098 ;        ;        ; 12.098 ;
+; SW[1]      ; LEDR[3]     ; 11.552 ;        ;        ; 11.552 ;
+; SW[1]      ; LEDR[4]     ; 11.063 ;        ;        ; 11.063 ;
+; SW[1]      ; LEDR[5]     ; 10.671 ;        ;        ; 10.671 ;
+; SW[1]      ; LEDR[6]     ; 10.629 ;        ;        ; 10.629 ;
+; SW[1]      ; LEDR[7]     ; 11.342 ;        ;        ; 11.342 ;
+; SW[1]      ; LEDR[8]     ; 9.526  ;        ;        ; 9.526  ;
+; SW[1]      ; LEDR[9]     ; 9.982  ;        ;        ; 9.982  ;
+; SW[1]      ; LEDR[10]    ; 9.838  ; 9.980  ; 9.980  ; 9.838  ;
+; SW[1]      ; LEDR[11]    ; 9.856  ;        ;        ; 9.856  ;
+; SW[1]      ; LEDR[12]    ; 9.985  ; 9.985  ; 9.985  ; 9.985  ;
+; SW[1]      ; LEDR[13]    ; 10.010 ; 10.010 ; 10.010 ; 10.010 ;
+; SW[2]      ; LEDR[14]    ; 7.869  ; 7.869  ; 7.869  ; 7.869  ;
+; SW[2]      ; LEDR[15]    ; 7.834  ; 7.834  ; 7.834  ; 7.834  ;
+; SW[2]      ; LEDR[16]    ; 7.830  ; 7.830  ; 7.830  ; 7.830  ;
+; SW[2]      ; LEDR[17]    ; 7.869  ; 7.869  ; 7.869  ; 7.869  ;
+; SW[3]      ; LEDR[0]     ; 7.007  ;        ;        ; 7.007  ;
+; SW[4]      ; LEDR[1]     ; 6.995  ;        ;        ; 6.995  ;
+; SW[5]      ; LEDR[2]     ; 6.992  ;        ;        ; 6.992  ;
+; SW[6]      ; LEDR[3]     ; 6.445  ;        ;        ; 6.445  ;
+; SW[7]      ; LEDR[4]     ; 8.035  ;        ;        ; 8.035  ;
+; SW[8]      ; LEDR[5]     ; 7.549  ;        ;        ; 7.549  ;
+; SW[9]      ; LEDR[6]     ; 7.667  ;        ;        ; 7.667  ;
+; SW[10]     ; LEDR[7]     ; 8.193  ;        ;        ; 8.193  ;
+; SW[11]     ; LEDR[8]     ; 7.571  ;        ;        ; 7.571  ;
+; SW[12]     ; LEDR[9]     ; 7.035  ;        ;        ; 7.035  ;
+; SW[13]     ; LEDR[10]    ; 10.575 ;        ;        ; 10.575 ;
+; SW[14]     ; LEDR[11]    ; 10.793 ;        ;        ; 10.793 ;
+; SW[15]     ; LEDR[12]    ; 10.841 ;        ;        ; 10.841 ;
+; SW[16]     ; LEDR[13]    ; 10.768 ;        ;        ; 10.768 ;
 +------------+-------------+--------+--------+--------+--------+
 
 
@@ -311,34 +1394,83 @@ No paths to report.
 +------------+-------------+-------+-------+-------+-------+
 ; Input Port ; Output Port ; RR    ; RF    ; FR    ; FF    ;
 +------------+-------------+-------+-------+-------+-------+
-; SW[0]      ; LEDG[0]     ; 4.196 ;       ;       ; 4.196 ;
-; SW[0]      ; LEDR[0]     ; 3.512 ;       ;       ; 3.512 ;
-; SW[1]      ; LEDR[1]     ; 3.023 ;       ;       ; 3.023 ;
-; SW[2]      ; LEDR[2]     ; 2.794 ;       ;       ; 2.794 ;
-; SW[3]      ; LEDR[3]     ; 3.090 ;       ;       ; 3.090 ;
-; SW[4]      ; LEDR[4]     ; 2.842 ;       ;       ; 2.842 ;
-; SW[5]      ; LEDR[5]     ; 3.060 ;       ;       ; 3.060 ;
-; SW[6]      ; LEDR[6]     ; 2.870 ;       ;       ; 2.870 ;
-; SW[7]      ; LEDR[7]     ; 3.431 ;       ;       ; 3.431 ;
-; SW[8]      ; LEDG[0]     ; 4.403 ;       ;       ; 4.403 ;
-; SW[8]      ; LEDR[8]     ; 3.550 ;       ;       ; 3.550 ;
-; SW[9]      ; LEDR[9]     ; 3.381 ;       ;       ; 3.381 ;
-; SW[10]     ; LEDR[10]    ; 3.097 ;       ;       ; 3.097 ;
-; SW[11]     ; LEDR[11]    ; 3.065 ;       ;       ; 3.065 ;
-; SW[12]     ; LEDR[12]    ; 3.108 ;       ;       ; 3.108 ;
-; SW[13]     ; LEDR[13]    ; 5.493 ;       ;       ; 5.493 ;
-; SW[14]     ; LEDR[14]    ; 5.530 ;       ;       ; 5.530 ;
-; SW[15]     ; LEDR[15]    ; 5.443 ;       ;       ; 5.443 ;
-; SW[16]     ; LEDR[16]    ; 5.505 ;       ;       ; 5.505 ;
-; SW[17]     ; LEDG[0]     ; 6.474 ; 6.474 ; 6.474 ; 6.474 ;
-; SW[17]     ; LEDR[17]    ; 5.599 ;       ;       ; 5.599 ;
+; SW[0]      ; LEDG[0]     ; 6.070 ; 6.070 ; 6.070 ; 6.070 ;
+; SW[0]      ; LEDG[1]     ; 6.013 ; 6.013 ; 6.013 ; 6.013 ;
+; SW[0]      ; LEDG[2]     ; 6.028 ; 6.028 ; 6.028 ; 6.028 ;
+; SW[0]      ; LEDG[3]     ;       ; 6.009 ; 6.009 ;       ;
+; SW[0]      ; LEDG[4]     ; 5.791 ;       ;       ; 5.791 ;
+; SW[0]      ; LEDR[0]     ; 6.651 ;       ;       ; 6.651 ;
+; SW[0]      ; LEDR[1]     ; 6.637 ;       ;       ; 6.637 ;
+; SW[0]      ; LEDR[2]     ; 6.634 ;       ;       ; 6.634 ;
+; SW[0]      ; LEDR[3]     ; 6.408 ;       ;       ; 6.408 ;
+; SW[0]      ; LEDR[4]     ; 6.200 ;       ;       ; 6.200 ;
+; SW[0]      ; LEDR[5]     ; 6.043 ;       ;       ; 6.043 ;
+; SW[0]      ; LEDR[6]     ; 6.012 ;       ;       ; 6.012 ;
+; SW[0]      ; LEDR[7]     ; 6.308 ;       ;       ; 6.308 ;
+; SW[0]      ; LEDR[8]     ; 5.496 ;       ;       ; 5.496 ;
+; SW[0]      ; LEDR[9]     ; 5.645 ;       ;       ; 5.645 ;
+; SW[0]      ; LEDR[10]    ; 5.621 ; 5.664 ; 5.664 ; 5.621 ;
+; SW[0]      ; LEDR[11]    ; 5.643 ;       ;       ; 5.643 ;
+; SW[0]      ; LEDR[12]    ; 5.672 ; 5.672 ; 5.672 ; 5.672 ;
+; SW[0]      ; LEDR[13]    ; 5.690 ; 5.690 ; 5.690 ; 5.690 ;
+; SW[1]      ; LEDG[0]     ; 5.464 ; 5.464 ; 5.464 ; 5.464 ;
+; SW[1]      ; LEDG[1]     ; 5.407 ; 5.407 ; 5.407 ; 5.407 ;
+; SW[1]      ; LEDG[2]     ; 5.422 ; 5.422 ; 5.422 ; 5.422 ;
+; SW[1]      ; LEDG[3]     ;       ; 5.403 ; 5.403 ;       ;
+; SW[1]      ; LEDG[4]     ; 5.185 ;       ;       ; 5.185 ;
+; SW[1]      ; LEDR[0]     ; 6.045 ;       ;       ; 6.045 ;
+; SW[1]      ; LEDR[1]     ; 6.031 ;       ;       ; 6.031 ;
+; SW[1]      ; LEDR[2]     ; 6.028 ;       ;       ; 6.028 ;
+; SW[1]      ; LEDR[3]     ; 5.802 ;       ;       ; 5.802 ;
+; SW[1]      ; LEDR[4]     ; 5.594 ;       ;       ; 5.594 ;
+; SW[1]      ; LEDR[5]     ; 5.437 ;       ;       ; 5.437 ;
+; SW[1]      ; LEDR[6]     ; 5.406 ;       ;       ; 5.406 ;
+; SW[1]      ; LEDR[7]     ; 5.702 ;       ;       ; 5.702 ;
+; SW[1]      ; LEDR[8]     ; 4.890 ;       ;       ; 4.890 ;
+; SW[1]      ; LEDR[9]     ; 5.039 ;       ;       ; 5.039 ;
+; SW[1]      ; LEDR[10]    ; 5.015 ; 5.058 ; 5.058 ; 5.015 ;
+; SW[1]      ; LEDR[11]    ; 5.037 ;       ;       ; 5.037 ;
+; SW[1]      ; LEDR[12]    ; 5.066 ; 5.066 ; 5.066 ; 5.066 ;
+; SW[1]      ; LEDR[13]    ; 5.084 ; 5.084 ; 5.084 ; 5.084 ;
+; SW[2]      ; LEDR[14]    ; 4.091 ; 4.091 ; 4.091 ; 4.091 ;
+; SW[2]      ; LEDR[15]    ; 4.068 ; 4.068 ; 4.068 ; 4.068 ;
+; SW[2]      ; LEDR[16]    ; 4.091 ; 4.091 ; 4.091 ; 4.091 ;
+; SW[2]      ; LEDR[17]    ; 4.089 ; 4.089 ; 4.089 ; 4.089 ;
+; SW[3]      ; LEDR[0]     ; 3.559 ;       ;       ; 3.559 ;
+; SW[4]      ; LEDR[1]     ; 3.550 ;       ;       ; 3.550 ;
+; SW[5]      ; LEDR[2]     ; 3.534 ;       ;       ; 3.534 ;
+; SW[6]      ; LEDR[3]     ; 3.306 ;       ;       ; 3.306 ;
+; SW[7]      ; LEDR[4]     ; 4.280 ;       ;       ; 4.280 ;
+; SW[8]      ; LEDR[5]     ; 4.070 ;       ;       ; 4.070 ;
+; SW[9]      ; LEDR[6]     ; 4.162 ;       ;       ; 4.162 ;
+; SW[10]     ; LEDR[7]     ; 4.252 ;       ;       ; 4.252 ;
+; SW[11]     ; LEDR[8]     ; 3.939 ;       ;       ; 3.939 ;
+; SW[12]     ; LEDR[9]     ; 3.685 ;       ;       ; 3.685 ;
+; SW[13]     ; LEDR[10]    ; 5.897 ;       ;       ; 5.897 ;
+; SW[14]     ; LEDR[11]    ; 6.051 ;       ;       ; 6.051 ;
+; SW[15]     ; LEDR[12]    ; 6.061 ;       ;       ; 6.061 ;
+; SW[16]     ; LEDR[13]    ; 6.024 ;       ;       ; 6.024 ;
 +------------+-------------+-------+-------+-------+-------+
 
 
--------------------
-; Clock Transfers ;
--------------------
-Nothing to report.
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; SW[17]     ; SW[17]   ; 577      ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; SW[17]     ; SW[17]   ; 577      ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
 ---------------
@@ -360,10 +1492,10 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 18    ; 18   ;
-; Unconstrained Input Port Paths  ; 21    ; 21   ;
-; Unconstrained Output Ports      ; 19    ; 19   ;
-; Unconstrained Output Port Paths ; 21    ; 21   ;
+; Unconstrained Input Ports       ; 17    ; 17   ;
+; Unconstrained Input Port Paths  ; 62    ; 62   ;
+; Unconstrained Output Ports      ; 23    ; 23   ;
+; Unconstrained Output Port Paths ; 254   ; 254  ;
 +---------------------------------+-------+------+
 
 
@@ -373,7 +1505,7 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Mon Aug 08 21:17:22 2022
+    Info: Processing started: Mon Oct 10 10:38:44 2022
 Info: Command: quartus_sta VerilogWarmup -c VerilogWarmup
 Info: qsta_default_script.tcl version: #1
 Warning (20028): Parallel compilation is not licensed and has been disabled
@@ -381,33 +1513,48 @@ Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'VerilogWarmup.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
-Info (332096): The command derive_clocks did not find any clocks to derive.  No clocks were created or changed.
-Warning (332068): No clocks defined in design.
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name SW[17] SW[17]
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
-Info (332159): No clocks to report
 Info: Analyzing Slow Model
-Info (332140): No fmax paths to report
-Info (332140): No Setup paths to report
-Info (332140): No Hold paths to report
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -2.479
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -2.479       -33.537 SW[17] 
+Info (332146): Worst-case hold slack is 0.391
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     0.391         0.000 SW[17] 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332140): No Minimum Pulse Width paths to report
+Info (332146): Worst-case minimum pulse width slack is -1.222
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.222       -19.222 SW[17] 
 Info (332001): The selected device family is not supported by the report_metastability command.
 Info: Analyzing Fast Model
-Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
-Info (332096): The command derive_clocks did not find any clocks to derive.  No clocks were created or changed.
-Warning (332068): No clocks defined in design.
-Info (332140): No Setup paths to report
-Info (332140): No Hold paths to report
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -0.541
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -0.541        -5.100 SW[17] 
+Info (332146): Worst-case hold slack is 0.215
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     0.215         0.000 SW[17] 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332140): No Minimum Pulse Width paths to report
+Info (332146): Worst-case minimum pulse width slack is -1.222
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.222       -19.222 SW[17] 
 Info (332001): The selected device family is not supported by the report_metastability command.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 4541 megabytes
-    Info: Processing ended: Mon Aug 08 21:17:23 2022
+    Info: Peak virtual memory: 4552 megabytes
+    Info: Processing ended: Mon Oct 10 10:38:45 2022
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 

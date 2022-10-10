@@ -1,29 +1,28 @@
 // Desabstração de comandos sendo enviados para memória
 module command_truth_table (
 
-	input 	[3:0]		command,
-	input 	[21:0]	addrin,
-	input 	[11:0]	mrs,
-	input		[21:0]	addr_in,
+	input		[3:0]		command,
+	input		[11:0]		mrs,
+	input		[21:0]		addr_in,
 	
-	output	reg	[11:0]	addr_out,
-	output	reg 	[1:0] 	ba_out,				//  Bank Access - Especificador de banco
-	output	reg 	[3:0] 	dmq,				//  Máscara de dados para uso de endereços de 8 bits
-	output	reg 				cke,				//  Clock Enable p/ memória
-	output	reg 				cs,				//  Chip Select p/ memória
-	output	reg				ras,				//  Sinal seletor de linha
-	output	reg 				cas,				//  Sinal seletor de coluna
-	output	reg 				we				//  Habilitador de Escrita
+	output reg	[11:0]		addr_out,
+	output reg	[1:0] 		ba_out,				//  Bank Access - Especificador de banco
+	output reg	[3:0] 		dmq,				//  Máscara de dados para uso de endereços de 8 bits
+	output reg				cke,				//  Clock Enable p/ memória
+	output reg				cs,				//  Chip Select p/ memória
+	output reg				ras,				//  Sinal seletor de linha
+	output reg				cas,				//  Sinal seletor de coluna
+	output reg				we				//  Habilitador de Escrita
 	
 );
 
 	//Wires importantes
-	wire		[1:0]			ba_in		=	addr_in[21:20]; //Não parece fazer muito sentido para mim levando em conta a tabela verdade dos comandos.
-	wire		[8:0]			addr_c	=	addr_in[19:10]; 
-	wire		[11:0]		addr_l	=	addr_in[9:0];
+	wire		[1:0]	ba_in		=	addr_in[21:20]; //Não parece fazer muito sentido para mim levando em conta a tabela verdade dos comandos.
+	wire		[12:0]	addr_l	=	addr_in[19:8]; 
+	wire		[7:0]	addr_c	=	addr_in[7:0];
 
 	
-	//Estados Locais
+	//Listagem de comandos
 	localparam CMD_DESL 			= 4'b0000;		// Device Deselect
 	localparam CMD_NOP 			= 4'b0001;		// No Operation / Self Refresh Exit
 	localparam CMD_MRS 			= 4'b0010;		// Mode Register Set
@@ -39,9 +38,9 @@ module command_truth_table (
 	localparam CMD_SELF 			= 4'b1100;		// Self Refresh
 	localparam CMD_SUP 			= 4'b1101;		// Suspender / Power Down	---> Pode causar problemas, já que é o mesmo comando que COM_MRS
 	localparam CMD_REC 			= 4'b1110;		// Recuperar / Power Up		---> Pode causar problemas, já que é o mesmo comando que COM_MRS
-	//localparam CMD_SRE			= 4'b1111;		// Não Utilizado
+	//localparam CMD_SRE			= 4'b1111;		// Não Utilizado. Por default, valores não utilizados são tratados como NOP.
 	
-	always @(command or addrin)
+	always @(command or addr_in)
 	begin //begin the procedural statements
 
 		case (command)//variables that affect the procedure  
@@ -185,7 +184,7 @@ module command_truth_table (
 				ba_out = 2'b00;
 				addr_out = 12'b000000000000;
 			end
-			CMD_BST: //SUP
+			CMD_SUP: //SUP
 			begin
 				cke = 0;
 				cs = 0;
@@ -195,7 +194,7 @@ module command_truth_table (
 				ba_out = 2'b00;
 				addr_out = 12'b000000000000;
 			end
-			CMD_REF: //REC
+			CMD_REC: //REC
 			begin
 				cke = 1;
 				cs = 0;
