@@ -1,2 +1,2 @@
 Warning (10273): Verilog HDL warning at VerilogWarmup.v(58): extended using "x" or "z"
-Warning (10268): Verilog HDL information at CommandIssuer.v(86): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at CommandIssuer.v(88): always construct contains both blocking and non-blocking assignments

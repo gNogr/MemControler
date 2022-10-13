@@ -5,7 +5,7 @@ module mem_command_issuer(
 	input						re,
 	output reg	[3:0]			command,
 	output reg	[3:0]			cur_state,
-	output reg	[11:0]		counter,
+	output reg	[11:0]			counter,
 	output reg					w_ready,
 	output reg					input_wait
 );

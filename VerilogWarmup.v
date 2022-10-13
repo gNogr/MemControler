@@ -19,7 +19,7 @@ module sram_controller (
 	// Controlador -> Memória
 	output reg [11:0]	zs_addr,				//  Barramento de endereços de linha/coluna
 	output reg [1:0] 	zs_ba,					//  Bank Access - Especificador de banco
-	output reg [3:0] 	zs_dmq,					//  Máscara de dados para uso de endereços de 8 bits
+	output reg [1:0] 	zs_dmq,					//  Máscara de dados para uso de endereços de 8 bits
 	output reg 			zs_cke,					//  Clock Enable p/ memória
 	output reg 			zs_cs_n,				//  Chip Select p/ memória
 	output reg			zs_ras_n,				//  Sinal seletor de linha

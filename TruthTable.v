@@ -7,12 +7,12 @@ module command_truth_table (
 	
 	output reg	[11:0]		addr_out,
 	output reg	[1:0] 		ba_out,				//  Bank Access - Especificador de banco
-	output reg	[3:0] 		dmq,				//  Máscara de dados para uso de endereços de 8 bits
+	output reg	[1:0] 		dmq,				//  Máscara de dados para uso de endereços de 8 bits
 	output reg				cke,				//  Clock Enable p/ memória
-	output reg				cs,				//  Chip Select p/ memória
-	output reg				ras,				//  Sinal seletor de linha
-	output reg				cas,				//  Sinal seletor de coluna
-	output reg				we				//  Habilitador de Escrita
+	output reg				cs_n,				//  Chip Select p/ memória
+	output reg				ras_n,				//  Sinal seletor de linha
+	output reg				cas_n,				//  Sinal seletor de coluna
+	output reg				we_n				//  Habilitador de Escrita
 	
 );
 
@@ -36,8 +36,8 @@ module command_truth_table (
 	localparam CMD_BST 			= 4'b1010;		// Burst Stop
 	localparam CMD_REF 			= 4'b1011;		// CBR (Auto) Refresh
 	localparam CMD_SELF 			= 4'b1100;		// Self Refresh
-	localparam CMD_SUP 			= 4'b1101;		// Suspender / Power Down	---> Pode causar problemas, já que é o mesmo comando que COM_MRS
-	localparam CMD_REC 			= 4'b1110;		// Recuperar / Power Up		---> Pode causar problemas, já que é o mesmo comando que COM_MRS
+	localparam CMD_SUP 			= 4'b1101;		// Suspender / Powe_nr Down	---> Pode causar problemas, já que é o mesmo comando que COM_MRS
+	localparam CMD_REC 			= 4'b1110;		// Recuperar / Powe_nr Up		---> Pode causar problemas, já que é o mesmo comando que COM_MRS
 	//localparam CMD_SRE			= 4'b1111;		// Não Utilizado. Por default, valores não utilizados são tratados como NOP.
 	
 	always @(command or addr_in)
@@ -46,163 +46,163 @@ module command_truth_table (
 		case (command)//variables that affect the procedure  
 			default: // Cópia de NOP
 			begin
-				cke = 1;
-				cs = 0;
-				ras = 1;
-				cas = 1;
-				we = 1;
-				ba_out = 2'b00;
-				addr_out = 12'b000000000000;
+				cke <= 1;
+				cs_n <= 0;
+				ras_n <= 1;
+				cas_n <= 1;
+				we_n <= 1;
+				//ba_out <= 2'b00;
+				//addr_out <= 12'b000000000000;
 			end
 			CMD_DESL: //DESL
 			begin
-				cke = 1; //Não precisa ser alto, mas por enquanto o farei alto
-				cs = 1;
-				ras = 0;
-				cas = 0;
-				we = 0;
-				ba_out = 2'b00;
-				addr_out = 12'b000000000000; //Valor não precisa ser nulo, mas faço isso de qualquer forma
+				cke <= 1; //Não precisa ser alto, mas por enquanto o farei alto
+				cs_n <= 1;
+				//ras_n <= 0;
+				//cas_n <= 0;
+				//we_n <= 0;
+				//ba_out <= 2'b00;
+				//addr_out <= 12'b000000000000; //Valor não precisa ser nulo, mas faço isso de qualquer forma
 			end
 			CMD_NOP: //NOP
 			begin
-				cke = 1;
-				cs = 0;
-				ras = 1;
-				cas = 1;
-				we = 1;
-				ba_out = 2'b00;
-				addr_out = 12'b000000000000;
+				cke <= 1;
+				cs_n <= 0;
+				ras_n <= 1;
+				cas_n <= 1;
+				we_n <= 1;
+				//ba_out <= 2'b00;
+				//addr_out <= 12'b000000000000;
 			end 
 			CMD_MRS: //MRS
 			begin
-				cke = 1;
-				cs = 0;
-				ras = 0;
-				cas = 0;
-				we = 0;
-				ba_out = 2'b00;
-				addr_out = mrs; //Deve ser preenchido com o valor passado para setar registradores
+				cke <= 1;
+				cs_n <= 0;
+				ras_n <= 0;
+				cas_n <= 0;
+				we_n <= 0;
+				ba_out <= 2'b00;
+				addr_out <= mrs; //Deve ser preenchido com o valor passado para setar registradores
 			end
 			CMD_ACT: //ACT
 			begin
-				cke = 1;
-				cs = 0;
-				ras = 0;
-				cas = 1;
-				we = 1;
-				ba_out = ba_in;
-				addr_out = addr_l;
+				cke <= 1;
+				cs_n <= 0;
+				ras_n <= 0;
+				cas_n <= 1;
+				we_n <= 1;
+				ba_out <= ba_in;
+				addr_out <= addr_l;
 			end
 			CMD_READ: //READ
 			begin
-				cke = 1;
-				cs = 0;
-				ras = 1;
-				cas = 0;
-				we = 1;
-				ba_out = ba_in;
-				addr_out = {4'b0000,addr_c};
+				cke <= 1;
+				cs_n <= 0;
+				ras_n <= 1;
+				cas_n <= 0;
+				we_n <= 1;
+				ba_out <= ba_in;
+				addr_out <= {4'b0000,addr_c};
 			end
 			CMD_READA: //READA
 			begin
-				cke = 1;
-				cs = 0;
-				ras = 1;
-				cas = 0;
-				we = 1;
-				ba_out = ba_in;
-				addr_out = {4'b0100,addr_c};
+				cke <= 1;
+				cs_n <= 0;
+				ras_n <= 1;
+				cas_n <= 0;
+				we_n <= 1;
+				ba_out <= ba_in;
+				addr_out <= {4'b0100,addr_c};
 			end
 			CMD_WRIT: //WRIT
 			begin
-				cke = 1;
-				cs = 0;
-				ras = 1;
-				cas = 1;
-				we = 0;
-				ba_out = ba_in;
-				addr_out = {4'b0000,addr_c};
+				cke <= 1;
+				cs_n <= 0;
+				ras_n <= 1;
+				cas_n <= 1;
+				we_n <= 0;
+				ba_out <= ba_in;
+				addr_out <= {4'b0000,addr_c};
 			end
 			CMD_WRITA: //WRITA
 			begin
-				cke = 1;
-				cs = 0;
-				ras = 1;
-				cas = 1;
-				we = 0;
-				ba_out = ba_in;
-				addr_out = {4'b0100,addr_c};
+				cke <= 1;
+				cs_n <= 0;
+				ras_n <= 1;
+				cas_n <= 1;
+				we_n <= 0;
+				ba_out <= ba_in;
+				addr_out <= {4'b0100,addr_c};
 			end
 			CMD_PRE: //PRE
 			begin
-				cke = 1;
-				cs = 0;
-				ras = 0;
-				cas = 1;
-				we = 0;
-				ba_out = ba_in;
-				addr_out = 12'b000000000000;
+				cke <= 1;
+				cs_n <= 0;
+				ras_n <= 0;
+				cas_n <= 1;
+				we_n <= 0;
+				ba_out <= ba_in;
+				addr_out <= 12'b000000000000;
 			end
 			CMD_PALL: //PALL
 			begin
-				cke = 1;
-				cs = 0;
-				ras = 0;
-				cas = 1;
-				we = 0;
-				ba_out = 2'b00;
-				addr_out = 12'b010000000000;
+				cke <= 1;
+				cs_n <= 0;
+				ras_n <= 0;
+				cas_n <= 1;
+				we_n <= 0;
+				//ba_out <= 2'b00;
+				addr_out <= 12'b010000000000;
 			end 
 			CMD_BST: //BST
 			begin
-				cke = 1;
-				cs = 0;
-				ras = 1;
-				cas = 1;
-				we = 0;
-				ba_out = 2'b00;
-				addr_out = 12'b000000000000;
+				cke <= 1;
+				cs_n <= 0;
+				ras_n <= 1;
+				cas_n <= 1;
+				we_n <= 0;
+				//ba_out <= 2'b00;
+				//addr_out <= 12'b000000000000;
 			end
 			CMD_REF: //REF
 			begin
-				cke = 1;
-				cs = 0;
-				ras = 0;
-				cas = 0;
-				we = 1;
-				ba_out = 2'b00;
-				addr_out = 12'b000000000000;
+				cke <= 1;
+				cs_n <= 0;
+				ras_n <= 0;
+				cas_n <= 0;
+				we_n <= 1;
+				ba_out <= 2'b00;
+				//addr_out <= 12'b000000000000;
 			end
 			CMD_SELF: //SELF
 			begin
-				cke = 0; 
-				cs = 0;
-				ras = 1;
-				cas = 1;
-				we = 1;
-				ba_out = 2'b00;
-				addr_out = 12'b000000000000;
+				cke <= 0; 
+				cs_n <= 0;
+				ras_n <= 1;
+				cas_n <= 1;
+				we_n <= 1;
+				ba_out <= 2'b00;
+				//addr_out <= 12'b000000000000;
 			end
 			CMD_SUP: //SUP
 			begin
-				cke = 0;
-				cs = 0;
-				ras = 0;
-				cas = 0;
-				we = 0;
-				ba_out = 2'b00;
-				addr_out = 12'b000000000000;
+				cke <= 0;
+				cs_n <= 0;
+				ras_n <= 0;
+				cas_n <= 0;
+				we_n <= 0;
+				ba_out <= 2'b00;
+				addr_out <= 12'b000000000000;
 			end
 			CMD_REC: //REC
 			begin
-				cke = 1;
-				cs = 0;
-				ras = 0;
-				cas = 0;
-				we = 0;
-				ba_out = 2'b00;
-				addr_out = 12'b000000000000;
+				cke <= 1;
+				cs_n <= 0;
+				ras_n <= 0;
+				cas_n <= 0;
+				we_n <= 0;
+				ba_out <= 2'b00;
+				addr_out <= 12'b000000000000;
 			end
 		endcase
 	end
