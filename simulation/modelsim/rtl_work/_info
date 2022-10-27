@@ -1,0 +1,126 @@
+m255
+K3
+13
+cModel Technology
+Z0 dD:\Documentos\CEFET\22.1\TCC\Quartus\install\projects\VerilogWarmup\simulation\modelsim
+vapll
+I6M<m@;^0^V:A3VU]kbY130
+VnAl^0:8X26;b6V7PH[oz@0
+Z1 dD:\Documentos\CEFET\22.1\TCC\Quartus\install\projects\VerilogWarmup\simulation\modelsim
+w1666477363
+8D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/apll.v
+FD:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/apll.v
+L0 39
+Z2 OV;L;10.1d;51
+r1
+31
+Z3 o-vlog01compat -work work -O0
+Z4 !s92 -vlog01compat -work work +incdir+D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup -O0
+!i10b 1
+!s100 PEGYm2e]g?B^EmWL`<dcP0
+!s85 0
+!s108 1666838442.755000
+!s107 D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/apll.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup|D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/apll.v|
+!s101 -O0
+vcore
+I[f;hf5@>cXAQz[Di0R9NY0
+VRl2c]C9^[]h:JMoZmGVj<0
+R1
+w1666838107
+8D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/Core.v
+FD:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/Core.v
+L0 2
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 UeK8P<WVf@ocb2M=oe`900
+!s85 0
+!s108 1666838442.410000
+!s107 D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/Core.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup|D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/Core.v|
+!s101 -O0
+vmemory_interface
+I?N:8hWjYeKU;n5lWAIbP00
+V8Id_^JfhCH05:OM@?Q15i3
+R1
+w1666794452
+8D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryInterface.v
+FD:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryInterface.v
+L0 2
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 Y7:1zeJbM[GZM@ASVJ2K@2
+!s85 0
+!s108 1666838440.989000
+!s107 D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryInterface.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup|D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryInterface.v|
+!s101 -O0
+vsram_controller
+IieO>HJ8?7z3MUgdSEnK[73
+VQ7>:nbZaJ;A2@FjeaJz9P2
+R1
+w1666836923
+8D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController.v
+FD:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController.v
+L0 4
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 U;ad=bHoX`^Ue=L1EGW_A2
+!s85 0
+!s108 1666838442.529000
+!s107 D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup|D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController.v|
+!s101 -O0
+vsram_controller_tb
+!i10b 1
+!s100 7Q?<0;zFLNe?iLeN_:_Ki2
+I6Wk^3SO]o;:6Z^<=C_m0c3
+VoFnK;mJ0=Kce5[6]RNM0S2
+R1
+w1666838394
+8D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController_tb.v
+FD:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController_tb.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1666838442.879000
+!s107 D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup|D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController_tb.v|
+!s101 -O0
+R3
+R4
+vTopLevel
+I^V8HMkoJf>XzbZ9Jk96dC2
+VPLG=fkDonTJTa1:5AGd_?3
+R1
+w1666794664
+8D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/TopLevel.v
+FD:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/TopLevel.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@top@level
+!i10b 1
+!s100 =_U8_4]DkfKi@`zX6:f@l0
+!s85 0
+!s108 1666838442.643000
+!s107 D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/TopLevel.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup|D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/TopLevel.v|
+!s101 -O0

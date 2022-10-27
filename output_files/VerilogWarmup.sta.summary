@@ -2,52 +2,68 @@
 TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
-Type  : Slow Model Setup 'SW[17]'
-Slack : -2.526
-TNS   : -38.468
+Type  : Slow Model Setup 'sram_controller:c|core:m|cur_state[0]'
+Slack : -7.557
+TNS   : -67.210
 
-Type  : Slow Model Setup 'SW[0]'
-Slack : -0.681
-TNS   : -3.707
-
-Type  : Slow Model Hold 'SW[0]'
-Slack : -2.603
-TNS   : -26.793
-
-Type  : Slow Model Hold 'SW[17]'
-Slack : 0.116
+Type  : Slow Model Setup 'CLOCK_27'
+Slack : 0.631
 TNS   : 0.000
 
-Type  : Slow Model Minimum Pulse Width 'SW[0]'
-Slack : -1.380
-TNS   : -1.380
+Type  : Slow Model Hold 'sram_controller:c|core:m|cur_state[0]'
+Slack : -4.377
+TNS   : -50.472
 
-Type  : Slow Model Minimum Pulse Width 'SW[17]'
-Slack : -1.222
-TNS   : -17.222
+Type  : Slow Model Hold 'CLOCK_27'
+Slack : -3.815
+TNS   : -36.953
 
-Type  : Fast Model Setup 'SW[17]'
-Slack : -0.680
-TNS   : -9.579
+Type  : Slow Model Minimum Pulse Width 'sram_controller:c|core:m|cur_state[0]'
+Slack : -0.503
+TNS   : -23.966
 
-Type  : Fast Model Setup 'SW[0]'
-Slack : 0.208
+Type  : Slow Model Minimum Pulse Width 'sram_controller:c|core:m|waiting'
+Slack : -0.500
+TNS   : -18.000
+
+Type  : Slow Model Minimum Pulse Width 'sram_controller:c|core:m|valid'
+Slack : -0.500
+TNS   : -8.000
+
+Type  : Slow Model Minimum Pulse Width 'CLOCK_27'
+Slack : 17.518
 TNS   : 0.000
 
-Type  : Fast Model Hold 'SW[0]'
-Slack : -1.524
-TNS   : -12.597
+Type  : Fast Model Setup 'sram_controller:c|core:m|cur_state[0]'
+Slack : -3.757
+TNS   : -32.703
 
-Type  : Fast Model Hold 'SW[17]'
-Slack : -0.136
-TNS   : -0.170
+Type  : Fast Model Setup 'CLOCK_27'
+Slack : 0.617
+TNS   : 0.000
 
-Type  : Fast Model Minimum Pulse Width 'SW[0]'
-Slack : -1.380
-TNS   : -1.380
+Type  : Fast Model Hold 'CLOCK_27'
+Slack : -2.111
+TNS   : -23.445
 
-Type  : Fast Model Minimum Pulse Width 'SW[17]'
-Slack : -1.222
-TNS   : -17.222
+Type  : Fast Model Hold 'sram_controller:c|core:m|cur_state[0]'
+Slack : -2.059
+TNS   : -25.939
+
+Type  : Fast Model Minimum Pulse Width 'sram_controller:c|core:m|waiting'
+Slack : -0.500
+TNS   : -18.000
+
+Type  : Fast Model Minimum Pulse Width 'sram_controller:c|core:m|valid'
+Slack : -0.500
+TNS   : -8.000
+
+Type  : Fast Model Minimum Pulse Width 'sram_controller:c|core:m|cur_state[0]'
+Slack : 0.060
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'CLOCK_27'
+Slack : 17.518
+TNS   : 0.000
 
 ------------------------------------------------------------

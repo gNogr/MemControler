@@ -1,0 +1,7 @@
+module sram_controller_tb ();
+
+reg clk;
+reg reset;
+reg [21:0] addr;
+reg [15:0] data;
+reg out1;

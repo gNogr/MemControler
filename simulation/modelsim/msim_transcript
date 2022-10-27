@@ -1,0 +1,108 @@
+# Reading D:/Documentos/CEFET/22.1/TCC/Quartus/install2/modelsim_ase/tcl/vsim/pref.tcl 
+# do VerilogWarmup_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying D:\Documentos\CEFET\22.1\TCC\Quartus\install2\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied D:\Documentos\CEFET\22.1\TCC\Quartus\install2\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup {D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryInterface.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module memory_interface
+# 
+# Top level modules:
+# 	memory_interface
+# vlog -vlog01compat -work work +incdir+D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup {D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/Core.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module core
+# 
+# Top level modules:
+# 	core
+# vlog -vlog01compat -work work +incdir+D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup {D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module sram_controller
+# 
+# Top level modules:
+# 	sram_controller
+# vlog -vlog01compat -work work +incdir+D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup {D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/TopLevel.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module TopLevel
+# 
+# Top level modules:
+# 	TopLevel
+# vlog -vlog01compat -work work +incdir+D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup {D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/apll.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module apll
+# 
+# Top level modules:
+# 	apll
+# 
+# vlog -vlog01compat -work work +incdir+D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup {D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController_tb.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module sram_controller_tb
+# 
+# Top level modules:
+# 	sram_controller_tb
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneii_ver -L rtl_work -L work -voptargs="+acc"  sdram_controler_tb
+# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneii_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps sdram_controler_tb 
+# ** Error: (vsim-3170) Could not find 'D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/simulation/modelsim/rtl_work.sdram_controler_tb'.
+# 
+# Error loading design
+# Error: Error loading design 
+#        Pausing macro execution 
+# MACRO ./VerilogWarmup_run_msim_rtl_verilog.do PAUSED at line 16
+vsim -voptargs=+acc work.TopLevel
+# vsim -voptargs=+acc work.TopLevel 
+# Loading work.TopLevel
+# Loading work.sram_controller
+# Loading work.core
+# Loading work.memory_interface
+# Loading work.apll
+# ** Error: (vsim-3033) D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/apll.v(90): Instantiation of 'altpll' failed. The design unit was not found.
+# 
+#         Region: /TopLevel/a
+#         Searched libraries:
+#             D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/simulation/modelsim/rtl_work
+# Error loading design
+# Error: Error loading design 
+#        Pausing macro execution 
+# MACRO ./VerilogWarmup_run_msim_rtl_verilog.do PAUSED at line 16
+vsim -voptargs=+acc work.sram_controller_tb
+# vsim -voptargs=+acc work.sram_controller_tb 
+# Loading work.sram_controller_tb
+# Loading work.sram_controller
+# Loading work.core
+# Loading work.memory_interface
+# ** Warning: (vsim-3015) D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController_tb.v(65): [PCDPC] - Port size (16 or 16) does not match connection size (1) for port 'za_data'. The port definition is at: D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController.v(19).
+# 
+#         Region: /sram_controller_tb/sram_controllert
+# ** Warning: (vsim-3015) D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController_tb.v(65): [PCDPC] - Port size (12 or 12) does not match connection size (1) for port 'zs_addr'. The port definition is at: D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController.v(22).
+# 
+#         Region: /sram_controller_tb/sram_controllert
+# ** Warning: (vsim-3015) D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController_tb.v(65): [PCDPC] - Port size (2 or 2) does not match connection size (1) for port 'zs_ba'. The port definition is at: D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController.v(23).
+# 
+#         Region: /sram_controller_tb/sram_controllert
+# ** Warning: (vsim-3015) D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController_tb.v(65): [PCDPC] - Port size (2 or 2) does not match connection size (1) for port 'zs_dqm'. The port definition is at: D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController.v(24).
+# 
+#         Region: /sram_controller_tb/sram_controllert
+add wave -position end  sim:/sram_controller_tb/clk
+add wave -position end  sim:/sram_controller_tb/rst
+add wave -position end  sim:/sram_controller_tb/addr
+add wave -position end  sim:/sram_controller_tb/data_in
+add wave -position end  sim:/sram_controller_tb/we
+add wave -position end  sim:/sram_controller_tb/re
+add wave -position end  sim:/sram_controller_tb/valid
+add wave -position end  sim:/sram_controller_tb/busy
+add wave -position end  sim:/sram_controller_tb/CKE
+add wave -position end  sim:/sram_controller_tb/CS_N
+add wave -position end  sim:/sram_controller_tb/RAS_N
+add wave -position end  sim:/sram_controller_tb/CAS_N
+add wave -position end  sim:/sram_controller_tb/WE_N
+add wave -position end  sim:/sram_controller_tb/ADDR
+run 500000
+run 1500000

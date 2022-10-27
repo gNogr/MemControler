@@ -1,13 +1,14 @@
 // Desabstração de comandos sendo enviados para memória
-module command_truth_table (
+module memory_interface (
 
 	input		[3:0]		command,
 	input		[11:0]		mrs,
 	input		[21:0]		addr_in,
+	input		[1:0]			be_in,
 	
 	output reg	[11:0]		addr_out,
 	output reg	[1:0] 		ba_out,				//  Bank Access - Especificador de banco
-	output reg	[1:0] 		dmq,				//  Máscara de dados para uso de endereços de 8 bits
+	output reg	[1:0] 		dqm,				//  Máscara de dados para uso de endereços de 8 bits
 	output reg				cke,				//  Clock Enable p/ memória
 	output reg				cs_n,				//  Chip Select p/ memória
 	output reg				ras_n,				//  Sinal seletor de linha
@@ -17,10 +18,9 @@ module command_truth_table (
 );
 
 	//Wires importantes
-	wire		[1:0]	ba_in		=	addr_in[21:20]; //Não parece fazer muito sentido para mim levando em conta a tabela verdade dos comandos.
-	wire		[12:0]	addr_l	=	addr_in[19:8]; 
+	wire		[1:0]	ba_in		=	addr_in[21:20]; 
+	wire		[11:0]	addr_l	=	addr_in[19:8]; 
 	wire		[7:0]	addr_c	=	addr_in[7:0];
-
 	
 	//Listagem de comandos
 	localparam CMD_DESL 			= 4'b0000;		// Device Deselect
@@ -53,6 +53,7 @@ module command_truth_table (
 				we_n <= 1;
 				//ba_out <= 2'b00;
 				//addr_out <= 12'b000000000000;
+				dqm <= 2'b11;
 			end
 			CMD_DESL: //DESL
 			begin
@@ -73,6 +74,7 @@ module command_truth_table (
 				we_n <= 1;
 				//ba_out <= 2'b00;
 				//addr_out <= 12'b000000000000;
+				dqm <= 2'b11;
 			end 
 			CMD_MRS: //MRS
 			begin
@@ -93,6 +95,7 @@ module command_truth_table (
 				we_n <= 1;
 				ba_out <= ba_in;
 				addr_out <= addr_l;
+				dqm <= be_in;
 			end
 			CMD_READ: //READ
 			begin
@@ -103,6 +106,7 @@ module command_truth_table (
 				we_n <= 1;
 				ba_out <= ba_in;
 				addr_out <= {4'b0000,addr_c};
+				dqm <= be_in;
 			end
 			CMD_READA: //READA
 			begin
@@ -113,6 +117,7 @@ module command_truth_table (
 				we_n <= 1;
 				ba_out <= ba_in;
 				addr_out <= {4'b0100,addr_c};
+				dqm <= be_in;
 			end
 			CMD_WRIT: //WRIT
 			begin
@@ -123,6 +128,7 @@ module command_truth_table (
 				we_n <= 0;
 				ba_out <= ba_in;
 				addr_out <= {4'b0000,addr_c};
+				dqm <= be_in;
 			end
 			CMD_WRITA: //WRITA
 			begin
@@ -133,6 +139,7 @@ module command_truth_table (
 				we_n <= 0;
 				ba_out <= ba_in;
 				addr_out <= {4'b0100,addr_c};
+				dqm <= be_in;
 			end
 			CMD_PRE: //PRE
 			begin
@@ -143,6 +150,7 @@ module command_truth_table (
 				we_n <= 0;
 				ba_out <= ba_in;
 				addr_out <= 12'b000000000000;
+				dqm <= 2'b11;
 			end
 			CMD_PALL: //PALL
 			begin
@@ -153,6 +161,7 @@ module command_truth_table (
 				we_n <= 0;
 				//ba_out <= 2'b00;
 				addr_out <= 12'b010000000000;
+				dqm <= 2'b11;
 			end 
 			CMD_BST: //BST
 			begin

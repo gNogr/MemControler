@@ -1,5 +1,5 @@
 Flow report for VerilogWarmup
-Thu Oct 13 09:13:24 2022
+Wed Oct 26 23:40:12 2022
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,22 +40,22 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Thu Oct 13 09:13:24 2022           ;
+; Flow Status                        ; Successful - Wed Oct 26 23:40:12 2022           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; VerilogWarmup                                   ;
-; Top-level Entity Name              ; VerilogWarmup                                   ;
+; Top-level Entity Name              ; TopLevel                                        ;
 ; Family                             ; Cyclone II                                      ;
 ; Device                             ; EP2C35F672C6                                    ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 88 / 33,216 ( < 1 % )                           ;
-;     Total combinational functions  ; 88 / 33,216 ( < 1 % )                           ;
-;     Dedicated logic registers      ; 16 / 33,216 ( < 1 % )                           ;
-; Total registers                    ; 16                                              ;
-; Total pins                         ; 49 / 475 ( 10 % )                               ;
+; Total logic elements               ; 122 / 33,216 ( < 1 % )                          ;
+;     Total combinational functions  ; 106 / 33,216 ( < 1 % )                          ;
+;     Dedicated logic registers      ; 44 / 33,216 ( < 1 % )                           ;
+; Total registers                    ; 44                                              ;
+; Total pins                         ; 88 / 475 ( 19 % )                               ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0 / 483,840 ( 0 % )                             ;
 ; Embedded Multiplier 9-bit elements ; 0 / 70 ( 0 % )                                  ;
-; Total PLLs                         ; 0 / 4 ( 0 % )                                   ;
+; Total PLLs                         ; 1 / 4 ( 25 % )                                  ;
 +------------------------------------+-------------------------------------------------+
 
 
@@ -64,32 +64,43 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/13/2022 09:12:55 ;
+; Start date & time ; 10/26/2022 23:39:57 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; VerilogWarmup       ;
 +-------------------+---------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                            ;
-+--------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; Assignment Name                      ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
-+--------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                ; 255543652320418.166566317503292       ; --            ; --          ; --             ;
-; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                           ; --            ; --          ; eda_simulation ;
-; EDA_SIMULATION_TOOL                  ; ModelSim (Verilog)                    ; <None>        ; --          ; --             ;
-; EDA_TIME_SCALE                       ; 1 ps                                  ; --            ; --          ; eda_simulation ;
-; MAX_CORE_JUNCTION_TEMP               ; 85                                    ; --            ; --          ; --             ;
-; MIN_CORE_JUNCTION_TEMP               ; 0                                     ; --            ; --          ; --             ;
-; PARTITION_COLOR                      ; 16764057                              ; --            ; --          ; Top            ;
-; PARTITION_FITTER_PRESERVATION_LEVEL  ; PLACEMENT_AND_ROUTING                 ; --            ; --          ; Top            ;
-; PARTITION_NETLIST_TYPE               ; SOURCE                                ; --            ; --          ; Top            ;
-; PHYSICAL_SYNTHESIS_COMBO_LOGIC       ; On                                    ; Off           ; --          ; --             ;
-; PHYSICAL_SYNTHESIS_REGISTER_RETIMING ; On                                    ; Off           ; --          ; --             ;
-; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                   ; --            ; --          ; --             ;
-; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW ; --            ; --          ; --             ;
-; PROJECT_OUTPUT_DIRECTORY             ; output_files                          ; --            ; --          ; --             ;
-+--------------------------------------+---------------------------------------+---------------+-------------+----------------+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                ;
++--------------------------------------+---------------------------------------+---------------+-------------+--------------------+
+; Assignment Name                      ; Value                                 ; Default Value ; Entity Name ; Section Id         ;
++--------------------------------------+---------------------------------------+---------------+-------------+--------------------+
+; COMPILER_SIGNATURE_ID                ; 255543652320418.166683839718048       ; --            ; --          ; --                 ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; sdram_controler_tb ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; sdram_controler_tb                    ; --            ; --          ; eda_simulation     ;
+; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                           ; --            ; --          ; eda_simulation     ;
+; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (Verilog)             ; <None>        ; --          ; --                 ;
+; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                       ; --            ; --          ; eda_simulation     ;
+; EDA_TEST_BENCH_FILE                  ; MemoryController_tb.v                 ; --            ; --          ; sdram_controler_tb ;
+; EDA_TEST_BENCH_MODULE_NAME           ; sdram_controler_tb                    ; --            ; --          ; sdram_controler_tb ;
+; EDA_TEST_BENCH_NAME                  ; sdram_controler_tb                    ; --            ; --          ; eda_simulation     ;
+; EDA_TIME_SCALE                       ; 1 ps                                  ; --            ; --          ; eda_simulation     ;
+; IP_TOOL_NAME                         ; ALTPLL                                ; --            ; --          ; --                 ;
+; IP_TOOL_VERSION                      ; 13.0                                  ; --            ; --          ; --                 ;
+; MAX_CORE_JUNCTION_TEMP               ; 85                                    ; --            ; --          ; --                 ;
+; MIN_CORE_JUNCTION_TEMP               ; 0                                     ; --            ; --          ; --                 ;
+; MISC_FILE                            ; apll_bb.v                             ; --            ; --          ; --                 ;
+; MISC_FILE                            ; apll.ppf                              ; --            ; --          ; --                 ;
+; PARTITION_COLOR                      ; 16764057                              ; --            ; TopLevel    ; Top                ;
+; PARTITION_FITTER_PRESERVATION_LEVEL  ; PLACEMENT_AND_ROUTING                 ; --            ; TopLevel    ; Top                ;
+; PARTITION_NETLIST_TYPE               ; SOURCE                                ; --            ; TopLevel    ; Top                ;
+; PHYSICAL_SYNTHESIS_COMBO_LOGIC       ; On                                    ; Off           ; --          ; --                 ;
+; PHYSICAL_SYNTHESIS_REGISTER_RETIMING ; On                                    ; Off           ; --          ; --                 ;
+; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                   ; --            ; --          ; --                 ;
+; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW ; --            ; --          ; --                 ;
+; PROJECT_OUTPUT_DIRECTORY             ; output_files                          ; --            ; --          ; --                 ;
+; TOP_LEVEL_ENTITY                     ; TopLevel                              ; VerilogWarmup ; --          ; --                 ;
++--------------------------------------+---------------------------------------+---------------+-------------+--------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------+
@@ -97,12 +108,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:03     ; 1.0                     ; 4589 MB             ; 00:00:01                           ;
-; Fitter                    ; 00:00:13     ; 1.0                     ; 4876 MB             ; 00:00:07                           ;
-; Assembler                 ; 00:00:04     ; 1.0                     ; 4560 MB             ; 00:00:02                           ;
-; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 4541 MB             ; 00:00:01                           ;
-; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 4508 MB             ; 00:00:00                           ;
-; Total                     ; 00:00:23     ; --                      ; --                  ; 00:00:11                           ;
+; Analysis & Synthesis      ; 00:00:01     ; 1.0                     ; 4592 MB             ; 00:00:01                           ;
+; Fitter                    ; 00:00:07     ; 1.0                     ; 4877 MB             ; 00:00:08                           ;
+; Assembler                 ; 00:00:02     ; 1.0                     ; 4560 MB             ; 00:00:02                           ;
+; TimeQuest Timing Analyzer ; 00:00:01     ; 1.0                     ; 4546 MB             ; 00:00:01                           ;
+; EDA Netlist Writer        ; 00:00:00     ; 1.0                     ; 4508 MB             ; 00:00:00                           ;
+; Total                     ; 00:00:11     ; --                      ; --                  ; 00:00:12                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
