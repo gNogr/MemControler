@@ -2,68 +2,68 @@
 TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
-Type  : Slow Model Setup 'sram_controller:c|core:m|cur_state[0]'
-Slack : -7.557
-TNS   : -67.210
-
-Type  : Slow Model Setup 'CLOCK_27'
-Slack : 0.631
+Type  : Slow Model Setup 'a|altpll_component|pll|clk[1]'
+Slack : 0.988
 TNS   : 0.000
 
-Type  : Slow Model Hold 'sram_controller:c|core:m|cur_state[0]'
-Slack : -4.377
-TNS   : -50.472
+Type  : Slow Model Setup 'a|altpll_component|pll|clk[0]'
+Slack : 13.289
+TNS   : 0.000
 
-Type  : Slow Model Hold 'CLOCK_27'
-Slack : -3.815
-TNS   : -36.953
+Type  : Slow Model Hold 'a|altpll_component|pll|clk[1]'
+Slack : 0.391
+TNS   : 0.000
 
-Type  : Slow Model Minimum Pulse Width 'sram_controller:c|core:m|cur_state[0]'
-Slack : -0.503
-TNS   : -23.966
+Type  : Slow Model Hold 'a|altpll_component|pll|clk[0]'
+Slack : 5.230
+TNS   : 0.000
 
-Type  : Slow Model Minimum Pulse Width 'sram_controller:c|core:m|waiting'
-Slack : -0.500
-TNS   : -18.000
+Type  : Slow Model Recovery 'a|altpll_component|pll|clk[1]'
+Slack : 30.525
+TNS   : 0.000
 
-Type  : Slow Model Minimum Pulse Width 'sram_controller:c|core:m|valid'
-Slack : -0.500
-TNS   : -8.000
+Type  : Slow Model Removal 'a|altpll_component|pll|clk[1]'
+Slack : 5.779
+TNS   : 0.000
 
-Type  : Slow Model Minimum Pulse Width 'CLOCK_27'
+Type  : Slow Model Minimum Pulse Width 'a|altpll_component|pll|clk[1]'
 Slack : 17.518
 TNS   : 0.000
 
-Type  : Fast Model Setup 'sram_controller:c|core:m|cur_state[0]'
-Slack : -3.757
-TNS   : -32.703
-
-Type  : Fast Model Setup 'CLOCK_27'
-Slack : 0.617
+Type  : Slow Model Minimum Pulse Width 'CLOCK_27'
+Slack : 18.518
 TNS   : 0.000
 
-Type  : Fast Model Hold 'CLOCK_27'
-Slack : -2.111
-TNS   : -23.445
+Type  : Fast Model Setup 'a|altpll_component|pll|clk[1]'
+Slack : 3.060
+TNS   : 0.000
 
-Type  : Fast Model Hold 'sram_controller:c|core:m|cur_state[0]'
-Slack : -2.059
-TNS   : -25.939
+Type  : Fast Model Setup 'a|altpll_component|pll|clk[0]'
+Slack : 15.438
+TNS   : 0.000
 
-Type  : Fast Model Minimum Pulse Width 'sram_controller:c|core:m|waiting'
-Slack : -0.500
-TNS   : -18.000
+Type  : Fast Model Hold 'a|altpll_component|pll|clk[1]'
+Slack : 0.215
+TNS   : 0.000
 
-Type  : Fast Model Minimum Pulse Width 'sram_controller:c|core:m|valid'
-Slack : -0.500
-TNS   : -8.000
+Type  : Fast Model Hold 'a|altpll_component|pll|clk[0]'
+Slack : 3.081
+TNS   : 0.000
 
-Type  : Fast Model Minimum Pulse Width 'sram_controller:c|core:m|cur_state[0]'
-Slack : 0.060
+Type  : Fast Model Recovery 'a|altpll_component|pll|clk[1]'
+Slack : 32.938
+TNS   : 0.000
+
+Type  : Fast Model Removal 'a|altpll_component|pll|clk[1]'
+Slack : 3.614
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'a|altpll_component|pll|clk[1]'
+Slack : 17.518
 TNS   : 0.000
 
 Type  : Fast Model Minimum Pulse Width 'CLOCK_27'
-Slack : 17.518
+Slack : 18.518
 TNS   : 0.000
 
 ------------------------------------------------------------

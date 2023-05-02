@@ -1,0 +1,23 @@
+# system info qsys_teste on 2023.03.09.23:04:57
+system_info:
+name,value
+DEVICE,EP2C35F672C6
+DEVICE_FAMILY,Cyclone II
+GENERATION_ID,1678413897
+#
+#
+# Files generated for qsys_teste on 2023.03.09.23:04:57
+files:
+filepath,kind,attributes,module,is_top
+qsys_teste/simulation/qsys_teste.v,VERILOG,,qsys_teste,true
+qsys_teste/simulation/submodules/qsys_teste_new_sdram_controller_0.v,VERILOG,,qsys_teste_new_sdram_controller_0,false
+qsys_teste/simulation/submodules/qsys_teste_new_sdram_controller_0_test_component.v,VERILOG,,qsys_teste_new_sdram_controller_0,false
+qsys_teste/simulation/submodules/altera_reset_controller.v,VERILOG,,altera_reset_controller,false
+qsys_teste/simulation/submodules/altera_reset_synchronizer.v,VERILOG,,altera_reset_controller,false
+qsys_teste/simulation/submodules/altera_reset_controller.sdc,SDC,,altera_reset_controller,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+qsys_teste.new_sdram_controller_0,qsys_teste_new_sdram_controller_0
+qsys_teste.rst_controller,altera_reset_controller

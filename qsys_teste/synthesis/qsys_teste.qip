@@ -1,0 +1,22 @@
+set_global_assignment -entity "qsys_teste" -library "qsys_teste" -name IP_TOOL_NAME "Qsys"
+set_global_assignment -entity "qsys_teste" -library "qsys_teste" -name IP_TOOL_VERSION "13.0sp1"
+set_global_assignment -entity "qsys_teste" -library "qsys_teste" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -library "qsys_teste" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../qsys_teste.sopcinfo"]
+set_instance_assignment -entity "qsys_teste" -library "qsys_teste" -name SLD_INFO "QSYS_NAME qsys_teste HAS_SOPCINFO 1 GENERATION_ID 1678413902"
+set_global_assignment -library "qsys_teste" -name MISC_FILE [file join $::quartus(qip_path) "../../qsys_teste.cmp"]
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "qsys_teste" -name MISC_FILE [file join $::quartus(qip_path) "../../qsys_teste.qsys"]
+
+set_global_assignment -library "qsys_teste" -name VERILOG_FILE [file join $::quartus(qip_path) "qsys_teste.v"]
+set_global_assignment -library "qsys_teste" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.v"]
+set_global_assignment -library "qsys_teste" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_synchronizer.v"]
+set_global_assignment -library "qsys_teste" -name SDC_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.sdc"]
+set_global_assignment -library "qsys_teste" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/qsys_teste_new_sdram_controller_0.v"]
+set_global_assignment -library "qsys_teste" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/qsys_teste_new_sdram_controller_0_test_component.v"]
+
+set_global_assignment -entity "altera_reset_controller" -library "qsys_teste" -name IP_TOOL_NAME "altera_reset_controller"
+set_global_assignment -entity "altera_reset_controller" -library "qsys_teste" -name IP_TOOL_VERSION "13.0"
+set_global_assignment -entity "altera_reset_controller" -library "qsys_teste" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -entity "qsys_teste_new_sdram_controller_0" -library "qsys_teste" -name IP_TOOL_NAME "altera_avalon_new_sdram_controller"
+set_global_assignment -entity "qsys_teste_new_sdram_controller_0" -library "qsys_teste" -name IP_TOOL_VERSION "13.0.1.99.2"
+set_global_assignment -entity "qsys_teste_new_sdram_controller_0" -library "qsys_teste" -name IP_TOOL_ENV "Qsys"

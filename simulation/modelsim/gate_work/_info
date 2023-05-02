@@ -1,0 +1,26 @@
+m255
+K3
+13
+cModel Technology
+Z0 dD:\Documentos\CEFET\22.1\TCC\Quartus\install\projects\VerilogWarmup\simulation\modelsim
+vTopLevel
+!i10b 1
+!s100 S=B32AdI=83;m4E<?Y^OI0
+IX`L6PfJlm_iU^=@i?004j0
+VBAK:`aZjJad7mYToo>aZT1
+Z1 dD:\Documentos\CEFET\22.1\TCC\Quartus\install\projects\VerilogWarmup\simulation\modelsim
+w1682619184
+8VerilogWarmup.vo
+FVerilogWarmup.vo
+L0 31
+OV;L;10.1d;51
+r1
+!s85 0
+31
+!s108 1682653565.804000
+!s107 VerilogWarmup.vo|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+.|VerilogWarmup.vo|
+!s101 -O0
+o-vlog01compat -work work -O0
+!s92 -vlog01compat -work work +incdir+. -O0
+n@top@level

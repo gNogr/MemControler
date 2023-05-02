@@ -1,5 +1,5 @@
 Analysis & Synthesis report for VerilogWarmup
-Wed Oct 26 23:39:58 2022
+Tue May 02 11:36:32 2023
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -14,20 +14,19 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis IP Cores Summary
-  9. User-Specified and Inferred Latches
+  9. State Machine - |TopLevel|core_one:c|state
  10. Registers Removed During Synthesis
  11. General Register Statistics
- 12. Multiplexer Restructuring Statistics (Restructuring Performed)
- 13. Parameter Settings for User Entity Instance: sram_controller:c
- 14. Parameter Settings for User Entity Instance: sram_controller:c|core:m
+ 12. Inverted Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Parameter Settings for User Entity Instance: core_one:c
  15. Parameter Settings for User Entity Instance: apll:a|altpll:altpll_component
  16. altpll Parameter Settings by Entity Instance
- 17. Port Connectivity Checks: "sram_controller:c|memory_interface:c"
- 18. Port Connectivity Checks: "sram_controller:c|core:m"
- 19. Port Connectivity Checks: "sram_controller:c"
- 20. Elapsed Time Per Partition
- 21. Analysis & Synthesis Messages
- 22. Analysis & Synthesis Suppressed Messages
+ 17. Port Connectivity Checks: "Teste_1:t1"
+ 18. Port Connectivity Checks: "core_one:c"
+ 19. Elapsed Time Per Partition
+ 20. Analysis & Synthesis Messages
+ 21. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -53,16 +52,16 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Oct 26 23:39:58 2022           ;
+; Analysis & Synthesis Status        ; Successful - Tue May 02 11:36:32 2023           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; VerilogWarmup                                   ;
 ; Top-level Entity Name              ; TopLevel                                        ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 132                                             ;
-;     Total combinational functions  ; 106                                             ;
-;     Dedicated logic registers      ; 44                                              ;
-; Total registers                    ; 44                                              ;
-; Total pins                         ; 88                                              ;
+; Total logic elements               ; 558                                             ;
+;     Total combinational functions  ; 395                                             ;
+;     Dedicated logic registers      ; 307                                             ;
+; Total registers                    ; 307                                             ;
+; Total pins                         ; 152                                             ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -171,11 +170,10 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+-----------------------------+-------------------------------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                   ; File Name with Absolute Path                                                                    ; Library ;
 +----------------------------------+-----------------+-----------------------------+-------------------------------------------------------------------------------------------------+---------+
-; MemoryInterface.v                ; yes             ; User Verilog HDL File       ; D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryInterface.v           ;         ;
-; Core.v                           ; yes             ; User Verilog HDL File       ; D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/Core.v                      ;         ;
-; MemoryController.v               ; yes             ; User Verilog HDL File       ; D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/MemoryController.v          ;         ;
 ; TopLevel.v                       ; yes             ; User Verilog HDL File       ; D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/TopLevel.v                  ;         ;
 ; apll.v                           ; yes             ; User Wizard-Generated File  ; D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/apll.v                      ;         ;
+; Core_one.v                       ; yes             ; User Verilog HDL File       ; D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/Core_one.v                  ;         ;
+; Teste_1.v                        ; yes             ; User Verilog HDL File       ; D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/Teste_1.v                   ;         ;
 ; altpll.tdf                       ; yes             ; Megafunction                ; d:/documentos/cefet/22.1/tcc/quartus/install2/quartus/libraries/megafunctions/altpll.tdf        ;         ;
 ; aglobal130.inc                   ; yes             ; Megafunction                ; d:/documentos/cefet/22.1/tcc/quartus/install2/quartus/libraries/megafunctions/aglobal130.inc    ;         ;
 ; stratix_pll.inc                  ; yes             ; Megafunction                ; d:/documentos/cefet/22.1/tcc/quartus/install2/quartus/libraries/megafunctions/stratix_pll.inc   ;         ;
@@ -184,51 +182,58 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+-----------------------------+-------------------------------------------------------------------------------------------------+---------+
 
 
-+-------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                                         ;
-+---------------------------------------------+---------------------------------------+
-; Resource                                    ; Usage                                 ;
-+---------------------------------------------+---------------------------------------+
-; Estimated Total logic elements              ; 132                                   ;
-;                                             ;                                       ;
-; Total combinational functions               ; 106                                   ;
-; Logic element usage by number of LUT inputs ;                                       ;
-;     -- 4 input functions                    ; 53                                    ;
-;     -- 3 input functions                    ; 34                                    ;
-;     -- <=2 input functions                  ; 19                                    ;
-;                                             ;                                       ;
-; Logic elements by mode                      ;                                       ;
-;     -- normal mode                          ; 93                                    ;
-;     -- arithmetic mode                      ; 13                                    ;
-;                                             ;                                       ;
-; Total registers                             ; 44                                    ;
-;     -- Dedicated logic registers            ; 44                                    ;
-;     -- I/O registers                        ; 0                                     ;
-;                                             ;                                       ;
-; I/O pins                                    ; 88                                    ;
-; Embedded Multiplier 9-bit elements          ; 0                                     ;
-; Total PLLs                                  ; 1                                     ;
-;     -- PLLs                                 ; 1                                     ;
-;                                             ;                                       ;
-; Maximum fan-out node                        ; sram_controller:c|core:m|cur_state[3] ;
-; Maximum fan-out                             ; 24                                    ;
-; Total fan-out                               ; 538                                   ;
-; Average fan-out                             ; 2.25                                  ;
-+---------------------------------------------+---------------------------------------+
++------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                        ;
++---------------------------------------------+--------------------------------------+
+; Resource                                    ; Usage                                ;
++---------------------------------------------+--------------------------------------+
+; Estimated Total logic elements              ; 558                                  ;
+;                                             ;                                      ;
+; Total combinational functions               ; 395                                  ;
+; Logic element usage by number of LUT inputs ;                                      ;
+;     -- 4 input functions                    ; 262                                  ;
+;     -- 3 input functions                    ; 57                                   ;
+;     -- <=2 input functions                  ; 76                                   ;
+;                                             ;                                      ;
+; Logic elements by mode                      ;                                      ;
+;     -- normal mode                          ; 363                                  ;
+;     -- arithmetic mode                      ; 32                                   ;
+;                                             ;                                      ;
+; Total registers                             ; 307                                  ;
+;     -- Dedicated logic registers            ; 307                                  ;
+;     -- I/O registers                        ; 0                                    ;
+;                                             ;                                      ;
+; I/O pins                                    ; 152                                  ;
+; Embedded Multiplier 9-bit elements          ; 0                                    ;
+; Total PLLs                                  ; 1                                    ;
+;     -- PLLs                                 ; 1                                    ;
+;                                             ;                                      ;
+; Maximum fan-out node                        ; apll:a|altpll:altpll_component|_clk0 ;
+; Maximum fan-out                             ; 264                                  ;
+; Total fan-out                               ; 2479                                 ;
+; Average fan-out                             ; 2.90                                 ;
++---------------------------------------------+--------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                         ;
-+---------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------+--------------+
-; Compilation Hierarchy Node      ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                            ; Library Name ;
-+---------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------+--------------+
-; |TopLevel                       ; 106 (0)           ; 44 (26)      ; 0           ; 0            ; 0       ; 0         ; 88   ; 0            ; |TopLevel                                      ; work         ;
-;    |apll:a|                     ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|apll:a                               ; work         ;
-;       |altpll:altpll_component| ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|apll:a|altpll:altpll_component       ; work         ;
-;    |sram_controller:c|          ; 106 (0)           ; 18 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|sram_controller:c                    ; work         ;
-;       |core:m|                  ; 74 (74)           ; 18 (18)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|sram_controller:c|core:m             ; work         ;
-;       |memory_interface:c|      ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|sram_controller:c|memory_interface:c ; work         ;
-+---------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                   ;
++---------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------+
+; Compilation Hierarchy Node      ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                      ; Library Name ;
++---------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------+
+; |TopLevel                       ; 395 (205)         ; 307 (44)     ; 0           ; 0            ; 0       ; 0         ; 152  ; 0            ; |TopLevel                                ; work         ;
+;    |Teste_1:t1|                 ; 48 (48)           ; 145 (145)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|Teste_1:t1                     ; work         ;
+;    |apll:a|                     ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|apll:a                         ; work         ;
+;       |altpll:altpll_component| ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|apll:a|altpll:altpll_component ; work         ;
+;    |core_one:c|                 ; 86 (86)           ; 118 (118)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|core_one:c                     ; work         ;
+;    |dec7seg:h0|                 ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|dec7seg:h0                     ; work         ;
+;    |dec7seg:h1|                 ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|dec7seg:h1                     ; work         ;
+;    |dec7seg:h2|                 ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|dec7seg:h2                     ; work         ;
+;    |dec7seg:h3|                 ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|dec7seg:h3                     ; work         ;
+;    |dec7seg:h4|                 ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|dec7seg:h4                     ; work         ;
+;    |dec7seg:h5|                 ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|dec7seg:h5                     ; work         ;
+;    |dec7seg:h6|                 ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|dec7seg:h6                     ; work         ;
+;    |dec7seg:h7|                 ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|dec7seg:h7                     ; work         ;
++---------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -241,31 +246,27 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------+--------------+---------+--------------+--------------+------------------+----------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                                                          ;
-+-----------------------------------------------------+-----------------------------------------------+------------------------+
-; Latch Name                                          ; Latch Enable Signal                           ; Free of Timing Hazards ;
-+-----------------------------------------------------+-----------------------------------------------+------------------------+
-; sram_controller:c|memory_interface:c|addr_out[0]    ; sram_controller:c|memory_interface:c|Mux12    ; yes                    ;
-; sram_controller:c|memory_interface:c|addr_out[1]    ; sram_controller:c|memory_interface:c|Mux12    ; yes                    ;
-; sram_controller:c|memory_interface:c|addr_out[2]    ; sram_controller:c|memory_interface:c|Mux12    ; yes                    ;
-; sram_controller:c|memory_interface:c|addr_out[3]    ; sram_controller:c|memory_interface:c|Mux12    ; yes                    ;
-; sram_controller:c|memory_interface:c|addr_out[4]    ; sram_controller:c|memory_interface:c|Mux12    ; yes                    ;
-; sram_controller:c|memory_interface:c|addr_out[5]    ; sram_controller:c|memory_interface:c|Mux12    ; yes                    ;
-; sram_controller:c|memory_interface:c|addr_out[9]    ; sram_controller:c|memory_interface:c|Mux12    ; yes                    ;
-; sram_controller:c|memory_interface:c|addr_out[10]   ; sram_controller:c|memory_interface:c|Mux12    ; yes                    ;
-; sram_controller:c|memory_interface:c|dqm[0]         ; sram_controller:c|memory_interface:c|WideOr7  ; yes                    ;
-; sram_controller:c|memory_interface:c|dqm[1]         ; sram_controller:c|memory_interface:c|WideOr7  ; yes                    ;
-; sram_controller:c|memory_interface:c|ras_n          ; sram_controller:c|memory_interface:c|Decoder0 ; yes                    ;
-; sram_controller:c|memory_interface:c|cas_n          ; sram_controller:c|memory_interface:c|Decoder0 ; yes                    ;
-; sram_controller:c|memory_interface:c|we_n           ; sram_controller:c|memory_interface:c|Decoder0 ; yes                    ;
-; sram_controller:c|core:m|waiting                    ; sram_controller:c|core:m|Mux0                 ; yes                    ;
-; sram_controller:c|core:m|valid                      ; sram_controller:c|core:m|WideOr4              ; yes                    ;
-; sram_controller:c|core:m|rd_incom                   ; sram_controller:c|core:m|WideOr3              ; yes                    ;
-; sram_controller:c|core:m|w_ready                    ; sram_controller:c|core:m|WideOr1              ; yes                    ;
-; Number of user-specified and inferred latches = 17  ;                                               ;                        ;
-+-----------------------------------------------------+-----------------------------------------------+------------------------+
-Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |TopLevel|core_one:c|state                                                                                                                                                                                                           ;
++----------------+---------------+----------------+----------------+----------------+----------------+----------------+----------------+---------------+--------------+--------------+----------------+----------------+----------------+--------------+
+; Name           ; state.ST_PREP ; state.ST_WRIT2 ; state.ST_WRIT1 ; state.ST_READ4 ; state.ST_READ3 ; state.ST_READ2 ; state.ST_READ1 ; state.ST_STAL ; state.ST_REF ; state.ST_ACT ; state.ST_INIT3 ; state.ST_INIT2 ; state.ST_INIT1 ; state.ST_POW ;
++----------------+---------------+----------------+----------------+----------------+----------------+----------------+----------------+---------------+--------------+--------------+----------------+----------------+----------------+--------------+
+; state.ST_POW   ; 0             ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0             ; 0            ; 0            ; 0              ; 0              ; 0              ; 0            ;
+; state.ST_INIT1 ; 0             ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0             ; 0            ; 0            ; 0              ; 0              ; 1              ; 1            ;
+; state.ST_INIT2 ; 0             ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0             ; 0            ; 0            ; 0              ; 1              ; 0              ; 1            ;
+; state.ST_INIT3 ; 0             ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0             ; 0            ; 0            ; 1              ; 0              ; 0              ; 1            ;
+; state.ST_ACT   ; 0             ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0             ; 0            ; 1            ; 0              ; 0              ; 0              ; 1            ;
+; state.ST_REF   ; 0             ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0             ; 1            ; 0            ; 0              ; 0              ; 0              ; 1            ;
+; state.ST_STAL  ; 0             ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1             ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
+; state.ST_READ1 ; 0             ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0             ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
+; state.ST_READ2 ; 0             ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0             ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
+; state.ST_READ3 ; 0             ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0             ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
+; state.ST_READ4 ; 0             ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0             ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
+; state.ST_WRIT1 ; 0             ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0             ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
+; state.ST_WRIT2 ; 0             ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0             ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
+; state.ST_PREP  ; 1             ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0             ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
++----------------+---------------+----------------+----------------+----------------+----------------+----------------+----------------+---------------+--------------+--------------+----------------+----------------+----------------+--------------+
 
 
 +---------------------------------------------------------------------------------+
@@ -273,9 +274,21 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------+----------------------------------------+
 ; Register name                          ; Reason for Removal                     ;
 +----------------------------------------+----------------------------------------+
-; data_in[8..15]                         ; Stuck at GND due to stuck port data_in ;
-; addr[6..21]                            ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 24 ;                                        ;
+; Teste_1:t1|data_reg[4,5]               ; Stuck at GND due to stuck port data_in ;
+; Teste_1:t1|data_reg[6,7]               ; Stuck at VCC due to stuck port data_in ;
+; core_one:c|az_be_n_r[1]                ; Stuck at GND due to stuck port data_in ;
+; Teste_1:t1|data_reg[3,15]              ; Merged with Teste_1:t1|data_reg[11]    ;
+; Teste_1:t1|data_reg[2,14]              ; Merged with Teste_1:t1|data_reg[10]    ;
+; Teste_1:t1|addr_reg[2,3,7..21]         ; Merged with Teste_1:t1|addr_reg[0]     ;
+; Teste_1:t1|data_reg[1,9]               ; Merged with Teste_1:t1|data_reg[13]    ;
+; Teste_1:t1|data_reg[8,12]              ; Merged with Teste_1:t1|data_reg[0]     ;
+; Teste_1:t1|addr_reg[0]                 ; Stuck at GND due to stuck port data_in ;
+; Teste_1:t1|addr_reg[1]                 ; Stuck at VCC due to stuck port data_in ;
+; core_one:c|state~4                     ; Lost fanout                            ;
+; core_one:c|state~5                     ; Lost fanout                            ;
+; core_one:c|state~6                     ; Lost fanout                            ;
+; core_one:c|state~7                     ; Lost fanout                            ;
+; Total Number of Removed Registers = 36 ;                                        ;
 +----------------------------------------+----------------------------------------+
 
 
@@ -284,54 +297,78 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 44    ;
-; Number of registers using Synchronous Clear  ; 14    ;
+; Total registers                              ; 307   ;
+; Number of registers using Synchronous Clear  ; 41    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Clear ; 51    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 32    ;
+; Number of registers using Clock Enable       ; 284   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                    ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                          ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
-; 18:1               ; 14 bits   ; 168 LEs       ; 14 LEs               ; 154 LEs                ; Yes        ; |TopLevel|sram_controller:c|core:m|counter[5]       ;
-; 10:1               ; 6 bits    ; 36 LEs        ; 6 LEs                ; 30 LEs                 ; No         ; |TopLevel|sram_controller:c|memory_interface:c|Mux5 ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; core_one:c|command[3]                  ; 1       ;
+; core_one:c|command[2]                  ; 1       ;
+; core_one:c|command[1]                  ; 1       ;
+; Total number of inverted registers = 3 ;         ;
++----------------------------------------+---------+
 
 
-+----------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: sram_controller:c ;
-+----------------+-------+---------------------------------------+
-; Parameter Name ; Value ; Type                                  ;
-+----------------+-------+---------------------------------------+
-; W_B_Length     ; 1     ; Unsigned Binary                       ;
-; Test_mode      ; 00    ; Unsigned Binary                       ;
-; CAS_Latency    ; 000   ; Unsigned Binary                       ;
-; Burst_length   ; 000   ; Unsigned Binary                       ;
-; Wrap_type      ; 0     ; Unsigned Binary                       ;
-; RASCAS_time    ; 010   ; Unsigned Binary                       ;
-+----------------+-------+---------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
+; 4:1                ; 2 bits    ; 4 LEs         ; 0 LEs                ; 4 LEs                  ; Yes        ; |TopLevel|Teste_1:t1|addr_reg[1]         ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |TopLevel|Teste_1:t1|addr_reg[6]         ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |TopLevel|Teste_1:t1|prev_step[0]        ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[7][8]  ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[6][10] ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[5][15] ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[4][6]  ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[3][1]  ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[2][6]  ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[1][9]  ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[0][14] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|addr_in_r[9]                   ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |TopLevel|data_in_r[3]                   ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |TopLevel|addr_in_r[1]                   ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |TopLevel|data_in_r[12]                  ;
+; 5:1                ; 11 bits   ; 33 LEs        ; 11 LEs               ; 22 LEs                 ; Yes        ; |TopLevel|addr_in_r[12]                  ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |TopLevel|Teste_1:t1|step[2]             ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; Yes        ; |TopLevel|core_one:c|zs_addr_r[0]        ;
+; 9:1                ; 33 bits   ; 198 LEs       ; 33 LEs               ; 165 LEs                ; Yes        ; |TopLevel|core_one:c|counter[22]         ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |TopLevel|Mux58                          ;
+; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |TopLevel|Mux62                          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |TopLevel|core_one:c|state               ;
+; 11:1               ; 10 bits   ; 70 LEs        ; 60 LEs               ; 10 LEs                 ; No         ; |TopLevel|Mux42                          ;
+; 11:1               ; 6 bits    ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; No         ; |TopLevel|Mux51                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
 
 
-+-----------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: sram_controller:c|core:m ;
-+----------------+-------+----------------------------------------------+
-; Parameter Name ; Value ; Type                                         ;
-+----------------+-------+----------------------------------------------+
-; CLK_FREQUENCY  ; 27    ; Signed Integer                               ;
-; REF_TIME       ; 64    ; Signed Integer                               ;
-; REF_COUNT      ; 4096  ; Signed Integer                               ;
-; PWR_TIME       ; 100   ; Signed Integer                               ;
-; ROW_SIZE       ; 4096  ; Signed Integer                               ;
-; COL_SIZE       ; 512   ; Signed Integer                               ;
-; NUM_BANK       ; 4     ; Signed Integer                               ;
-+----------------+-------+----------------------------------------------+
++---------------------------------------------------------+
+; Parameter Settings for User Entity Instance: core_one:c ;
++----------------+-------+--------------------------------+
+; Parameter Name ; Value ; Type                           ;
++----------------+-------+--------------------------------+
+; CLK_FREQUENCY  ; 27    ; Signed Integer                 ;
+; REF_TIME       ; 64    ; Signed Integer                 ;
+; REF_COUNT      ; 4096  ; Signed Integer                 ;
+; PWR_TIME       ; 200   ; Signed Integer                 ;
+; ROW_SIZE       ; 4096  ; Signed Integer                 ;
+; COL_SIZE       ; 512   ; Signed Integer                 ;
+; NUM_BANK       ; 4     ; Signed Integer                 ;
+; W_B_Length     ; 0     ; Unsigned Binary                ;
+; Test_mode      ; 00    ; Unsigned Binary                ;
+; CAS_Latency    ; 010   ; Unsigned Binary                ;
+; Wrap_type      ; 0     ; Unsigned Binary                ;
+; Burst_length   ; 000   ; Unsigned Binary                ;
++----------------+-------+--------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -376,7 +413,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; CLK4_MULTIPLY_BY              ; 1                      ; Untyped            ;
 ; CLK3_MULTIPLY_BY              ; 1                      ; Untyped            ;
 ; CLK2_MULTIPLY_BY              ; 1                      ; Untyped            ;
-; CLK1_MULTIPLY_BY              ; 1                      ; Untyped            ;
+; CLK1_MULTIPLY_BY              ; 1                      ; Signed Integer     ;
 ; CLK0_MULTIPLY_BY              ; 1                      ; Signed Integer     ;
 ; CLK9_DIVIDE_BY                ; 0                      ; Untyped            ;
 ; CLK8_DIVIDE_BY                ; 0                      ; Untyped            ;
@@ -386,7 +423,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; CLK4_DIVIDE_BY                ; 1                      ; Untyped            ;
 ; CLK3_DIVIDE_BY                ; 1                      ; Untyped            ;
 ; CLK2_DIVIDE_BY                ; 1                      ; Untyped            ;
-; CLK1_DIVIDE_BY                ; 1                      ; Untyped            ;
+; CLK1_DIVIDE_BY                ; 1                      ; Signed Integer     ;
 ; CLK0_DIVIDE_BY                ; 1                      ; Signed Integer     ;
 ; CLK9_PHASE_SHIFT              ; 0                      ; Untyped            ;
 ; CLK8_PHASE_SHIFT              ; 0                      ; Untyped            ;
@@ -397,7 +434,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; CLK3_PHASE_SHIFT              ; 0                      ; Untyped            ;
 ; CLK2_PHASE_SHIFT              ; 0                      ; Untyped            ;
 ; CLK1_PHASE_SHIFT              ; 0                      ; Untyped            ;
-; CLK0_PHASE_SHIFT              ; -3000                  ; Untyped            ;
+; CLK0_PHASE_SHIFT              ; -15000                 ; Untyped            ;
 ; CLK5_TIME_DELAY               ; 0                      ; Untyped            ;
 ; CLK4_TIME_DELAY               ; 0                      ; Untyped            ;
 ; CLK3_TIME_DELAY               ; 0                      ; Untyped            ;
@@ -412,7 +449,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; CLK4_DUTY_CYCLE               ; 50                     ; Untyped            ;
 ; CLK3_DUTY_CYCLE               ; 50                     ; Untyped            ;
 ; CLK2_DUTY_CYCLE               ; 50                     ; Untyped            ;
-; CLK1_DUTY_CYCLE               ; 50                     ; Untyped            ;
+; CLK1_DUTY_CYCLE               ; 50                     ; Signed Integer     ;
 ; CLK0_DUTY_CYCLE               ; 50                     ; Signed Integer     ;
 ; CLK9_USE_EVEN_COUNTER_MODE    ; OFF                    ; Untyped            ;
 ; CLK8_USE_EVEN_COUNTER_MODE    ; OFF                    ; Untyped            ;
@@ -642,7 +679,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; PORT_CLKBAD0                  ; PORT_UNUSED            ; Untyped            ;
 ; PORT_CLKBAD1                  ; PORT_UNUSED            ; Untyped            ;
 ; PORT_CLK0                     ; PORT_USED              ; Untyped            ;
-; PORT_CLK1                     ; PORT_UNUSED            ; Untyped            ;
+; PORT_CLK1                     ; PORT_USED              ; Untyped            ;
 ; PORT_CLK2                     ; PORT_UNUSED            ; Untyped            ;
 ; PORT_CLK3                     ; PORT_UNUSED            ; Untyped            ;
 ; PORT_CLK4                     ; PORT_UNUSED            ; Untyped            ;
@@ -726,35 +763,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+--------------------------------+
 
 
-+------------------------------------------------------------------+
-; Port Connectivity Checks: "sram_controller:c|memory_interface:c" ;
-+-------------+-------+----------+---------------------------------+
-; Port        ; Type  ; Severity ; Details                         ;
-+-------------+-------+----------+---------------------------------+
-; mrs[11..10] ; Input ; Info     ; Stuck at GND                    ;
-; mrs[8..0]   ; Input ; Info     ; Stuck at GND                    ;
-; mrs[9]      ; Input ; Info     ; Stuck at VCC                    ;
-+-------------+-------+----------+---------------------------------+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Teste_1:t1"                                                                           ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; tested ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; error  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "sram_controller:c|core:m"                                                                ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------+
-; Port      ; Type   ; Severity ; Details                                                                             ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------+
-; cur_state ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; counter   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+--------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "sram_controller:c"                                                                            ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port           ; Type   ; Severity ; Details                                                                             ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
-; az_cs          ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; za_data[15..8] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "core_one:c"                                                                                                                                                                                 ;
++-----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                                                                                                                          ;
++-----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; az_be_n         ; Input  ; Warning  ; Input port expression (2 bits) is wider than the input port (1 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; counter         ; Output ; Warning  ; Output or bidir port (33 bits) is wider than the port expression (32 bits) it drives; bit(s) "counter[32..32]" have no fanouts                                                   ;
+; counter[31..12] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                              ;
+; error           ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                                                         ;
++-----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -762,7 +790,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -772,85 +800,35 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Wed Oct 26 23:39:57 2022
+    Info: Processing started: Tue May 02 11:36:30 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off VerilogWarmup -c VerilogWarmup
 Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (12021): Found 1 design units, including 1 entities, in source file memoryinterface.v
-    Info (12023): Found entity 1: memory_interface
-Info (12021): Found 1 design units, including 1 entities, in source file core.v
-    Info (12023): Found entity 1: core
-Info (12021): Found 1 design units, including 1 entities, in source file memorycontroller.v
-    Info (12023): Found entity 1: sram_controller
-Info (12021): Found 1 design units, including 1 entities, in source file toplevel.v
-    Info (12023): Found entity 1: TopLevel
+Info (12021): Found 2 design units, including 2 entities, in source file qsys_teste/synthesis/submodules/qsys_teste_new_sdram_controller_0.v
+    Info (12023): Found entity 1: qsys_teste_new_sdram_controller_0_input_efifo_module
+    Info (12023): Found entity 2: qsys_teste_new_sdram_controller_0
+Info (12021): Found 1 design units, including 1 entities, in source file qsys_teste/synthesis/qsys_teste.v
+    Info (12023): Found entity 1: qsys_teste
+Info (12021): Found 2 design units, including 2 entities, in source file qsys_teste/synthesis/submodules/qsys_teste_new_sdram_controller_0_test_component.v
+    Info (12023): Found entity 1: qsys_teste_new_sdram_controller_0_test_component_ram_module
+    Info (12023): Found entity 2: qsys_teste_new_sdram_controller_0_test_component
+Info (12021): Found 2 design units, including 2 entities, in source file toplevel.v
+    Info (12023): Found entity 1: dec7seg
+    Info (12023): Found entity 2: TopLevel
 Info (12021): Found 1 design units, including 1 entities, in source file apll.v
     Info (12023): Found entity 1: apll
-Info (12021): Found 1 design units, including 1 entities, in source file memorycontroller_tb.v
-    Info (12023): Found entity 1: sram_controller_tb
-Warning (10236): Verilog HDL Implicit Net warning at MemoryController_tb.v(52): created implicit net for "ADDR"
-Warning (10236): Verilog HDL Implicit Net warning at MemoryController_tb.v(53): created implicit net for "dram_ba"
-Warning (10236): Verilog HDL Implicit Net warning at MemoryController_tb.v(54): created implicit net for "dqm"
+Info (12021): Found 1 design units, including 1 entities, in source file core_one.v
+    Info (12023): Found entity 1: core_one
+Info (12021): Found 1 design units, including 1 entities, in source file teste_1.v
+    Info (12023): Found entity 1: Teste_1
+Warning (10037): Verilog HDL or VHDL warning at qsys_teste_new_sdram_controller_0.v(316): conditional expression evaluates to a constant
+Warning (10037): Verilog HDL or VHDL warning at qsys_teste_new_sdram_controller_0.v(326): conditional expression evaluates to a constant
+Warning (10037): Verilog HDL or VHDL warning at qsys_teste_new_sdram_controller_0.v(336): conditional expression evaluates to a constant
+Warning (10037): Verilog HDL or VHDL warning at qsys_teste_new_sdram_controller_0.v(680): conditional expression evaluates to a constant
 Info (12127): Elaborating entity "TopLevel" for the top level hierarchy
-Warning (10034): Output port "LEDR[13..0]" at TopLevel.v(5) has no driver
-Warning (10034): Output port "LEDG[8]" at TopLevel.v(6) has no driver
-Info (12128): Elaborating entity "sram_controller" for hierarchy "sram_controller:c"
-Info (12128): Elaborating entity "core" for hierarchy "sram_controller:c|core:m"
-Warning (10235): Verilog HDL Always Construct warning at Core.v(127): variable "we_n" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Core.v(127): variable "re_n" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Core.v(130): variable "we_n" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Core.v(130): variable "re_n" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Core.v(133): variable "rd_incom" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10240): Verilog HDL Always Construct warning at Core.v(84): inferring latch(es) for variable "w_ready", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at Core.v(84): inferring latch(es) for variable "rd_incom", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at Core.v(84): inferring latch(es) for variable "waiting", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at Core.v(84): inferring latch(es) for variable "valid", which holds its previous value in one or more paths through the always construct
-Info (10041): Inferred latch for "valid" at Core.v(84)
-Info (10041): Inferred latch for "waiting" at Core.v(84)
-Info (10041): Inferred latch for "rd_incom" at Core.v(84)
-Info (10041): Inferred latch for "w_ready" at Core.v(84)
-Info (12128): Elaborating entity "memory_interface" for hierarchy "sram_controller:c|memory_interface:c"
-Warning (10235): Verilog HDL Always Construct warning at MemoryInterface.v(87): variable "mrs" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at MemoryInterface.v(96): variable "ba_in" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at MemoryInterface.v(97): variable "addr_l" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at MemoryInterface.v(98): variable "be_in" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at MemoryInterface.v(107): variable "ba_in" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at MemoryInterface.v(108): variable "addr_c" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at MemoryInterface.v(109): variable "be_in" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at MemoryInterface.v(118): variable "ba_in" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at MemoryInterface.v(119): variable "addr_c" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at MemoryInterface.v(120): variable "be_in" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at MemoryInterface.v(129): variable "ba_in" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at MemoryInterface.v(130): variable "addr_c" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at MemoryInterface.v(131): variable "be_in" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at MemoryInterface.v(140): variable "ba_in" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at MemoryInterface.v(141): variable "addr_c" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at MemoryInterface.v(142): variable "be_in" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at MemoryInterface.v(151): variable "ba_in" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10240): Verilog HDL Always Construct warning at MemoryInterface.v(43): inferring latch(es) for variable "ras_n", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at MemoryInterface.v(43): inferring latch(es) for variable "cas_n", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at MemoryInterface.v(43): inferring latch(es) for variable "we_n", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at MemoryInterface.v(43): inferring latch(es) for variable "dqm", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at MemoryInterface.v(43): inferring latch(es) for variable "ba_out", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at MemoryInterface.v(43): inferring latch(es) for variable "addr_out", which holds its previous value in one or more paths through the always construct
-Info (10041): Inferred latch for "addr_out[0]" at MemoryInterface.v(43)
-Info (10041): Inferred latch for "addr_out[1]" at MemoryInterface.v(43)
-Info (10041): Inferred latch for "addr_out[2]" at MemoryInterface.v(43)
-Info (10041): Inferred latch for "addr_out[3]" at MemoryInterface.v(43)
-Info (10041): Inferred latch for "addr_out[4]" at MemoryInterface.v(43)
-Info (10041): Inferred latch for "addr_out[5]" at MemoryInterface.v(43)
-Info (10041): Inferred latch for "addr_out[6]" at MemoryInterface.v(43)
-Info (10041): Inferred latch for "addr_out[7]" at MemoryInterface.v(43)
-Info (10041): Inferred latch for "addr_out[8]" at MemoryInterface.v(43)
-Info (10041): Inferred latch for "addr_out[9]" at MemoryInterface.v(43)
-Info (10041): Inferred latch for "addr_out[10]" at MemoryInterface.v(43)
-Info (10041): Inferred latch for "addr_out[11]" at MemoryInterface.v(43)
-Info (10041): Inferred latch for "ba_out[0]" at MemoryInterface.v(43)
-Info (10041): Inferred latch for "ba_out[1]" at MemoryInterface.v(43)
-Info (10041): Inferred latch for "dqm[0]" at MemoryInterface.v(43)
-Info (10041): Inferred latch for "dqm[1]" at MemoryInterface.v(43)
-Info (10041): Inferred latch for "we_n" at MemoryInterface.v(43)
-Info (10041): Inferred latch for "cas_n" at MemoryInterface.v(43)
-Info (10041): Inferred latch for "ras_n" at MemoryInterface.v(43)
+Warning (10034): Output port "LEDR[15..3]" at TopLevel.v(42) has no driver
+Warning (10034): Output port "LEDG[5..3]" at TopLevel.v(43) has no driver
+Info (12128): Elaborating entity "core_one" for hierarchy "core_one:c"
+Warning (10036): Verilog HDL or VHDL warning at Core_one.v(107): object "az_wr_n_r" assigned a value but never read
 Info (12128): Elaborating entity "apll" for hierarchy "apll:a"
 Info (12128): Elaborating entity "altpll" for hierarchy "apll:a|altpll:altpll_component"
 Info (12130): Elaborated megafunction instantiation "apll:a|altpll:altpll_component"
@@ -858,7 +836,11 @@ Info (12133): Instantiated megafunction "apll:a|altpll:altpll_component" with th
     Info (12134): Parameter "clk0_divide_by" = "1"
     Info (12134): Parameter "clk0_duty_cycle" = "50"
     Info (12134): Parameter "clk0_multiply_by" = "1"
-    Info (12134): Parameter "clk0_phase_shift" = "-3000"
+    Info (12134): Parameter "clk0_phase_shift" = "-15000"
+    Info (12134): Parameter "clk1_divide_by" = "1"
+    Info (12134): Parameter "clk1_duty_cycle" = "50"
+    Info (12134): Parameter "clk1_multiply_by" = "1"
+    Info (12134): Parameter "clk1_phase_shift" = "0"
     Info (12134): Parameter "compensate_clock" = "CLK0"
     Info (12134): Parameter "inclk0_input_frequency" = "37037"
     Info (12134): Parameter "intended_device_family" = "Cyclone II"
@@ -891,7 +873,7 @@ Info (12133): Instantiated megafunction "apll:a|altpll:altpll_component" with th
     Info (12134): Parameter "port_scanread" = "PORT_UNUSED"
     Info (12134): Parameter "port_scanwrite" = "PORT_UNUSED"
     Info (12134): Parameter "port_clk0" = "PORT_USED"
-    Info (12134): Parameter "port_clk1" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clk1" = "PORT_USED"
     Info (12134): Parameter "port_clk2" = "PORT_UNUSED"
     Info (12134): Parameter "port_clk3" = "PORT_UNUSED"
     Info (12134): Parameter "port_clk4" = "PORT_UNUSED"
@@ -906,44 +888,17 @@ Info (12133): Instantiated megafunction "apll:a|altpll:altpll_component" with th
     Info (12134): Parameter "port_extclk1" = "PORT_UNUSED"
     Info (12134): Parameter "port_extclk2" = "PORT_UNUSED"
     Info (12134): Parameter "port_extclk3" = "PORT_UNUSED"
-Warning (13012): Latch sram_controller:c|memory_interface:c|addr_out[0] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal sram_controller:c|core:m|cur_state[0]
-Warning (13012): Latch sram_controller:c|memory_interface:c|addr_out[1] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal sram_controller:c|core:m|cur_state[0]
-Warning (13012): Latch sram_controller:c|memory_interface:c|addr_out[2] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal sram_controller:c|core:m|cur_state[0]
-Warning (13012): Latch sram_controller:c|memory_interface:c|addr_out[3] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal sram_controller:c|core:m|cur_state[0]
-Warning (13012): Latch sram_controller:c|memory_interface:c|addr_out[4] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal sram_controller:c|core:m|cur_state[0]
-Warning (13012): Latch sram_controller:c|memory_interface:c|addr_out[5] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal sram_controller:c|core:m|cur_state[0]
-Warning (13012): Latch sram_controller:c|memory_interface:c|addr_out[9] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal sram_controller:c|core:m|cur_state[0]
-Warning (13012): Latch sram_controller:c|memory_interface:c|addr_out[10] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal sram_controller:c|core:m|cur_state[3]
-Warning (13012): Latch sram_controller:c|memory_interface:c|dqm[0] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal sram_controller:c|core:m|cur_state[3]
-Warning (13012): Latch sram_controller:c|memory_interface:c|dqm[1] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal sram_controller:c|core:m|cur_state[3]
-Warning (13012): Latch sram_controller:c|memory_interface:c|ras_n has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal sram_controller:c|core:m|cur_state[3]
-Warning (13012): Latch sram_controller:c|memory_interface:c|cas_n has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal sram_controller:c|core:m|cur_state[3]
-Warning (13012): Latch sram_controller:c|memory_interface:c|we_n has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal sram_controller:c|core:m|cur_state[3]
-Warning (13012): Latch sram_controller:c|core:m|waiting has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal sram_controller:c|core:m|cur_state[1]
-Warning (13012): Latch sram_controller:c|core:m|valid has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal sram_controller:c|core:m|cur_state[0]
-Warning (13012): Latch sram_controller:c|core:m|rd_incom has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal sram_controller:c|core:m|cur_state[0]
-Warning (13012): Latch sram_controller:c|core:m|w_ready has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal sram_controller:c|core:m|cur_state[0]
+Info (12128): Elaborating entity "Teste_1" for hierarchy "Teste_1:t1"
+Warning (10230): Verilog HDL assignment warning at Teste_1.v(68): truncated value with size 32 to match size of target (4)
+Warning (10027): Verilog HDL or VHDL warning at the Teste_1.v(77): index expression is not wide enough to address all of the elements in the array
+Warning (10230): Verilog HDL assignment warning at Teste_1.v(86): truncated value with size 32 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at Teste_1.v(94): truncated value with size 32 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at Teste_1.v(101): truncated value with size 32 to match size of target (2)
+Info (12128): Elaborating entity "dec7seg" for hierarchy "dec7seg:h7"
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDR[0]" is stuck at GND
-    Warning (13410): Pin "LEDR[1]" is stuck at GND
-    Warning (13410): Pin "LEDR[2]" is stuck at GND
     Warning (13410): Pin "LEDR[3]" is stuck at GND
     Warning (13410): Pin "LEDR[4]" is stuck at GND
     Warning (13410): Pin "LEDR[5]" is stuck at GND
@@ -955,30 +910,39 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LEDR[11]" is stuck at GND
     Warning (13410): Pin "LEDR[12]" is stuck at GND
     Warning (13410): Pin "LEDR[13]" is stuck at GND
-    Warning (13410): Pin "LEDG[8]" is stuck at GND
-    Warning (13410): Pin "DRAM_ADDR[6]" is stuck at GND
-    Warning (13410): Pin "DRAM_ADDR[7]" is stuck at GND
-    Warning (13410): Pin "DRAM_ADDR[8]" is stuck at GND
-    Warning (13410): Pin "DRAM_ADDR[11]" is stuck at GND
-    Warning (13410): Pin "DRAM_BA_1" is stuck at GND
-    Warning (13410): Pin "DRAM_BA_0" is stuck at GND
+    Warning (13410): Pin "LEDR[14]" is stuck at GND
+    Warning (13410): Pin "LEDR[15]" is stuck at GND
+    Warning (13410): Pin "LEDG[3]" is stuck at GND
+    Warning (13410): Pin "LEDG[4]" is stuck at GND
+    Warning (13410): Pin "LEDG[5]" is stuck at GND
+    Warning (13410): Pin "HEX0[7]" is stuck at GND
+    Warning (13410): Pin "HEX1[7]" is stuck at GND
+    Warning (13410): Pin "HEX2[7]" is stuck at GND
+    Warning (13410): Pin "HEX3[7]" is stuck at GND
+    Warning (13410): Pin "HEX4[7]" is stuck at GND
+    Warning (13410): Pin "HEX5[7]" is stuck at GND
+    Warning (13410): Pin "HEX6[7]" is stuck at GND
+    Warning (13410): Pin "HEX7[7]" is stuck at GND
+    Warning (13410): Pin "DRAM_UDQM" is stuck at GND
+    Warning (13410): Pin "DRAM_CKE" is stuck at VCC
+    Warning (13410): Pin "DRAM_CS_N" is stuck at GND
+Info (17049): 4 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/output_files/VerilogWarmup.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 2 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "KEY[2]"
-    Warning (15610): No output dependent on input pin "KEY[3]"
-Info (21057): Implemented 221 device resources after synthesis - the final resource count might be different
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "KEY[0]"
+Info (21057): Implemented 769 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 23 input pins
-    Info (21059): Implemented 49 output pins
+    Info (21059): Implemented 113 output pins
     Info (21060): Implemented 16 bidirectional pins
-    Info (21061): Implemented 132 logic cells
+    Info (21061): Implemented 616 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 97 warnings
-    Info: Peak virtual memory: 4602 megabytes
-    Info: Processing ended: Wed Oct 26 23:39:58 2022
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 44 warnings
+    Info: Peak virtual memory: 4622 megabytes
+    Info: Processing ended: Tue May 02 11:36:32 2023
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
 
 
 +------------------------------------------+

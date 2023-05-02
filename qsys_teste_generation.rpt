@@ -1,0 +1,93 @@
+Info: Starting: Create simulation model
+Info: ip-generate --project-directory=D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/ --output-directory=D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste/simulation/ --file-set=SIM_VERILOG --report-file=sopcinfo:D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste.sopcinfo --report-file=html:D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste.html --report-file=sip:D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste/simulation/qsys_teste.sip --report-file=csv:D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste.csv --report-file=spd:D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste.spd --report-file=cmp:D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste.cmp --system-info=DEVICE_FAMILY="Cyclone II" --system-info=DEVICE=EP2C35F672C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste.qsys
+Progress: Loading VerilogWarmup/qsys_teste.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding new_sdram_controller_0 [altera_avalon_new_sdram_controller 13.0.1.99.2]
+Progress: Parameterizing module new_sdram_controller_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: qsys_teste.new_sdram_controller_0: new_sdram_controller_0.s1 must be connected to an Avalon-MM master
+Warning: qsys_teste.new_sdram_controller_0: new_sdram_controller_0.wire must be exported, or connected to a matching conduit.
+Info: qsys_teste: Generating qsys_teste "qsys_teste" for SIM_VERILOG
+Info: pipeline_bridge_swap_transform: After transform: 2 modules, 2 connections
+Info: No custom instruction connections, skipping transform 
+Info: No Avalon connections, skipping transform 
+Info: merlin_translator_transform: After transform: 2 modules, 2 connections
+Info: reset_adaptation_transform: After transform: 3 modules, 4 connections
+Info: merlin_mm_transform: After transform: 3 modules, 4 connections
+Info: new_sdram_controller_0: Starting RTL generation for module 'qsys_teste_new_sdram_controller_0'
+Info: new_sdram_controller_0:   Generation command is [exec D:/documentos/cefet/22.1/tcc/quartus/install2/quartus/bin/perl/bin/perl.exe -I D:/documentos/cefet/22.1/tcc/quartus/install2/quartus/common/ip/altera/common/perl/5.8.3 -I D:/documentos/cefet/22.1/tcc/quartus/install2/quartus/sopc_builder/bin/europa -I D:/documentos/cefet/22.1/tcc/quartus/install2/quartus/sopc_builder/bin/perl_lib -I D:/documentos/cefet/22.1/tcc/quartus/install2/quartus/sopc_builder/bin -I D:/documentos/cefet/22.1/tcc/quartus/install2/quartus/../ip/altera/sopc_builder_ip/common -I D:/documentos/cefet/22.1/tcc/quartus/install2/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- D:/documentos/cefet/22.1/tcc/quartus/install2/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=qsys_teste_new_sdram_controller_0 --dir=C:/Users/Gabriel/AppData/Local/Temp/alt9426_4810590254467990817.dir/0001_new_sdram_controller_0_gen/ --quartus_dir=D:/documentos/cefet/22.1/tcc/quartus/install2/quartus --verilog --config=C:/Users/Gabriel/AppData/Local/Temp/alt9426_4810590254467990817.dir/0001_new_sdram_controller_0_gen//qsys_teste_new_sdram_controller_0_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/Gabriel/AppData/Local/Temp/alt9426_4810590254467990817.dir/0001_new_sdram_controller_0_gen/  ]
+Info: new_sdram_controller_0: Done RTL generation for module 'qsys_teste_new_sdram_controller_0'
+Info: new_sdram_controller_0: "qsys_teste" instantiated altera_avalon_new_sdram_controller "new_sdram_controller_0"
+Info: rst_controller: "qsys_teste" instantiated altera_reset_controller "rst_controller"
+Info: qsys_teste: Done qsys_teste" with 3 modules, 6 files, 49223 bytes
+Info: ip-generate succeeded.
+Info: Finished: Create simulation model
+Info: Starting: Create Modelsim Project.
+Info: sim-script-gen --spd=D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste.spd --output-directory=D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste/simulation/
+Info: Doing: ip-make-simscript --spd=D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste.spd --output-directory=D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste/simulation/
+Info: Generating the following file(s) for MODELSIM simulator in D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste/simulation/ directory:
+Info: 	mentor/msim_setup.tcl
+Info: Generating the following file(s) for VCS simulator in D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste/simulation/ directory:
+Info: 	synopsys/vcs/vcs_setup.sh
+Info: Generating the following file(s) for VCSMX simulator in D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste/simulation/ directory:
+Info: 	synopsys/vcsmx/synopsys_sim.setup
+Info: 	synopsys/vcsmx/vcsmx_setup.sh
+Info: Generating the following file(s) for NCSIM simulator in D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste/simulation/ directory:
+Info: 	cadence/cds.lib
+Info: 	cadence/hdl.var
+Info: 	cadence/ncsim_setup.sh
+Info: 	2 .cds.lib files in cadence/cds_libs/ directory
+Info: Generating the following file(s) for RIVIERAPRO simulator in D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste/simulation/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: Finished: Create Modelsim Project.
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/ --output-directory=D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste/ --report-file=bsf:D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste.bsf --system-info=DEVICE_FAMILY="Cyclone II" --system-info=DEVICE=EP2C35F672C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste.qsys
+Progress: Loading VerilogWarmup/qsys_teste.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding new_sdram_controller_0 [altera_avalon_new_sdram_controller 13.0.1.99.2]
+Progress: Parameterizing module new_sdram_controller_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: qsys_teste.new_sdram_controller_0: new_sdram_controller_0.s1 must be connected to an Avalon-MM master
+Warning: qsys_teste.new_sdram_controller_0: new_sdram_controller_0.wire must be exported, or connected to a matching conduit.
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/ --output-directory=D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste/synthesis/ --file-set=QUARTUS_SYNTH --report-file=sopcinfo:D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste.sopcinfo --report-file=html:D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste.html --report-file=qip:D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste/synthesis/qsys_teste.qip --report-file=cmp:D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste.cmp --report-file=svd --system-info=DEVICE_FAMILY="Cyclone II" --system-info=DEVICE=EP2C35F672C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste.qsys --language=VERILOG
+Progress: Loading VerilogWarmup/qsys_teste.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding new_sdram_controller_0 [altera_avalon_new_sdram_controller 13.0.1.99.2]
+Progress: Parameterizing module new_sdram_controller_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: qsys_teste.new_sdram_controller_0: new_sdram_controller_0.s1 must be connected to an Avalon-MM master
+Warning: qsys_teste.new_sdram_controller_0: new_sdram_controller_0.wire must be exported, or connected to a matching conduit.
+Info: qsys_teste: Generating qsys_teste "qsys_teste" for QUARTUS_SYNTH
+Info: pipeline_bridge_swap_transform: After transform: 2 modules, 2 connections
+Info: No custom instruction connections, skipping transform 
+Info: No Avalon connections, skipping transform 
+Info: merlin_translator_transform: After transform: 2 modules, 2 connections
+Info: reset_adaptation_transform: After transform: 3 modules, 4 connections
+Info: merlin_mm_transform: After transform: 3 modules, 4 connections
+Info: new_sdram_controller_0: Starting RTL generation for module 'qsys_teste_new_sdram_controller_0'
+Info: new_sdram_controller_0:   Generation command is [exec D:/documentos/cefet/22.1/tcc/quartus/install2/quartus/bin/perl/bin/perl.exe -I D:/documentos/cefet/22.1/tcc/quartus/install2/quartus/common/ip/altera/common/perl/5.8.3 -I D:/documentos/cefet/22.1/tcc/quartus/install2/quartus/sopc_builder/bin/europa -I D:/documentos/cefet/22.1/tcc/quartus/install2/quartus/sopc_builder/bin/perl_lib -I D:/documentos/cefet/22.1/tcc/quartus/install2/quartus/sopc_builder/bin -I D:/documentos/cefet/22.1/tcc/quartus/install2/quartus/../ip/altera/sopc_builder_ip/common -I D:/documentos/cefet/22.1/tcc/quartus/install2/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- D:/documentos/cefet/22.1/tcc/quartus/install2/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=qsys_teste_new_sdram_controller_0 --dir=C:/Users/Gabriel/AppData/Local/Temp/alt9426_4810590254467990817.dir/0004_new_sdram_controller_0_gen/ --quartus_dir=D:/documentos/cefet/22.1/tcc/quartus/install2/quartus --verilog --config=C:/Users/Gabriel/AppData/Local/Temp/alt9426_4810590254467990817.dir/0004_new_sdram_controller_0_gen//qsys_teste_new_sdram_controller_0_component_configuration.pl  --do_build_sim=0  ]
+Info: new_sdram_controller_0: Done RTL generation for module 'qsys_teste_new_sdram_controller_0'
+Info: new_sdram_controller_0: "qsys_teste" instantiated altera_avalon_new_sdram_controller "new_sdram_controller_0"
+Info: rst_controller: "qsys_teste" instantiated altera_reset_controller "rst_controller"
+Info: qsys_teste: Done qsys_teste" with 3 modules, 6 files, 49223 bytes
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

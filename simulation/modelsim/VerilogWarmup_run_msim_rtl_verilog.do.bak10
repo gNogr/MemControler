@@ -1,0 +1,11 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -vlog01compat -work work +incdir+D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste/synthesis/submodules {D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/qsys_teste/synthesis/submodules/qsys_teste_new_sdram_controller_0.v}
+vlog -vlog01compat -work work +incdir+D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup {D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/TopLevel.v}
+vlog -vlog01compat -work work +incdir+D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup {D:/Documentos/CEFET/22.1/TCC/Quartus/install/projects/VerilogWarmup/apll.v}
+

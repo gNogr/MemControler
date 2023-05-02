@@ -1,0 +1,17 @@
+
+State Machine - |TopLevel|core_one:c|state
+Name state.ST_PREP state.ST_WRIT2 state.ST_WRIT1 state.ST_READ4 state.ST_READ3 state.ST_READ2 state.ST_READ1 state.ST_STAL state.ST_REF state.ST_ACT state.ST_INIT3 state.ST_INIT2 state.ST_INIT1 state.ST_POW 
+state.ST_POW 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.ST_INIT1 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.ST_INIT2 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.ST_INIT3 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.ST_ACT 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.ST_REF 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.ST_STAL 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.ST_READ1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.ST_READ2 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.ST_READ3 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.ST_READ4 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.ST_WRIT1 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.ST_WRIT2 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.ST_PREP 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
