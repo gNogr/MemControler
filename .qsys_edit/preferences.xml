@@ -9,13 +9,12 @@
  </systemtable>
  <clocktable>
   <columns>
-   <clockname preferredWidth="413" />
-   <clocksource preferredWidth="412" />
-   <frequency preferredWidth="397" />
+   <clockname preferredWidth="491" />
+   <clocksource preferredWidth="489" />
+   <frequency preferredWidth="475" />
   </columns>
  </clocktable>
- <library
-   expandedCategories="Library/Memories and Memory Controllers,Library/Configuration &amp; Programming,Library/Peripherals,Project,Library,Library/Memories and Memory Controllers/External Memory Interfaces,Library/Memories and Memory Controllers/External Memory Interfaces/SDRAM Interfaces,Library/Memories and Memory Controllers/On-Chip,Library/Clock and Reset" />
+ <library expandedCategories="Library,Project" />
  <window width="1769" height="928" x="0" y="0" />
  <hdlexample language="VERILOG" />
  <generation simulation="VERILOG" testbench_system="STANDARD" />

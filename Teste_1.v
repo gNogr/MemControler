@@ -10,14 +10,15 @@ module Teste_1(
 	
 	output reg [21:0]	addr_reg,
 	output reg [15:0]	data_reg,
-	output reg [7:0]	error,
+	output     [7:0]	error,
 	output reg [7:0]	tested,
 	output 	  [15:0]	read_value,
 	output reg 			we,
+	output reg 			oe,
 	output reg			finish
 	
 );
-
+reg old_input;
 reg [2:0] step, prev_step;
 reg [1:0] phase;
 wire [21:0] test_addrs[7:0];
@@ -56,6 +57,15 @@ assign test_data[7] = 16'hFFCF;
 
 assign read_value = read_value_r[check_read];
 
+assign error[0] = read_value_r[0] == test_data[0];
+assign error[1] = read_value_r[1] == test_data[1];
+assign error[2] = read_value_r[2] == test_data[2];
+assign error[3] = read_value_r[3] == test_data[3];
+assign error[4] = read_value_r[4] == test_data[4];
+assign error[5] = read_value_r[5] == test_data[5];
+assign error[6] = read_value_r[6] == test_data[6];
+assign error[7] = read_value_r[7] == test_data[7];
+
 always @(posedge clk)
 begin
 	if (!rst) 
@@ -64,48 +74,50 @@ begin
 		finish <= 'b0;
 		step <= 0;
 		prev_step <= 0;
-		we = 0;
+		old_input <= 0;
+		we <= 0;
+		oe <= 0;
 		for(i='b0; i<8; i=i+1) begin
 			read_value_r[i] <= 16'hFFFF;
-			error[i] <= 'b1;
 			tested[i] <= 'b0;
 		end
 	end
 	else
 	begin
-		if (memory_results_ready && phase > 2'd1) begin
-				error[prev_step] <= ~(mem_out == data_reg[prev_step]);
-				read_value_r[prev_step] <= mem_out;
-				tested[prev_step] <= 'b1;
-				prev_step <= prev_step + 1'd1;
-			end
-		if (memory_accepts_input) begin
+		old_input <= memory_accepts_input;
+		if (memory_accepts_input && !old_input) begin
 			case (phase)
 			2'd0:
 				begin
 				phase <= start ? phase + 'b1 : phase;
-				we = 1;
+				we <= 1;
+				oe <= 1;
 				end
 			2'd1:
 				begin
 				addr_reg <= test_addrs[step];
 				data_reg <= test_data[step];
-				we = 1;
+				we <= 1;
 				phase <= step == 'b111 ? phase + 'b1 : phase;
-				step <= (phase == 0 || phase == 3) ? 3'd0 : step + 1'd1;
+				step <= step + 1'd1;
 				end
 			2'd2:
 				begin
 				addr_reg <= test_addrs[step];
-				we = 0;
+				we <= 0;
 				phase <= step == 'b111 ? phase + 'b1 : phase;
-				step <= (phase == 0 || phase == 3) ? 3'd0 : step + 1'd1;
+				step <= step + 1'd1;
 				end
 			2'd3:
 				begin
 				finish <= 'b1;
 				end
 		endcase
+		end
+		if (memory_results_ready && phase > 2'd1 && !finish) begin
+				read_value_r[prev_step] <= mem_out;
+				tested[prev_step] <= 'b1;
+				prev_step <= prev_step + 1'd1;
 		end
 	end
 end

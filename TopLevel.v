@@ -34,8 +34,21 @@ endmodule
 
 
 module TopLevel (
-	input [17:0] SW, // toggle switches
-	input [3:0] KEY, // Keys
+	input [17:0] SW, 
+	// Toggle Switches:
+	// SW[17:16] Controlam o modo de visualização e interação:
+	//		Modo 0:
+	//		Modo 1:
+	//		Modo 2:
+	//		Modo 3:
+	
+	input [3:0] KEY, 
+	// Keys
+	//		KEY 3: Reset do controlador
+	// 	KEY 2: Atualiza registros do top level
+	//		KEY 1: Sinal start do módulo de teste
+	//		KEY 0: Não Utilizada
+	
 	input CLOCK_27,
 	
 	// LEDS
@@ -71,14 +84,17 @@ module TopLevel (
 	reg [21:0]	addr_in_r;
 	reg [15:0]	data_in_r;
 	reg			we_in_r;
+	reg			oe_in_r;
 	reg [1:0]	be_n;
 	
 	wire 			rst_n;
+	//wire [32:0] dec_counter;
 	assign		rst_n	= KEY[3];
 	
 	reg [2:0]	check_read;
 	wire [15:0]	data_in, data_test, read_value;
 	wire			we_in, we_test;
+	wire			oe_in, oe_test;
 	wire [21:0]	addr_in, addr_test;
 	wire [7:0]	error, tested;
 	wire 			finish;
@@ -86,6 +102,7 @@ module TopLevel (
 	assign		data_in	= SW[17:16] == 2'd2 ? data_test : data_in_r;
 	assign		addr_in	= SW[17:16] == 2'd2 ? addr_test : addr_in_r;
 	assign		we_in		= SW[17:16] == 2'd2 ? we_test	  : we_in_r;
+	assign		oe_in		= SW[17:16] == 2'd2 ? oe_test	  : oe_in_r;
 	assign		start		= ~KEY[1] && SW[17:16] == 2'd2;
 	
 	wire [15:0] data_out;
@@ -103,37 +120,35 @@ module TopLevel (
 	wire [1:0] dqm;
 	wire [1:0] dram_ba;
 	
-	assign DRAM_CKE = 1'b1;
-	assign DRAM_CS_N = 1'b0;
-	
 	assign DRAM_LDQM = dqm[0];
 	assign DRAM_UDQM = dqm[1];
 	
 	assign DRAM_BA_0 = dram_ba[0];
 	assign DRAM_BA_1 = dram_ba[1];
 	
-	
+
 	core_one c (
 	// Sistema --> Controlador
 	.clk			(controller_clk),					//  clock - Velocidade de 100MHz ou 130MHz
 	.rst_n		(rst_n),				//  Inicializa a memória
-	//.az_cs		(1'b1),					//  chip enable
+	.az_ce		(1'b1),					//  chip enable
 	.az_wr_n 	(~we_in), 				//  write op
+	.az_oe_n		(~oe_in),
 	.az_be_n 	(be_n),				//  byte enable mask
 	.az_addr 	(addr_in),				//  endereço da requisição
 	.az_data 	(data_in),				//  dados da requisição
 
 	// Controlador --> Sistema
 	.za_valid	(valid_out),			//  ????  
-	.za_wait		(busy_out),	//  Sinaliza que a memória está ocupada
+	.za_busy		(busy_out),	//  Sinaliza que a memória está ocupada
 	.za_data		(data_out),				//  Output de dados
 
 	// Controlador --> Memória
+	.zs_cke		(DRAM_CKE),					//  Clock Enable p/ memória
+	.zs_cs_n		(DRAM_CS_N),				//  Chip Select p/ memória
 	.zs_addr 	(DRAM_ADDR),				//  Barramento de endereços de linha/coluna
 	.zs_ba		(dram_ba),					//  Bank Access - Especificador de banco
 	.zs_dqm		(dqm),					//  Máscara de dados para uso de endereços de 8 bits
-	//.zs_cke		(DRAM_CKE),					//  Clock Enable p/ memória
-	//.zs_cs_n		(DRAM_CS_N),				//  Chip Select p/ memória
 	.zs_ras_n	(DRAM_RAS_N),				//  Sinal seletor de linha
 	.zs_cas_n	(DRAM_CAS_N),				//  Sinal seletor de coluna
 	.zs_we_n		(DRAM_WE_N),				//  Habilitador de Escrita
@@ -143,33 +158,38 @@ module TopLevel (
 	
 	// Sinais de depuração
 	.counter		(counter_out)
+	//.dec_counter (dec_counter)
 	);
-
 	
-	/**
+	/*
 	qsys_teste_new_sdram_controller_0 new_sdram_controller_0 (
+		// Sistema --> Controlador
 		.clk            (controller_clk),                         //   clk.clk
-		.reset_n        (KEY[3]), // reset.reset_n
-		.az_addr        (22'b0),                                //    s1.address
-		.az_be_n        (2'b0),                                //      .byteenable_n
+		.reset_n        (rst_n), // reset.reset_n
+		.az_addr        (addr_in),                                //    s1.address
+		.az_be_n        (be_n),                                //      .byteenable_n
 		.az_cs          (1'b1),                                //      .chipselect
 		.az_data        (data_in),                                //      .writedata
-		.az_rd_n        (we),                                //      .read_n
-		.az_wr_n        (~we),                                //      .write_n
-		.za_data        (za_data),                                //      .readdata
-		.za_valid       (valid),                                //      .readdatavalid
-		.za_waitrequest (busy),                                //      .waitrequest
+		.az_rd_n        (we_in),                                //      .read_n
+		.az_wr_n        (~we_in),                                //      .write_n
+
+		// Controlador --> Sistema
+		.za_data        (data_out),                                //      .readdata
+		.za_valid       (valid_out),                                //      .readdatavalid
+		.za_waitrequest (busy_out),                                //      .waitrequest
+		
+		// Controlador --> Memória
+		.zs_cke         (DRAM_CKE),                                //      .export
+		.zs_cs_n        (DRAM_CS_N),                                //      .export
 		.zs_addr        (DRAM_ADDR),                                //  wire.export
-		//.zs_ba          (dram_ba),                                //      .export
+		.zs_ba          (dram_ba),                                //      .export
 		.zs_cas_n       (DRAM_CAS_N),                                //      .export
-		//.zs_cke         (DRAM_CKE),                                //      .export
-		//.zs_cs_n        (DRAM_CS_N),                                //      .export
 		.zs_dq          (DRAM_DQ),                                //      .export
 		.zs_dqm         (dqm),                                //      .export
 		.zs_ras_n       (DRAM_RAS_N),                                //      .export
 		.zs_we_n        (DRAM_WE_N)                                 //      .export
 	);
-	**/
+	*/
 	
 	apll a (
 	.inclk0 (CLOCK_27),
@@ -196,6 +216,7 @@ module TopLevel (
 	.data_reg					(data_test),
 	.read_value					(read_value),
 	.we							(we_test),
+	.oe							(oe_test),
 	.tested						(tested),
 	.error						(error),
 	.finish						(finish)
@@ -203,9 +224,9 @@ module TopLevel (
 	
 	
 	
-	always @(negedge busy_out) // Sempre que o controlador indicar que a memória não está mais ocupada.
+	always @(negedge KEY[2]) // Sempre que o controlador indicar que a memória não está mais ocupada.
 	begin
-		if (!KEY[2]) begin
+		//if (!KEY[2]) begin
 			case(SW[17:16])
 				0:
 				begin
@@ -218,6 +239,7 @@ module TopLevel (
 					end
 					be_n <= SW[12:11];
 					we_in_r <= SW[13];
+					oe_in_r <= 1;
 				end
 				1:
 				begin
@@ -230,6 +252,7 @@ module TopLevel (
 					end
 					be_n <= SW[12:11];
 					we_in_r <= SW[13];
+					oe_in_r <= 1;
 				end
 				2:
 				begin
@@ -237,12 +260,14 @@ module TopLevel (
 				end
 				default:
 				begin
-					addr_in_r <= SW[14:8];
-					data_in_r <= SW[7:0];
 					we_in_r <= SW[15];
+					oe_in_r <= SW[14];
+					addr_in_r <= SW[13:7];
+					data_in_r <= SW[6:0];
+					
 				end
 			endcase
-		end
+		//end
 	end
 	
 	//------------------------------------------------------
@@ -256,10 +281,11 @@ module TopLevel (
 	assign LEDG [2] = we_in;
 	assign LEDG [1:0] = be_n;
 	
-	assign LEDR	[2:0] = check_read;
-	//assign LEDR [7:0]	= error;
-	//assign LEDR [15:8] = tested;
-	assign LEDR [17:16] = SW[17:16];
+	//assign LEDR	[2:0] = check_read;
+	assign LEDR [7:0]	= error;
+	assign LEDR [15:8] = tested;
+	//assign LEDR [17:16] = SW[17:16];
+	//assign LEDR [17:3] = dec_counter;
 	
 	reg [3:0] hex_in[7:0];
 	

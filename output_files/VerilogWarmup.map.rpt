@@ -1,5 +1,5 @@
 Analysis & Synthesis report for VerilogWarmup
-Tue May 02 11:36:32 2023
+Wed Jun 28 09:49:47 2023
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -22,11 +22,10 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
  14. Parameter Settings for User Entity Instance: core_one:c
  15. Parameter Settings for User Entity Instance: apll:a|altpll:altpll_component
  16. altpll Parameter Settings by Entity Instance
- 17. Port Connectivity Checks: "Teste_1:t1"
- 18. Port Connectivity Checks: "core_one:c"
- 19. Elapsed Time Per Partition
- 20. Analysis & Synthesis Messages
- 21. Analysis & Synthesis Suppressed Messages
+ 17. Port Connectivity Checks: "core_one:c"
+ 18. Elapsed Time Per Partition
+ 19. Analysis & Synthesis Messages
+ 20. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -52,15 +51,15 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue May 02 11:36:32 2023           ;
+; Analysis & Synthesis Status        ; Successful - Wed Jun 28 09:49:47 2023           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; VerilogWarmup                                   ;
 ; Top-level Entity Name              ; TopLevel                                        ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 558                                             ;
-;     Total combinational functions  ; 395                                             ;
-;     Dedicated logic registers      ; 307                                             ;
-; Total registers                    ; 307                                             ;
+; Total logic elements               ; 618                                             ;
+;     Total combinational functions  ; 456                                             ;
+;     Dedicated logic registers      ; 320                                             ;
+; Total registers                    ; 320                                             ;
 ; Total pins                         ; 152                                             ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
@@ -187,20 +186,20 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+--------------------------------------+
 ; Resource                                    ; Usage                                ;
 +---------------------------------------------+--------------------------------------+
-; Estimated Total logic elements              ; 558                                  ;
+; Estimated Total logic elements              ; 618                                  ;
 ;                                             ;                                      ;
-; Total combinational functions               ; 395                                  ;
+; Total combinational functions               ; 456                                  ;
 ; Logic element usage by number of LUT inputs ;                                      ;
-;     -- 4 input functions                    ; 262                                  ;
-;     -- 3 input functions                    ; 57                                   ;
-;     -- <=2 input functions                  ; 76                                   ;
+;     -- 4 input functions                    ; 309                                  ;
+;     -- 3 input functions                    ; 65                                   ;
+;     -- <=2 input functions                  ; 82                                   ;
 ;                                             ;                                      ;
 ; Logic elements by mode                      ;                                      ;
-;     -- normal mode                          ; 363                                  ;
+;     -- normal mode                          ; 424                                  ;
 ;     -- arithmetic mode                      ; 32                                   ;
 ;                                             ;                                      ;
-; Total registers                             ; 307                                  ;
-;     -- Dedicated logic registers            ; 307                                  ;
+; Total registers                             ; 320                                  ;
+;     -- Dedicated logic registers            ; 320                                  ;
 ;     -- I/O registers                        ; 0                                    ;
 ;                                             ;                                      ;
 ; I/O pins                                    ; 152                                  ;
@@ -209,9 +208,9 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;     -- PLLs                                 ; 1                                    ;
 ;                                             ;                                      ;
 ; Maximum fan-out node                        ; apll:a|altpll:altpll_component|_clk0 ;
-; Maximum fan-out                             ; 264                                  ;
-; Total fan-out                               ; 2479                                 ;
-; Average fan-out                             ; 2.90                                 ;
+; Maximum fan-out                             ; 276                                  ;
+; Total fan-out                               ; 2752                                 ;
+; Average fan-out                             ; 2.96                                 ;
 +---------------------------------------------+--------------------------------------+
 
 
@@ -220,11 +219,11 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------+
 ; Compilation Hierarchy Node      ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                      ; Library Name ;
 +---------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------+
-; |TopLevel                       ; 395 (205)         ; 307 (44)     ; 0           ; 0            ; 0       ; 0         ; 152  ; 0            ; |TopLevel                                ; work         ;
-;    |Teste_1:t1|                 ; 48 (48)           ; 145 (145)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|Teste_1:t1                     ; work         ;
+; |TopLevel                       ; 456 (205)         ; 320 (45)     ; 0           ; 0            ; 0       ; 0         ; 152  ; 0            ; |TopLevel                                ; work         ;
+;    |Teste_1:t1|                 ; 101 (101)         ; 155 (155)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|Teste_1:t1                     ; work         ;
 ;    |apll:a|                     ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|apll:a                         ; work         ;
 ;       |altpll:altpll_component| ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|apll:a|altpll:altpll_component ; work         ;
-;    |core_one:c|                 ; 86 (86)           ; 118 (118)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|core_one:c                     ; work         ;
+;    |core_one:c|                 ; 94 (94)           ; 120 (120)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|core_one:c                     ; work         ;
 ;    |dec7seg:h0|                 ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|dec7seg:h0                     ; work         ;
 ;    |dec7seg:h1|                 ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|dec7seg:h1                     ; work         ;
 ;    |dec7seg:h2|                 ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|dec7seg:h2                     ; work         ;
@@ -247,26 +246,26 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 Encoding Type:  One-Hot
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |TopLevel|core_one:c|state                                                                                                                                                                                                           ;
-+----------------+---------------+----------------+----------------+----------------+----------------+----------------+----------------+---------------+--------------+--------------+----------------+----------------+----------------+--------------+
-; Name           ; state.ST_PREP ; state.ST_WRIT2 ; state.ST_WRIT1 ; state.ST_READ4 ; state.ST_READ3 ; state.ST_READ2 ; state.ST_READ1 ; state.ST_STAL ; state.ST_REF ; state.ST_ACT ; state.ST_INIT3 ; state.ST_INIT2 ; state.ST_INIT1 ; state.ST_POW ;
-+----------------+---------------+----------------+----------------+----------------+----------------+----------------+----------------+---------------+--------------+--------------+----------------+----------------+----------------+--------------+
-; state.ST_POW   ; 0             ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0             ; 0            ; 0            ; 0              ; 0              ; 0              ; 0            ;
-; state.ST_INIT1 ; 0             ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0             ; 0            ; 0            ; 0              ; 0              ; 1              ; 1            ;
-; state.ST_INIT2 ; 0             ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0             ; 0            ; 0            ; 0              ; 1              ; 0              ; 1            ;
-; state.ST_INIT3 ; 0             ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0             ; 0            ; 0            ; 1              ; 0              ; 0              ; 1            ;
-; state.ST_ACT   ; 0             ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0             ; 0            ; 1            ; 0              ; 0              ; 0              ; 1            ;
-; state.ST_REF   ; 0             ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0             ; 1            ; 0            ; 0              ; 0              ; 0              ; 1            ;
-; state.ST_STAL  ; 0             ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1             ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
-; state.ST_READ1 ; 0             ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0             ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
-; state.ST_READ2 ; 0             ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0             ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
-; state.ST_READ3 ; 0             ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0             ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
-; state.ST_READ4 ; 0             ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0             ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
-; state.ST_WRIT1 ; 0             ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0             ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
-; state.ST_WRIT2 ; 0             ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0             ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
-; state.ST_PREP  ; 1             ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0             ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
-+----------------+---------------+----------------+----------------+----------------+----------------+----------------+----------------+---------------+--------------+--------------+----------------+----------------+----------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |TopLevel|core_one:c|state                                                                                                                                                                                                             ;
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+--------------+--------------+----------------+----------------+----------------+--------------+
+; Name           ; state.ST_PREP2 ; state.ST_PREP1 ; state.ST_WRIT2 ; state.ST_WRIT1 ; state.ST_READ4 ; state.ST_READ3 ; state.ST_READ2 ; state.ST_READ1 ; state.ST_REF ; state.ST_ACT ; state.ST_INIT3 ; state.ST_INIT2 ; state.ST_INIT1 ; state.ST_POW ;
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+--------------+--------------+----------------+----------------+----------------+--------------+
+; state.ST_POW   ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0            ; 0            ; 0              ; 0              ; 0              ; 0            ;
+; state.ST_INIT1 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0            ; 0            ; 0              ; 0              ; 1              ; 1            ;
+; state.ST_INIT2 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0            ; 0            ; 0              ; 1              ; 0              ; 1            ;
+; state.ST_INIT3 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0            ; 0            ; 1              ; 0              ; 0              ; 1            ;
+; state.ST_ACT   ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0            ; 1            ; 0              ; 0              ; 0              ; 1            ;
+; state.ST_REF   ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1            ; 0            ; 0              ; 0              ; 0              ; 1            ;
+; state.ST_READ1 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
+; state.ST_READ2 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
+; state.ST_READ3 ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
+; state.ST_READ4 ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
+; state.ST_WRIT1 ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
+; state.ST_WRIT2 ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
+; state.ST_PREP1 ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
+; state.ST_PREP2 ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0            ; 0            ; 0              ; 0              ; 0              ; 1            ;
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+--------------+--------------+----------------+----------------+----------------+--------------+
 
 
 +---------------------------------------------------------------------------------+
@@ -274,12 +273,11 @@ Encoding Type:  One-Hot
 +----------------------------------------+----------------------------------------+
 ; Register name                          ; Reason for Removal                     ;
 +----------------------------------------+----------------------------------------+
-; Teste_1:t1|data_reg[4,5]               ; Stuck at GND due to stuck port data_in ;
 ; Teste_1:t1|data_reg[6,7]               ; Stuck at VCC due to stuck port data_in ;
-; core_one:c|az_be_n_r[1]                ; Stuck at GND due to stuck port data_in ;
+; Teste_1:t1|data_reg[4,5]               ; Stuck at GND due to stuck port data_in ;
+; Teste_1:t1|addr_reg[2,3,7..21]         ; Merged with Teste_1:t1|addr_reg[0]     ;
 ; Teste_1:t1|data_reg[3,15]              ; Merged with Teste_1:t1|data_reg[11]    ;
 ; Teste_1:t1|data_reg[2,14]              ; Merged with Teste_1:t1|data_reg[10]    ;
-; Teste_1:t1|addr_reg[2,3,7..21]         ; Merged with Teste_1:t1|addr_reg[0]     ;
 ; Teste_1:t1|data_reg[1,9]               ; Merged with Teste_1:t1|data_reg[13]    ;
 ; Teste_1:t1|data_reg[8,12]              ; Merged with Teste_1:t1|data_reg[0]     ;
 ; Teste_1:t1|addr_reg[0]                 ; Stuck at GND due to stuck port data_in ;
@@ -288,7 +286,7 @@ Encoding Type:  One-Hot
 ; core_one:c|state~5                     ; Lost fanout                            ;
 ; core_one:c|state~6                     ; Lost fanout                            ;
 ; core_one:c|state~7                     ; Lost fanout                            ;
-; Total Number of Removed Registers = 36 ;                                        ;
+; Total Number of Removed Registers = 35 ;                                        ;
 +----------------------------------------+----------------------------------------+
 
 
@@ -297,12 +295,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 307   ;
-; Number of registers using Synchronous Clear  ; 41    ;
-; Number of registers using Synchronous Load   ; 0     ;
+; Total registers                              ; 320   ;
+; Number of registers using Synchronous Clear  ; 50    ;
+; Number of registers using Synchronous Load   ; 1     ;
 ; Number of registers using Asynchronous Clear ; 51    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 284   ;
+; Number of registers using Clock Enable       ; 285   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -324,30 +322,29 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output               ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
-; 4:1                ; 2 bits    ; 4 LEs         ; 0 LEs                ; 4 LEs                  ; Yes        ; |TopLevel|Teste_1:t1|addr_reg[1]         ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |TopLevel|Teste_1:t1|addr_reg[6]         ;
 ; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |TopLevel|Teste_1:t1|prev_step[0]        ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[7][8]  ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 0 LEs                ; 4 LEs                  ; Yes        ; |TopLevel|Teste_1:t1|addr_reg[0]         ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |TopLevel|Teste_1:t1|addr_reg[4]         ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[7][6]  ;
 ; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[6][10] ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[5][15] ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[4][6]  ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[3][1]  ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[2][6]  ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[1][9]  ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[0][14] ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|addr_in_r[9]                   ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |TopLevel|data_in_r[3]                   ;
-; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |TopLevel|addr_in_r[1]                   ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |TopLevel|data_in_r[12]                  ;
-; 5:1                ; 11 bits   ; 33 LEs        ; 11 LEs               ; 22 LEs                 ; Yes        ; |TopLevel|addr_in_r[12]                  ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[5][11] ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[4][8]  ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[3][5]  ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[2][14] ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[1][10] ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TopLevel|Teste_1:t1|read_value_r[0][12] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|addr_in_r[8]                   ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 0 LEs                ; 21 LEs                 ; Yes        ; |TopLevel|data_in_r[0]                   ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |TopLevel|addr_in_r[4]                   ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |TopLevel|data_in_r[11]                  ;
+; 5:1                ; 11 bits   ; 33 LEs        ; 11 LEs               ; 22 LEs                 ; Yes        ; |TopLevel|addr_in_r[13]                  ;
 ; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |TopLevel|Teste_1:t1|step[2]             ;
-; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; Yes        ; |TopLevel|core_one:c|zs_addr_r[0]        ;
-; 9:1                ; 33 bits   ; 198 LEs       ; 33 LEs               ; 165 LEs                ; Yes        ; |TopLevel|core_one:c|counter[22]         ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |TopLevel|Mux58                          ;
-; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |TopLevel|Mux62                          ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |TopLevel|core_one:c|state               ;
-; 11:1               ; 10 bits   ; 70 LEs        ; 60 LEs               ; 10 LEs                 ; No         ; |TopLevel|Mux42                          ;
-; 11:1               ; 6 bits    ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; No         ; |TopLevel|Mux51                          ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |TopLevel|core_one:c|zs_addr_r[4]        ;
+; 16:1               ; 33 bits   ; 330 LEs       ; 33 LEs               ; 297 LEs                ; Yes        ; |TopLevel|core_one:c|counter[6]          ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |TopLevel|Mux59                          ;
+; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |TopLevel|Mux63                          ;
+; 11:1               ; 10 bits   ; 70 LEs        ; 60 LEs               ; 10 LEs                 ; No         ; |TopLevel|Mux47                          ;
+; 11:1               ; 6 bits    ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; No         ; |TopLevel|Mux52                          ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
 
 
@@ -763,26 +760,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+--------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Teste_1:t1"                                                                           ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; Port   ; Type   ; Severity ; Details                                                                             ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; tested ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; error  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "core_one:c"                                                                                                                                                                                 ;
-+-----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port            ; Type   ; Severity ; Details                                                                                                                                                                          ;
-+-----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; az_be_n         ; Input  ; Warning  ; Input port expression (2 bits) is wider than the input port (1 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-; counter         ; Output ; Warning  ; Output or bidir port (33 bits) is wider than the port expression (32 bits) it drives; bit(s) "counter[32..32]" have no fanouts                                                   ;
-; counter[31..12] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                              ;
-; error           ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                                                         ;
-+-----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "core_one:c"                                                                                                                               ;
++-----------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                                                                        ;
++-----------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------+
+; az_ce           ; Input  ; Info     ; Stuck at VCC                                                                                                                   ;
+; counter         ; Output ; Warning  ; Output or bidir port (33 bits) is wider than the port expression (32 bits) it drives; bit(s) "counter[32..32]" have no fanouts ;
+; counter[31..12] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                            ;
++-----------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -790,7 +776,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:04     ;
 +----------------+--------------+
 
 
@@ -800,7 +786,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Tue May 02 11:36:30 2023
+    Info: Processing started: Wed Jun 28 09:49:38 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off VerilogWarmup -c VerilogWarmup
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 2 entities, in source file qsys_teste/synthesis/submodules/qsys_teste_new_sdram_controller_0.v
@@ -825,10 +811,9 @@ Warning (10037): Verilog HDL or VHDL warning at qsys_teste_new_sdram_controller_
 Warning (10037): Verilog HDL or VHDL warning at qsys_teste_new_sdram_controller_0.v(336): conditional expression evaluates to a constant
 Warning (10037): Verilog HDL or VHDL warning at qsys_teste_new_sdram_controller_0.v(680): conditional expression evaluates to a constant
 Info (12127): Elaborating entity "TopLevel" for the top level hierarchy
-Warning (10034): Output port "LEDR[15..3]" at TopLevel.v(42) has no driver
-Warning (10034): Output port "LEDG[5..3]" at TopLevel.v(43) has no driver
+Warning (10034): Output port "LEDR[17..16]" at TopLevel.v(55) has no driver
+Warning (10034): Output port "LEDG[5..3]" at TopLevel.v(56) has no driver
 Info (12128): Elaborating entity "core_one" for hierarchy "core_one:c"
-Warning (10036): Verilog HDL or VHDL warning at Core_one.v(107): object "az_wr_n_r" assigned a value but never read
 Info (12128): Elaborating entity "apll" for hierarchy "apll:a"
 Info (12128): Elaborating entity "altpll" for hierarchy "apll:a|altpll:altpll_component"
 Info (12130): Elaborated megafunction instantiation "apll:a|altpll:altpll_component"
@@ -889,29 +874,34 @@ Info (12133): Instantiated megafunction "apll:a|altpll:altpll_component" with th
     Info (12134): Parameter "port_extclk2" = "PORT_UNUSED"
     Info (12134): Parameter "port_extclk3" = "PORT_UNUSED"
 Info (12128): Elaborating entity "Teste_1" for hierarchy "Teste_1:t1"
-Warning (10230): Verilog HDL assignment warning at Teste_1.v(68): truncated value with size 32 to match size of target (4)
-Warning (10027): Verilog HDL or VHDL warning at the Teste_1.v(77): index expression is not wide enough to address all of the elements in the array
-Warning (10230): Verilog HDL assignment warning at Teste_1.v(86): truncated value with size 32 to match size of target (2)
-Warning (10230): Verilog HDL assignment warning at Teste_1.v(94): truncated value with size 32 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at Teste_1.v(80): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at Teste_1.v(92): truncated value with size 32 to match size of target (2)
 Warning (10230): Verilog HDL assignment warning at Teste_1.v(101): truncated value with size 32 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at Teste_1.v(108): truncated value with size 32 to match size of target (2)
 Info (12128): Elaborating entity "dec7seg" for hierarchy "dec7seg:h7"
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13049): Converted tri-state buffer "core_one:c|za_data[0]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "core_one:c|za_data[1]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "core_one:c|za_data[2]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "core_one:c|za_data[3]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "core_one:c|za_data[4]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "core_one:c|za_data[5]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "core_one:c|za_data[6]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "core_one:c|za_data[7]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "core_one:c|za_data[8]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "core_one:c|za_data[9]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "core_one:c|za_data[10]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "core_one:c|za_data[11]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "core_one:c|za_data[12]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "core_one:c|za_data[13]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "core_one:c|za_data[14]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "core_one:c|za_data[15]" feeding internal logic into a wire
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDR[3]" is stuck at GND
-    Warning (13410): Pin "LEDR[4]" is stuck at GND
-    Warning (13410): Pin "LEDR[5]" is stuck at GND
-    Warning (13410): Pin "LEDR[6]" is stuck at GND
-    Warning (13410): Pin "LEDR[7]" is stuck at GND
-    Warning (13410): Pin "LEDR[8]" is stuck at GND
-    Warning (13410): Pin "LEDR[9]" is stuck at GND
-    Warning (13410): Pin "LEDR[10]" is stuck at GND
-    Warning (13410): Pin "LEDR[11]" is stuck at GND
-    Warning (13410): Pin "LEDR[12]" is stuck at GND
-    Warning (13410): Pin "LEDR[13]" is stuck at GND
-    Warning (13410): Pin "LEDR[14]" is stuck at GND
-    Warning (13410): Pin "LEDR[15]" is stuck at GND
+    Warning (13410): Pin "LEDR[16]" is stuck at GND
+    Warning (13410): Pin "LEDR[17]" is stuck at GND
     Warning (13410): Pin "LEDG[3]" is stuck at GND
     Warning (13410): Pin "LEDG[4]" is stuck at GND
     Warning (13410): Pin "LEDG[5]" is stuck at GND
@@ -923,7 +913,6 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "HEX5[7]" is stuck at GND
     Warning (13410): Pin "HEX6[7]" is stuck at GND
     Warning (13410): Pin "HEX7[7]" is stuck at GND
-    Warning (13410): Pin "DRAM_UDQM" is stuck at GND
     Warning (13410): Pin "DRAM_CKE" is stuck at VCC
     Warning (13410): Pin "DRAM_CS_N" is stuck at GND
 Info (17049): 4 registers lost all their fanouts during netlist optimizations.
@@ -932,17 +921,17 @@ Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 1 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[0]"
-Info (21057): Implemented 769 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 830 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 23 input pins
     Info (21059): Implemented 113 output pins
     Info (21060): Implemented 16 bidirectional pins
-    Info (21061): Implemented 616 logic cells
+    Info (21061): Implemented 677 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 44 warnings
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 47 warnings
     Info: Peak virtual memory: 4622 megabytes
-    Info: Processing ended: Tue May 02 11:36:32 2023
-    Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Processing ended: Wed Jun 28 09:49:47 2023
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:03
 
 
 +------------------------------------------+
